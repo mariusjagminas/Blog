@@ -15,7 +15,13 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   font-size: 20px;
-  font-family: ${({ theme }) => theme.font.family.main};
+  font-weight: 500;
+  font-family: ${({ theme }) => theme.font.family.second};
+  ${({theme})=>theme.mq.laptop}{
+    font-size: 50px;
+  }
+  
+  
 `
 
 const Banner = () => (

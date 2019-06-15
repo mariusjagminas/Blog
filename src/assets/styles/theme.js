@@ -1,12 +1,19 @@
 export const theme = {
   primary: "black",
+  secondary: "#D1EDEB",
   light: "#F0F8FA",
   font: {
     size: {
-      m: "1rem",
+      s: "0.8rem", // 14px
     },
     family: {
-      main: "'Mali', cursive",
+      main: "'Roboto', sans-serif",
+      second: "'Inconsolata', monospace",
+    },
+    weight: {
+      thin: "200",
+      regular: "400",
+      bold: "600",
     },
   },
   mq: {

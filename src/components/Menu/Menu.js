@@ -9,7 +9,7 @@ const MenuList = styled.ul`
   width: 100%;
   max-width: 400px;
   position: absolute;
-  top:0;
+  top: 0;
   right: 0;
   display: inline-flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ const MenuList = styled.ul`
   background: #ffffff;
   transform: translateX(${({ isMenuOpen }) => (isMenuOpen ? "0" : "100%")});
   transition: transform 0.2s ease-in-out;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 
   ${({ theme }) => theme.mq.laptop} {
     transform: translateX(0);
@@ -41,15 +41,22 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   color: ${props => props.theme.primary};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
   padding: 10px;
+  transition: color 0.25s ease-in-out;
+
+  :hover {
+    color: ${({ theme }) => theme.secondary};
+  }
+
   ${({ theme }) => theme.mq.laptop} {
-    font-size: 10px;
+    font-size: ${({ theme }) => theme.font.size.s};
   }
 `
 
 const links = [
   { title: "O nas", path: "/" },
-  { title: "Literatura Angielska", path: "team" },
+  { title: "Literatura", path: "team" },
   { title: "Zespól", path: "team" },
   { title: "0 mnie", path: "team" },
   { title: "iliustracje", path: "team" },

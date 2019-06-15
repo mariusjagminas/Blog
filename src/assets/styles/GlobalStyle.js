@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle` 
-@import url('https://fonts.googleapis.com/css?family=Mali&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Roboto&display=swap');
 
 *, *::before, *::after {
-  box-sizing: border-box;
+  box-sizing: border-bo
 }
 
 body {
