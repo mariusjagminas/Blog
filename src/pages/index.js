@@ -1,10 +1,8 @@
 import React from "react"
-
+import MainTemplate from "../templates/MainTemplate/MainTemplate"
 
 export default () => (
-  <>
-  <h1>Hello</h1>
-  </>
-);
-
-
+  <MainTemplate>
+    
+  </MainTemplate>
+)
