@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/Blog",
   siteMetadata: {
     title: `Literatura`,
     description: `Literatura nannowsza`,
