@@ -9,38 +9,45 @@ const MenuList = styled.ul`
   width: 100%;
   max-width: 400px;
   position: absolute;
+  z-index: 5;
   top: 0;
   right: 0;
-  display: inline-flex;
+  display: ${({ isFooterMenu }) => (isFooterMenu ? "none" : "inline-flex")};
   flex-direction: column;
   align-items: center;
   background: #ffffff;
-  transform: translateX(${({ isMenuOpen }) => (isMenuOpen ? "0" : "100%")});
+  transform: translateY(${({ isMenuOpen }) => (isMenuOpen ? "0" : "-100%")});
   transition: transform 0.2s ease-in-out;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 
   ${({ theme }) => theme.mq.laptop} {
-    transform: translateX(0);
+    display: inline-flex;
+    transform: translateY(0);
     position: static;
-    max-width: initial;
+    width: initial;
+    max-width: 100%;
     height: auto;
     padding: 0;
     box-shadow: none;
     flex-direction: row;
     align-items: center;
+    background: ${({ theme, isFooterMenu }) =>
+      isFooterMenu ? theme.primary : "none"};
+    color: white;
   }
 `
 
 const MenuItem = styled.li`
   margin: 20px;
   ${({ theme }) => theme.mq.laptop} {
-    margin: 0 15px 0 0;
+    margin: 0 8px;
   }
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
-  color: ${props => props.theme.primary};
+  color: ${({ theme, isFooterMenu }) =>
+    isFooterMenu ? theme.bright : theme.primary};
   font-weight: ${({ theme }) => theme.font.weight.regular};
   padding: 10px;
   transition: color 0.25s ease-in-out;
@@ -67,7 +74,9 @@ const Menu = props => (
   <MenuList {...props}>
     {links.map(link => (
       <MenuItem key={link.title}>
-        <StyledLink to={link.path}>{link.title}</StyledLink>
+        <StyledLink {...props} to={link.path}>
+          {link.title}
+        </StyledLink>
       </MenuItem>
     ))}
   </MenuList>

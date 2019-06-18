@@ -1,6 +1,7 @@
 export const theme = {
   primary: "black",
   secondary: "#D1EDEB",
+  bright: "#ffffff",
   light: "#F0F8FA",
   font: {
     size: {

@@ -1,8 +1,14 @@
 import React from "react"
-import { ThemeProvider } from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import { theme } from "../../assets/styles/theme"
 import GlobalStyle from "../../assets/styles/GlobalStyle"
 import Header from "../../components/Header/Header"
+import Footer from "../../components/Footer/Footer"
+
+const Container = styled.div`
+  max-width: 100%;
+  min-height: 100vh;
+`
 
 const MainTemplate = props => (
   <>
@@ -10,7 +16,8 @@ const MainTemplate = props => (
     <ThemeProvider theme={theme}>
       <>
         <Header />
-        {props.children}
+        <Container>{props.children}</Container>
+        <Footer />
       </>
     </ThemeProvider>
   </>

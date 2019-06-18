@@ -5,6 +5,7 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa"
 const IconsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-left: auto;
 `
 
 const StyledLink = styled.a`
