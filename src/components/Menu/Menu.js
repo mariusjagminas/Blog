@@ -63,7 +63,7 @@ const StyledLink = styled(Link)`
 
 const links = [
   { title: "O nas", path: "/" },
-  { title: "Literatura", path: "team" },
+  { title: "Literatura", path: "literature" },
   { title: "Zespól", path: "team" },
   { title: "0 mnie", path: "team" },
   { title: "iliustracje", path: "team" },
