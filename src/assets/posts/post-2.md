@@ -1,6 +1,8 @@
 ---
 title: Moja recenzja „Króla” Szczepana Twardocha
 date: "2017-08-10"
+slug: "article"
+locale: "pl"
 ---
 
 Szczepan Twardoch (ur. 1979) to jeden z najpoczytniejszych i najbardziej docenianych polskich powieściopisarzy młodego pokolenia. Poza wieloma stylistyczno-tematycznymi zaletami, jego proza zasługuje na naszą uwagę ze względu na potrzebę zwalczania szeroko rozpowszechnionego stereotypu Polski jako kraju jednoreligijny, zamieszkałego przez ludzi o tym samym pochodzeniu etnicznokulturowym. Twardoch, który w wielu wywiadach określa się jako Ślązak, podkreśla różnorodność Polaków, dalekich od bycia homogenicznym narodem prawicowych katolików, dzielących to samo pochodzenie i system aksjomatyczny. Kwestia ta stanowi serce ostatnich trzech Twardochowych powieści (“Morfina”, “Drach” i “Król”), serce, które pompuje życie do każdej komórki świata przedstawionego i formuje egzystencję głównych bohaterów, często borykających się z własną tożsamością narodową.

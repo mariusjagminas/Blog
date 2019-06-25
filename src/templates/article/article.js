@@ -1,21 +1,36 @@
 import React from "react"
 import MainTemplate from "../../templates/MainTemplate/MainTemplate"
 import { graphql } from "gatsby"
+import { injectIntl} from "gatsby-plugin-intl"
 
-export default ({ data }) => (
-  <MainTemplate>
-    <h1>{data.markdownRemark.frontmatter.title}</h1>
-    <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-  </MainTemplate>
-)
+const Article = ({ data, intl }) => {
+  console.log(intl.locale)
+  const { polishTitle, frenchTitle } = data.contentfulArticle
+
+  const title =
+    polishTitle && intl.locale === "pl"
+      ? polishTitle
+      : frenchTitle && intl.locale === "fr"
+      ? frenchTitle
+      : intl.locale === "pl"
+      ? "niema artykulu"
+      : "no article"
+  return (
+    <MainTemplate>
+      <h1>{title}</h1>
+      <h1>Hello</h1>
+    </MainTemplate>
+  )
+}
+
+export default injectIntl(Article)
 
 export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-      }
-    }
+query MyQuery($nodeid: String) {
+  contentfulArticle(nodeid: {eq: $nodeid}){
+    polishTitle
+    frenchTitle
   }
+}
+
 `

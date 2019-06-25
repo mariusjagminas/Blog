@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { injectIntl } from "gatsby-plugin-intl"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,17 +18,18 @@ const Title = styled.h1`
   font-size: 20px;
   font-weight: 500;
   font-family: ${({ theme }) => theme.font.family.second};
-  ${({theme})=>theme.mq.laptop}{
+  ${({ theme }) => theme.mq.laptop} {
     font-size: 50px;
   }
-  
-  
 `
 
-const Banner = () => (
-  <Wrapper>
-    <Title>Literatura najnowsza</Title>
-  </Wrapper>
-)
+const Banner = ({ intl }) => {
+ 
+  return (
+    <Wrapper>
+      <Title>{intl.formatMessage({ id: "banner.title" })}</Title>
+    </Wrapper>
+  )
+}
 
-export default Banner
+export default injectIntl(Banner)

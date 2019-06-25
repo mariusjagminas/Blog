@@ -3,14 +3,27 @@ require("dotenv").config({
 })
 
 module.exports = {
-  pathPrefix: "/Blog",
   siteMetadata: {
     title: `Literatura`,
-    description: `Literatura nannowsza`,
+    description: `Literatura najnowsza`,
     author: `Pawel Hladki`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/public/intl`,
+        // supported language
+        languages: [`fr`, `pl`],
+        // language file path
+        defaultLanguage: "pl",
+        // option to redirect to `/pl` when connecting `/`
+        redirect: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -21,10 +34,10 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
-        path: `${__dirname}/src/assets/posts`,
+        path: `${__dirname}/src`,
       },
     },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
@@ -33,6 +46,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
     {

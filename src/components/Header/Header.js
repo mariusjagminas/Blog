@@ -5,6 +5,7 @@ import { useState } from "react"
 import Hamburger from "../Hamburger/Hamburger"
 import SocialIcons from "../SocialIcons/SocialIcons"
 import Banner from "../Banner/Banner"
+import Languages from '../Languages/Languages'
 
 const Wrapper = styled.div`
   max-width: 960px;
@@ -27,6 +28,7 @@ const Header = () => {
         <Hamburger onClick={toggleMenu} isMenuOpen={isMenuOpen} />
         <Menu isMenuOpen={isMenuOpen} />
         <SocialIcons />
+        <Languages/>
       </Wrapper>
       <Banner />
     </>

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { injectIntl } from "gatsby-plugin-intl"
 
 const MenuList = styled.ul`
   list-style: none;
@@ -61,25 +62,25 @@ const StyledLink = styled(Link)`
   }
 `
 
-const links = [
-  { title: "O nas", path: "/" },
-  { title: "Literatura", path: "literature" },
-  { title: "Zespól", path: "team" },
-  { title: "0 mnie", path: "team" },
-  { title: "iliustracje", path: "team" },
-  { title: "contact", path: "read" },
-]
+const Menu = ({ intl, ...props }) => {
 
-const Menu = props => (
-  <MenuList {...props}>
-    {links.map(link => (
-      <MenuItem key={link.title}>
-        <StyledLink {...props} to={link.path}>
-          {link.title}
-        </StyledLink>
-      </MenuItem>
-    ))}
-  </MenuList>
-)
+  const links = [
+    { title: intl.formatMessage({ id: "menu.about" }), path: "/" },
+    { title: intl.formatMessage({ id: "menu.english" }), path: "/literature" },
+    { title: intl.formatMessage({ id: "menu.team" }), path: "/" },
+    { title: intl.formatMessage({ id: "menu.about_me" }), path: "/" },
+    { title: intl.formatMessage({ id: "menu.design" }), path: "/" },
+  ]
 
-export default Menu
+  return (
+    <MenuList {...props}>
+      {links.map(link => (
+        <MenuItem key={link.title}>
+          <StyledLink to={link.path}>{link.title}</StyledLink>
+        </MenuItem>
+      ))}
+    </MenuList>
+  )
+}
+
+export default injectIntl(Menu)

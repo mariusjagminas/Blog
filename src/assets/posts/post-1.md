@@ -1,6 +1,8 @@
 ---
 title: "Przepis Houellebecqa"
 date: "2019-02-18"
+slug: "article"
+locale: "fr"
 ---
 
 Składniki: główny bohater w wieku średnim o skłonnościach depresyjnych,   kilka refleksji natury socjologicznej, garstka opisów cielesnych, kilka fragmentów erotycznych, szczypta cynizmu i humoru. Dowolnie wymieszać niniejsze elementy na stronach najlepiej trzystustronicowej powieści.
