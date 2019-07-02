@@ -15,7 +15,8 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 20px;
+  font-size: 18px;
+  padding: 0 10px;
   font-weight: 500;
   font-family: ${({ theme }) => theme.font.family.second};
   ${({ theme }) => theme.mq.laptop} {

@@ -4,8 +4,8 @@ import Img from "gatsby-image"
 
 const Bar = styled.div`
   width: 100%;
-  height: 130px;
-  background: ${({ theme }) => theme.light};
+  // background: ${({ theme }) => theme.light};
+  background: linear-gradient(0deg, white 65%, ${({theme})=>theme.light} 35%);
   display: flex;
   justify-content: center;
 `

@@ -7,7 +7,6 @@ import Footer from "../../components/Footer/Footer"
 
 const Container = styled.div`
   max-width: 100%;
-  min-height: 100vh;
 `
 
 const MainTemplate = props => (

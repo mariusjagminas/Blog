@@ -2,24 +2,30 @@ import React from "react"
 import MainTemplate from "../templates/MainTemplate/MainTemplate"
 import Hero from "../components/Hero/Hero"
 import { graphql } from "gatsby"
-// import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+import { injectIntl} from "gatsby-plugin-intl"
+import styled from "styled-components"
+import Markdown from "react-remarkable"
 
-const Index = ({data}) => {
+const TextWrapper = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+`
 
+const Index = ({ data, intl}) => {
   return (
     <MainTemplate>
       <Hero data={data} />
-      {/* <FormattedMessage id="banner" /> */}
+      <TextWrapper>
+        <Markdown>{intl.formatMessage({ id: "about_page.content" })}</Markdown>
+      </TextWrapper>
     </MainTemplate>
   )
 }
 
-
-
-
-
 export const query = graphql`
-  query About($locale: String ){
+  query About($locale: String) {
     file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
@@ -40,4 +46,4 @@ export const query = graphql`
     }
   }
 `
-export default Index
+export default injectIntl(Index)

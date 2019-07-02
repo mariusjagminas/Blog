@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
-import { injectIntl } from "gatsby-plugin-intl"
+import { injectIntl,Link } from "gatsby-plugin-intl"
 
 const MenuList = styled.ul`
   list-style: none;
@@ -75,8 +74,8 @@ const Menu = ({ intl, ...props }) => {
   return (
     <MenuList {...props}>
       {links.map(link => (
-        <MenuItem key={link.title}>
-          <StyledLink to={link.path}>{link.title}</StyledLink>
+        <MenuItem  key={link.title}>
+          <StyledLink  to={link.path}>{link.title}</StyledLink>
         </MenuItem>
       ))}
     </MenuList>
