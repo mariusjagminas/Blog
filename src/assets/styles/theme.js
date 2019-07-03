@@ -3,6 +3,7 @@ export const theme = {
   secondary: "#D1EDEB",
   bright: "#ffffff",
   light: "#F0F8FA",
+  grey: "#D3D3D3",
   font: {
     size: {
       s: "0.8rem", // 14px

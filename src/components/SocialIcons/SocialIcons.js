@@ -4,19 +4,25 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa"
 
 const IconsWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-left: auto;
+  justify-content: space-evenly;
+  margin-left: ${({ articleicons }) => (articleicons ? "none" : "auto")};
+  min-width: ${({ articleicons }) => (articleicons ? "120px" : "60px;")};
 `
 
 const StyledLink = styled.a`
-  display: none;
-  color: ${({ theme }) => theme.primary};
+  display: ${({ articleicons }) => (articleicons ? "initial" : "none")};
+  color: ${({ theme, articleicons }) =>
+    articleicons ? theme.bright : theme.primary};
   font-size: 16px;
-  margin-left: 20px;
+  background: ${({ theme, articleicons }) =>
+    articleicons ? theme.secondary : "none"};
+  border-radius: 30px;
+  padding: 6px 8px;
   transition: color 0.25s ease-in-out;
 
   :hover {
-    color: ${({ theme }) => theme.secondary};
+    color: ${({ theme, articleicons }) =>
+      articleicons ? theme.primary : theme.secondary};
   }
 
   ${({ theme }) => theme.mq.laptop} {
@@ -24,16 +30,17 @@ const StyledLink = styled.a`
   }
 `
 
-const SocialIcons = () => (
-  <IconsWrapper>
+const SocialIcons = props => (
+  <IconsWrapper {...props}>
     <StyledLink
+      {...props}
       href={
         "https://www.facebook.com/Litt%C3%A9rature-extr%C3%AAme-contemporaineLiteratura-najnowsza-180172648750803/"
       }
     >
       <FaFacebookF />
     </StyledLink>
-    <StyledLink href={"https://twitter.com/pawelhladki"}>
+    <StyledLink {...props} href={"https://twitter.com/pawelhladki"}>
       <FaTwitter />
     </StyledLink>
   </IconsWrapper>

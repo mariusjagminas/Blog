@@ -2,9 +2,10 @@ import React from "react"
 import MainTemplate from "../templates/MainTemplate/MainTemplate"
 import Hero from "../components/Hero/Hero"
 import { graphql } from "gatsby"
-import { injectIntl} from "gatsby-plugin-intl"
+import { injectIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 import Markdown from "react-remarkable"
+import ArticleSocialIcons from "../components/ArticleSocialIcons/ArticleSocialIcons"
 
 const TextWrapper = styled.div`
   max-width: 600px;
@@ -13,12 +14,13 @@ const TextWrapper = styled.div`
   text-align: center;
 `
 
-const Index = ({ data, intl}) => {
+const Index = ({ data, intl }) => {
   return (
     <MainTemplate>
       <Hero data={data} />
       <TextWrapper>
         <Markdown>{intl.formatMessage({ id: "about_page.content" })}</Markdown>
+        <ArticleSocialIcons />
       </TextWrapper>
     </MainTemplate>
   )
