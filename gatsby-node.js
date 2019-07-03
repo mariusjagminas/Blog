@@ -43,12 +43,7 @@ exports.onPreBootstrap = () => {
     JSON.stringify(flatten(frTranslation))
   )
 
-  // Copy redirects
-  // fs.copySync(
-  //   path.join(__dirname, "/_redirects"),
-  //   path.join(__dirname, "/public/_redirects")
-  // )
-
+  
   function loadTranslationObject(languageCode) {
     const srcPath = path.join(
       __dirname,

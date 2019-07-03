@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { injectIntl,Link } from "gatsby-plugin-intl"
+import { injectIntl, Link } from "gatsby-plugin-intl"
 
 const MenuList = styled.ul`
   list-style: none;
@@ -12,7 +12,7 @@ const MenuList = styled.ul`
   z-index: 5;
   top: 0;
   right: 0;
-  display: ${({ isFooterMenu }) => (isFooterMenu ? "none" : "inline-flex")};
+  display: ${({ footermenu }) => (footermenu ? "none" : "inline-flex")};
   flex-direction: column;
   align-items: center;
   background: #ffffff;
@@ -31,8 +31,8 @@ const MenuList = styled.ul`
     box-shadow: none;
     flex-direction: row;
     align-items: center;
-    background: ${({ theme, isFooterMenu }) =>
-      isFooterMenu ? theme.primary : "none"};
+    background: ${({ theme, footermenu }) =>
+      footermenu ? theme.primary : "none"};
     color: white;
   }
 `
@@ -46,8 +46,8 @@ const MenuItem = styled.li`
 const StyledLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
-  color: ${({ theme, isFooterMenu }) =>
-    isFooterMenu ? theme.bright : theme.primary};
+  color: ${({ theme, footermenu }) =>
+    footermenu ? theme.bright : theme.primary};
   font-weight: ${({ theme }) => theme.font.weight.regular};
   padding: 10px;
   transition: color 0.25s ease-in-out;
@@ -61,8 +61,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Menu = ({ intl, ...props }) => {
-
+const Menu = ({ intl, isMenuOpen, footermenu }) => {
   const links = [
     { title: intl.formatMessage({ id: "menu.about" }), path: "/" },
     { title: intl.formatMessage({ id: "menu.english" }), path: "/literature" },
@@ -72,10 +71,12 @@ const Menu = ({ intl, ...props }) => {
   ]
 
   return (
-    <MenuList {...props}>
+    <MenuList isMenuOpen={isMenuOpen} footermenu={footermenu}>
       {links.map(link => (
-        <MenuItem  key={link.title}>
-          <StyledLink  to={link.path}>{link.title}</StyledLink>
+        <MenuItem key={link.title}>
+          <StyledLink footermenu={footermenu} to={link.path}>
+            {link.title}
+          </StyledLink>
         </MenuItem>
       ))}
     </MenuList>

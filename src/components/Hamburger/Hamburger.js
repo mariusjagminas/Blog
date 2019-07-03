@@ -10,7 +10,7 @@ const StyledHamburger = styled.button`
   background: none;
   border: none;
   outline: none;
-  ${({theme})=>theme.mq.laptop} {
+  ${({ theme }) => theme.mq.laptop} {
     display: none;
   }
 `

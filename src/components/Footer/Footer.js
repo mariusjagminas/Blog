@@ -20,7 +20,7 @@ const Copyright = styled.p`
 
 const Footer = () => (
   <Wrapper>
-    <Menu isFooterMenu={true} />
+    <Menu footermenu={"true"}/>
     <Copyright> &copy; 2019 Pawel Hładki</Copyright>
   </Wrapper>
 )
