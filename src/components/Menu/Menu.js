@@ -15,7 +15,7 @@ const MenuList = styled.ul`
   display: ${({ footermenu }) => (footermenu ? "none" : "inline-flex")};
   flex-direction: column;
   align-items: center;
-  background: #ffffff;
+  background: ${({ theme }) => theme.bright};
   transform: translateY(${({ isMenuOpen }) => (isMenuOpen ? "0" : "-100%")});
   transition: transform 0.2s ease-in-out;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
@@ -32,8 +32,9 @@ const MenuList = styled.ul`
     flex-direction: row;
     align-items: center;
     background: ${({ theme, footermenu }) =>
-      footermenu ? theme.primary : "none"};
+      footermenu ? theme.primaryLight : "none"};
     color: white;
+    margin: ${({ footermenu }) => (footermenu ? "20px" : "0")};
   }
 `
 
@@ -48,7 +49,8 @@ const StyledLink = styled(Link)`
   text-transform: uppercase;
   color: ${({ theme, footermenu }) =>
     footermenu ? theme.bright : theme.primary};
-  font-weight: ${({ theme }) => theme.font.weight.regular};
+  font-weight: ${({ theme, footermenu }) =>
+    footermenu ? theme.font.weight.regular : theme.font.weight.bold};
   padding: 10px;
   transition: color 0.25s ease-in-out;
 
@@ -64,8 +66,8 @@ const StyledLink = styled(Link)`
 const Menu = ({ intl, isMenuOpen, footermenu }) => {
   const links = [
     { title: intl.formatMessage({ id: "menu.about" }), path: "/" },
-    { title: intl.formatMessage({ id: "menu.english" }), path: "/literature" },
-    { title: intl.formatMessage({ id: "menu.team" }), path: "/" },
+    { title: intl.formatMessage({ id: "menu.english" }), path: "/article" },
+    { title: intl.formatMessage({ id: "menu.team" }), path: "/literature" },
     { title: intl.formatMessage({ id: "menu.about_me" }), path: "/" },
     { title: intl.formatMessage({ id: "menu.design" }), path: "/" },
   ]

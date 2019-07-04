@@ -4,23 +4,25 @@ import Menu from "../Menu/Menu"
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 80px;
-  padding-top: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.primaryLight};
 `
 
 const Copyright = styled.p`
   color: ${({ theme }) => theme.bright};
+  text-align: center;
+  padding: 30px 0;
   margin: 0;
-  padding-top: 20px;
+  width: 100%;
+  box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.59);
 `
 
 const Footer = () => (
   <Wrapper>
-    <Menu footermenu={"true"}/>
+    <Menu footermenu={"true"} />
     <Copyright> &copy; 2019 Pawel Hładki</Copyright>
   </Wrapper>
 )
