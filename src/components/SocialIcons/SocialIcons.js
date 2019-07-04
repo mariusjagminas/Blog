@@ -17,7 +17,7 @@ const StyledLink = styled.a`
   background: ${({ theme, articleicons }) =>
     articleicons ? theme.secondary : "none"};
   border-radius: 30px;
-  padding: 6px 8px;
+  padding: 8px 8px 4px 8px;
   transition: color 0.25s ease-in-out;
 
   :hover {
