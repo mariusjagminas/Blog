@@ -1,12 +1,16 @@
 export const theme = {
   primary: "black",
-  secondary: "#D1EDEB",
-  bright: "#ffffff",
+  primaryLight: "#222222", // lighter black egzample: footer
+  secondary: "#D1EDEB", // light blue background
+  bright: "#ffffff", // white
   light: "#F0F8FA",
   grey: "#D3D3D3",
   font: {
     size: {
       s: "0.8rem", // 14px
+      m: "1.25rem", //20px
+      xl: "2.2rem", //35px
+      xxl: "3.45rem", //55px
     },
     family: {
       main: "'Roboto', sans-serif",
@@ -19,7 +23,7 @@ export const theme = {
     },
   },
   mq: {
-    tablet: "@media(min-width: 200px)",
+    tablet: "@media(min-width: 700px)",
     laptop: "@media(min-width: 800px)",
   },
 }

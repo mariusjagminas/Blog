@@ -8,10 +8,13 @@ import Markdown from "react-remarkable"
 import ArticleSocialIcons from "../components/ArticleSocialIcons/ArticleSocialIcons"
 
 const TextWrapper = styled.div`
-  max-width: 600px;
+  max-width: 780px;
   margin: 0 auto;
   padding: 10px;
   text-align: center;
+  ${({theme})=>theme.mq.laptop}{
+    font-size: ${({theme})=>theme.font.size.m}
+  }
 `
 
 const Index = ({ data, intl }) => {
@@ -27,22 +30,11 @@ const Index = ({ data, intl }) => {
 }
 
 export const query = graphql`
-  query About($locale: String) {
+  query About {
     file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
           ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-    allMarkdownRemark(
-      filter: {
-        frontmatter: { locale: { eq: $locale }, slug: { eq: "about" } }
-      }
-    ) {
-      edges {
-        node {
-          html
         }
       }
     }

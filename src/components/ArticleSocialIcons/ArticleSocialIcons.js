@@ -4,7 +4,7 @@ import SocialIcons from "../SocialIcons/SocialIcons"
 
 const StyledWrapper = styled.div`
   width: 100%;
-  padding: 20px 0;
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.light};
   ${({ theme }) => theme.mq.laptop} {
-    height: 140px;
+    height: 175px;
   }
 `
 
@@ -19,13 +19,16 @@ const Title = styled.h1`
   padding: 0 10px;
   font-weight: 500;
   font-family: ${({ theme }) => theme.font.family.second};
+
+  ${({ theme }) => theme.mq.tablet} {
+    font-size: ${({ theme }) => theme.font.size.xl};
+  }
   ${({ theme }) => theme.mq.laptop} {
-    font-size: 50px;
+    font-size: ${({ theme }) => theme.font.size.xxl};
   }
 `
 
 const Banner = ({ intl }) => {
- 
   return (
     <Wrapper>
       <Title>{intl.formatMessage({ id: "banner.title" })}</Title>
