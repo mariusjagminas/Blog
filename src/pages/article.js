@@ -6,9 +6,10 @@ import Article from "../components/Article/Article"
 import Sidebar from "../components/Sidebar/Sidebar"
 
 const Wrapper = styled.div`
-  max-width: 650px;
+  max-width: 1360px;
   margin: 0 auto;
   display: flex;
+  background: ${({theme})=>theme.bright};
 `
 
 const Index = ({ data, intl }) => {

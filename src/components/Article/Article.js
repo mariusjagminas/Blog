@@ -11,19 +11,24 @@ const tempContent = {
 }
 
 const Wrapper = styled.div`
-  border: 1px solid blue;
-  width: 400px;
-  padding: 10px;
+  flex: 1 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 
+const StyledMarkdown = styled.div`
+  
+  padding: 20px;
+`
+
 const Article = () => (
   <Wrapper>
-    <Date date={"10.07.2020"} />
-    <Title title={"Houlberg"} />
-    <Markdown>{tempContent.article}</Markdown>
+    <Date date={"18.02.2019"} />
+    <Title title={"Przepis Houellbecqa"} />
+    <StyledMarkdown>
+      <Markdown>{tempContent.article}</Markdown>
+    </StyledMarkdown>
     <Content />
   </Wrapper>
 )

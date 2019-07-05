@@ -5,12 +5,23 @@ import { injectIntl } from "gatsby-plugin-intl"
 const Wrapper = styled.div`
   width: 100%;
   height: 80px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.light};
+  background: ${({ theme }) => theme.secondaryLight};
   ${({ theme }) => theme.mq.laptop} {
     height: 175px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 175px;
+      width: 100%;
+      height: 165px;
+      background: ${({ theme }) => theme.secondaryLight};
+    }
   }
 `
 
