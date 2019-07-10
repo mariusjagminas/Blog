@@ -43,19 +43,16 @@ exports.onPreBootstrap = () => {
     JSON.stringify(flatten(frTranslation))
   )
 
-  
   function loadTranslationObject(languageCode) {
     const srcPath = path.join(
       __dirname,
       `/src/assets/translations/${languageCode}/`
     )
-    const translationObjects = fs
-      .readdirSync(srcPath)
-      .map(file =>
-        yaml.load(fs.readFileSync(path.join(srcPath, file)), {
-          encoding: "utf-8",
-        })
-      )
+    const translationObjects = fs.readdirSync(srcPath).map(file =>
+      yaml.load(fs.readFileSync(path.join(srcPath, file)), {
+        encoding: "utf-8",
+      })
+    )
     return Object.assign({}, ...translationObjects)
   }
 }
@@ -64,26 +61,33 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     query MyQuery {
-      allContentfulArticle {
+      allContentfulArticles {
         edges {
           node {
-            nodeid
-            frenchTitle
-            polishTitle
+            slug
+            date
+            titleFr
+            titlePl
+            contentFr {
+              json
+            }
+            contentPl {
+              json
+            }
           }
         }
       }
     }
   `).then(result => {
     // console.log(result.data);
-    result.data.allContentfulArticle.edges.forEach(({ node }) => {
+    result.data.allContentfulArticles.edges.forEach(({ node }) => {
       createPage({
-        path: node.nodeid,
+        path: node.slug,
         component: path.resolve(`./src/templates/article/article.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          nodeid: node.nodeid,
+          slug: node.slug,
         },
       })
     })

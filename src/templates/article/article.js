@@ -1,36 +1,55 @@
 import React from "react"
 import MainTemplate from "../../templates/MainTemplate/MainTemplate"
 import { graphql } from "gatsby"
-import { injectIntl} from "gatsby-plugin-intl"
+import Sidebar from "../../components/Sidebar/Sidebar"
+import styled from "styled-components"
+import Article from "../../components/Article/Article"
 
-const Article = ({ data, intl }) => {
-  console.log(intl.locale)
-  const { polishTitle, frenchTitle } = data.contentfulArticle
+const Wrapper = styled.div`
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  background: ${({ theme }) => theme.bright};
+`
 
-  const title =
-    polishTitle && intl.locale === "pl"
-      ? polishTitle
-      : frenchTitle && intl.locale === "fr"
-      ? frenchTitle
-      : intl.locale === "pl"
-      ? "niema artykulu"
-      : "no article"
+const Index = ({ data }) => {
+  const { titlePl, titleFr, contentPl, contentFr } = data.contentfulArticles
+
+  const article = {
+    title: {
+      pl: titlePl || `niema artikulu ${titleFr}`,
+      fr: titleFr || `no article ${titlePl}`,
+    },
+    content: {
+      pl: contentPl ? contentPl.json : "",
+      fr: contentFr ? contentFr.json : "",
+    },
+  }
+
   return (
     <MainTemplate>
-      <h1>{title}</h1>
-      <h1>Hello</h1>
+      <Wrapper>
+        <Article article={article} />
+        <Sidebar />
+      </Wrapper>
     </MainTemplate>
   )
 }
 
-export default injectIntl(Article)
-
 export const query = graphql`
-query MyQuery($nodeid: String) {
-  contentfulArticle(nodeid: {eq: $nodeid}){
-    polishTitle
-    frenchTitle
+  query Article($slug: String) {
+    contentfulArticles(slug: { eq: $slug }) {
+      date
+      titlePl
+      contentPl {
+        json
+      }
+      titleFr
+      contentFr {
+        json
+      }
+    }
   }
-}
-
 `
+
+export default Index
