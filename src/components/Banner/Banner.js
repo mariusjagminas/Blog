@@ -26,7 +26,8 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.font.size.l};
+  text-align: center;
   padding: 0 10px;
   font-weight: 500;
   font-family: ${({ theme }) => theme.font.family.second};

@@ -17,6 +17,10 @@ html {
   line-height: 1.6;
 }
 
+p {
+  font-size: 1.1rem;
+}
+
 `
 
 export default GlobalStyle

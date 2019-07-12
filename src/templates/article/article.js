@@ -4,26 +4,37 @@ import { graphql } from "gatsby"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import styled from "styled-components"
 import Article from "../../components/Article/Article"
+import { injectIntl } from "gatsby-plugin-intl"
 
 const Wrapper = styled.div`
   max-width: 1360px;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
   background: ${({ theme }) => theme.bright};
 `
 
-const Index = ({ data }) => {
-  const { titlePl, titleFr, contentPl, contentFr } = data.contentfulArticles
+const Index = ({ data, intl: { locale: loc } }) => {
+  const {
+    titlePl,
+    titleFr,
+    contentPl,
+    contentFr,
+    articleImage,
+  } = data.contentfulArticles
+  // Can't set defaul values with destructuring, so setting here
+
+  const title_fr = titleFr ? titleFr : "cet article n'a pas encore été traduit"
+  const title_pl = titlePl
+    ? titlePl
+    : "ten artykuł jeszcze nie zostal przetlumaczony"
+  const content_fr = contentFr ? contentFr.json : null
+  const content_pl = contentPl ? contentPl.json : null
 
   const article = {
-    title: {
-      pl: titlePl || `niema artikulu ${titleFr}`,
-      fr: titleFr || `no article ${titlePl}`,
-    },
-    content: {
-      pl: contentPl ? contentPl.json : "",
-      fr: contentFr ? contentFr.json : "",
-    },
+    title: loc === "pl" ? title_pl : title_fr,
+    content: loc === "pl" ? content_pl : content_fr,
+    image: articleImage,
   }
 
   return (
@@ -39,6 +50,11 @@ const Index = ({ data }) => {
 export const query = graphql`
   query Article($slug: String) {
     contentfulArticles(slug: { eq: $slug }) {
+      articleImage {
+        fluid(maxWidth: 600) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+      }
       date
       titlePl
       contentPl {
@@ -52,4 +68,4 @@ export const query = graphql`
   }
 `
 
-export default Index
+export default injectIntl(Index)

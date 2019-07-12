@@ -1,7 +1,7 @@
 export const theme = {
   primary: "black",
   primaryLight: "#222222", // lighter black egzample: footer
-  secondary: "#D1EDEB", // blue :hover links 
+  secondary: "#9AC7C4", // blue :hover links
   secondaryLight: "#F0F8FA", // light blue backround
   bright: "#ffffff", // white
   grey: "#D3D3D3",
@@ -9,6 +9,7 @@ export const theme = {
     size: {
       s: "0.8rem", // 14px
       m: "1.25rem", //20px
+      l: "1.5rem", //24px
       xl: "2.2rem", //35px
       xxl: "3.45rem", //55px
     },
@@ -21,9 +22,12 @@ export const theme = {
       regular: "400",
       bold: "600",
     },
+    line: {
+      s: "1.3",
+    },
   },
   mq: {
     tablet: "@media(min-width: 700px)",
-    laptop: "@media(min-width: 800px)",
+    laptop: "@media(min-width: 1200px)",
   },
 }
