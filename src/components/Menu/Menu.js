@@ -67,9 +67,18 @@ const Menu = ({ intl, isMenuOpen, footermenu }) => {
   const links = [
     { title: intl.formatMessage({ id: "menu.about" }), path: "/" },
     { title: intl.formatMessage({ id: "menu.english" }), path: "/article" },
-    { title: intl.formatMessage({ id: "menu.team" }), path: "/literature" },
-    { title: intl.formatMessage({ id: "menu.about_me" }), path: "/" },
-    { title: intl.formatMessage({ id: "menu.design" }), path: "/" },
+    {
+      title: intl.formatMessage({ id: "menu.team" }),
+      path: "/french%20and%20polish",
+    },
+    {
+      title: intl.formatMessage({ id: "menu.about_me" }),
+      path: "/french%20only",
+    },
+    {
+      title: intl.formatMessage({ id: "menu.design" }),
+      path: "/polish%20only",
+    },
   ]
 
   return (

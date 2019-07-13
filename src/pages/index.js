@@ -12,8 +12,8 @@ const TextWrapper = styled.div`
   margin: 0 auto;
   padding: 10px;
   text-align: center;
-  ${({theme})=>theme.mq.laptop}{
-    font-size: ${({theme})=>theme.font.size.m}
+  ${({ theme }) => theme.mq.laptop} {
+    font-size: ${({ theme }) => theme.font.size.m};
   }
 `
 
@@ -34,7 +34,7 @@ export const query = graphql`
     file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid_noBase64
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
