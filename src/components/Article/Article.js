@@ -29,7 +29,11 @@ const Article = ({ article }) => {
       <Date date={"18.02.2019"} />
       <Title title={article.title} />
       <ImageWrapper>
-        <Img fluid={article.image.fluid} />{" "}
+        {article.image ? (
+          <Img fluid={article.image.fluid} />
+        ) : (
+          <div> No image </div>
+        )}
       </ImageWrapper>
       <ContentWrapper>
         {documentToReactComponents(article.content)}

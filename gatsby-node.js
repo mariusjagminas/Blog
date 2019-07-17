@@ -1,18 +1,3 @@
-// const { createFilePath } = require(`gatsby-source-filesystem`)
-
-// //Add slug to markdown file
-
-// exports.onCreateNode = ({ node, getNode, actions }) => {
-//   const { createNodeField } = actions
-//   if (node.internal.type === `MarkdownRemark`) {
-//     const slug = createFilePath({ node, getNode, basePath: `pages` })
-//     createNodeField({
-//       node,
-//       name: `slug`,
-//       value: slug,
-//     })
-//   }
-// }
 const path = require("path")
 const fs = require("fs-extra")
 const yaml = require("js-yaml")
@@ -24,8 +9,6 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
  */
 
 exports.onPreBootstrap = () => {
-  console.log("Copying locales")
-
   const plTranslation = loadTranslationObject("pl")
   const frTranslation = loadTranslationObject("fr")
 
@@ -62,25 +45,24 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(`
     query MyQuery {
       allContentfulArticles {
+        totalCount
         edges {
           node {
             slug
-            date
-            titleFr
-            titlePl
-            contentFr {
-              json
-            }
-            contentPl {
-              json
-            }
           }
         }
       }
     }
   `).then(result => {
-    // console.log(result.data);
-    result.data.allContentfulArticles.edges.forEach(({ node }) => {
+    if (result.errors) {
+      Promise.reject(result.errors)
+    }
+
+    // Create Polish-French article
+
+    const articlesNodes = result.data.allContentfulArticles
+
+    articlesNodes.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
         component: path.resolve(`./src/templates/article/article.js`),
@@ -88,6 +70,24 @@ exports.createPages = ({ graphql, actions }) => {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           slug: node.slug,
+        },
+      })
+    })
+
+    // Create Polish-French articles list with pagination
+
+    const articles = articlesNodes.totalCount
+    const articlesPerPage = 3
+    const numPages = Math.ceil(articles / articlesPerPage)
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: `/articles/${i + 1}`,
+        component: path.resolve(`./src/templates/articlesList/articlesList.js`),
+        context: {
+          limit: articlesPerPage,
+          skip: i * articlesPerPage,
+          currentPage: i + 1,
         },
       })
     })
