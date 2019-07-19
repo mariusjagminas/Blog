@@ -76,16 +76,17 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Polish-French articles list with pagination
 
-    const articles = articlesNodes.totalCount
+    const articlesCount = articlesNodes.totalCount
     const articlesPerPage = 3
-    const numPages = Math.ceil(articles / articlesPerPage)
+    const pagesCount = Math.ceil(articlesCount / articlesPerPage)
 
-    Array.from({ length: numPages }).forEach((_, i) => {
+    Array.from({ length: pagesCount }).forEach((_, i) => {
       createPage({
         path: `/articles/${i + 1}`,
         component: path.resolve(`./src/templates/articlesList/articlesList.js`),
         context: {
-          limit: articlesPerPage,
+          pagesCount: pagesCount,
+          articlesPerPage: articlesPerPage,
           skip: i * articlesPerPage,
           currentPage: i + 1,
         },

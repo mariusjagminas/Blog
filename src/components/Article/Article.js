@@ -22,18 +22,13 @@ const ImageWrapper = styled.div`
 const ContentWrapper = styled.div`
   padding: 20px;
 `
-
 const Article = ({ article }) => {
   return (
     <Wrapper>
       <Date date={"18.02.2019"} />
       <Title title={article.title} />
       <ImageWrapper>
-        {article.image ? (
-          <Img fluid={article.image.fluid} />
-        ) : (
-          <div> No image </div>
-        )}
+        <Img fluid={article.image.fluid} />
       </ImageWrapper>
       <ContentWrapper>
         {documentToReactComponents(article.content)}

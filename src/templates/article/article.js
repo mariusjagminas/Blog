@@ -34,7 +34,7 @@ const Index = ({ data, intl: { locale: loc } }) => {
   const article = {
     title: loc === "pl" ? title_pl : title_fr,
     content: loc === "pl" ? content_pl : content_fr,
-    image: articleImage,
+    image: articleImage || data.file.childImageSharp,
   }
 
   return (
@@ -65,7 +65,13 @@ export const query = graphql`
         json
       }
     }
+    file(relativePath: { eq: "hero_img.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 600) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
   }
 `
-
 export default injectIntl(Index)
