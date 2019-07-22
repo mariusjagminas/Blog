@@ -1,7 +1,7 @@
 export const theme = {
   primary: "black",
   primaryLight: "#222222", // lighter black egzample: footer
-  secondary: "#9AC7C4", // blue :hover links
+  secondary: "#9AC7C4", // blue :hover links, social icons
   secondaryLight: "#F0F8FA", // light blue backround
   bright: "#ffffff", // white
   grey: "#D3D3D3",

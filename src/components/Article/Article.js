@@ -33,7 +33,6 @@ const Article = ({ article }) => {
       <ContentWrapper>
         {documentToReactComponents(article.content)}
       </ContentWrapper>
-
       <Content />
     </Wrapper>
   )
