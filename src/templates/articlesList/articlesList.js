@@ -5,6 +5,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import ArticleShort from '../../components/ArticleShort/ArticleShort';
+import  getLocalizedData from '../../assets/helpers/getLocalizedData';
 
 const Container = styled.div`
 	max-width: 1360px;
@@ -46,17 +47,7 @@ const Index = ({ data, pageContext, intl: { locale: loc } }) => {
 	const indexFrom = pageContext.skip;
 	const indexUntil = pageContext.skip + pageContext.articlesPerPage;
 
-	const articlesData = data.allContentfulArticles.edges
-		.map(node => {
-			return {
-				title: loc === 'pl' ? node.node.titlePl : node.node.titleFr,
-				slug: node.node.slug,
-				date: node.node.date,
-				image: node.node.articleImage || data.file.childImageSharp
-			};
-		})
-		.filter(obj => obj.title) // Discard nodes with empty titles
-		.slice(indexFrom, indexUntil);
+	const articlesData = getLocalizedData(data, loc, indexFrom, indexUntil);
 
 	//Pagination
 
@@ -68,12 +59,16 @@ const Index = ({ data, pageContext, intl: { locale: loc } }) => {
 			<Container>
 				<Wrapper>
 					{articlesData.map((data, i) => (
-						<ArticleShort data={data}  key={i} />
+						<ArticleShort data={data} key={i} />
 					))}
 					{!isFirstPage && (
-						<LinkToPrevious to={`/articles/${pageContext.currentPage - 1}`}>← Newer articles</LinkToPrevious>
+						<LinkToPrevious to={`/articles/${pageContext.currentPage - 1}`}>
+							← Newer articles
+						</LinkToPrevious>
 					)}
-					{!isLastPage && <LinkToNext to={`/articles/${pageContext.currentPage + 1}`}>Older articles →</LinkToNext>}
+					{!isLastPage && (
+						<LinkToNext to={`/articles/${pageContext.currentPage + 1}`}>Older articles →</LinkToNext>
+					)}
 				</Wrapper>
 
 				<Sidebar />
