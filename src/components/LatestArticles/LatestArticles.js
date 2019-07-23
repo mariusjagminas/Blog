@@ -39,8 +39,13 @@ const Wrapper = styled.div`
 `;
 
 const StyledH4 = styled.h4`
-	margin: -5px 0;
+	margin: 0;
 	color: ${({ theme }) => theme.primary};
+	line-height: 1.1;
+	width: 200px;
+	height: 33px;
+	overflow: hidden;
+	text-overflow: elipsis;
 `;
 
 const LatestArticles = ({ intl: { locale } }) => {
