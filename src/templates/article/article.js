@@ -21,6 +21,7 @@ const Index = ({ data, intl: { locale: loc } }) => {
     contentPl,
     contentFr,
     articleImage,
+    date
   } = data.contentfulArticles
   // Can't set defaul values with destructuring, so setting here
 
@@ -35,6 +36,7 @@ const Index = ({ data, intl: { locale: loc } }) => {
     title: loc === "pl" ? title_pl : title_fr,
     content: loc === "pl" ? content_pl : content_fr,
     image: articleImage || data.file.childImageSharp,
+    date: date
   }
 
   return (
@@ -55,7 +57,7 @@ export const query = graphql`
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
-      date
+      date(formatString: "DD/MM/YYYY")
       titlePl
       contentPl {
         json

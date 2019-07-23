@@ -25,7 +25,7 @@ const ContentWrapper = styled.div`
 const Article = ({ article }) => {
   return (
     <Wrapper>
-      <Date date={"18.02.2019"} />
+      <Date date={article.date} />
       <Title title={article.title} />
       <ImageWrapper>
         <Img fluid={article.image.fluid} />

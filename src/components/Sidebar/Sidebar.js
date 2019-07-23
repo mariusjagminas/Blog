@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import LatestArticles from '../LatestArticles/LatestArticles'
 
 const StyledSidebar = styled.div`
   background: #dadada;
@@ -11,5 +12,5 @@ const StyledSidebar = styled.div`
   }
 `
 
-const Sidebar = () => <StyledSidebar></StyledSidebar>
+const Sidebar = () => <StyledSidebar><LatestArticles/></StyledSidebar>
 export default Sidebar

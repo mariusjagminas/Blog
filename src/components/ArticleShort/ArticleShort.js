@@ -53,7 +53,7 @@ const ArticleShort = ({ data }) => (
 			<Img fluid={data.image.fluid} />
 		</ImgWrapper>
 		<ArticleSocialIcons />
-		<StyledLink to={`/${data.slug}`}>Read Article</StyledLink>
+		<StyledLink to={data.slug}>Read Article</StyledLink>
 	</Wrapper>
 );
 

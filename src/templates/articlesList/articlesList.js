@@ -41,14 +41,15 @@ const LinkToPrevious = styled(StyledLink)`
 const LinkToNext = styled(StyledLink)`
 	right: 0;
 `;
-const Index = ({ data, pageContext, intl: { locale: loc } }) => {
+const Index = ({ data, pageContext, intl: { locale } }) => {
 	// Create array of localized data objects
 
+	
 	const indexFrom = pageContext.skip;
 	const indexUntil = pageContext.skip + pageContext.articlesPerPage;
 
-	const articlesData = getLocalizedData(data, loc, indexFrom, indexUntil);
-
+	const articlesData = getLocalizedData(data, locale, indexFrom, indexUntil);
+  console.log( articlesData)
 	//Pagination
 
 	const isFirstPage = pageContext.currentPage === 1;
