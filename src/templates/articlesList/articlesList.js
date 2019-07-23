@@ -11,8 +11,11 @@ const Container = styled.div`
 	max-width: 1360px;
 	margin: 0 auto;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	background: ${({ theme }) => theme.bright};
+	${({ theme }) => theme.mq.laptop} {
+		padding-left: 80px;
+	}
 `;
 
 const Wrapper = styled.div`

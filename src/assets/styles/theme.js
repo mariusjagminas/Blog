@@ -8,6 +8,8 @@ export const theme = {
   font: {
     size: {
       s: "0.8rem", // 14px
+      r: "1rem", // 16px
+      ms: "1.13rem", //18px
       m: "1.25rem", //20px
       l: "1.5rem", //24px
       xl: "2.2rem", //35px
