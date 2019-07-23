@@ -52,7 +52,6 @@ const Index = ({ data, pageContext, intl: { locale } }) => {
 	const indexUntil = pageContext.skip + pageContext.articlesPerPage;
 
 	const articlesData = getLocalizedData(data, locale, indexFrom, indexUntil);
-  console.log( articlesData)
 	//Pagination
 
 	const isFirstPage = pageContext.currentPage === 1;
