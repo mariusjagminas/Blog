@@ -14,10 +14,9 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 `;
-const ImgWrapper = styled.div`
-	width: 100%;
-	max-height: 600px;
-	overflow: hidden;
+const StyledImg = styled(Img)`
+	max-height: 550px;
+	width: 95%;
 `;
 
 const StyledLink = styled(Link)`
@@ -46,12 +45,10 @@ const StyledLink = styled(Link)`
 `;
 
 const ArticleShort = ({ data }) => (
-	<Wrapper >
+	<Wrapper>
 		<Date date={data.date} />
 		<Title title={data.title} />
-		<ImgWrapper>
-			<Img fluid={data.image.fluid} />
-		</ImgWrapper>
+		<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={data.image.fluid} />
 		<ArticleSocialIcons />
 		<StyledLink to={data.slug}>Read Article</StyledLink>
 	</Wrapper>

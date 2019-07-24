@@ -47,7 +47,7 @@ export const query = graphql`
 	query Article($slug: String) {
 		contentfulArticles(slug: { eq: $slug }) {
 			articleImage {
-				fluid(maxWidth: 600) {
+				fluid(maxWidth: 800) {
 					...GatsbyContentfulFluid_withWebp_noBase64
 				}
 			}
@@ -63,7 +63,7 @@ export const query = graphql`
 		}
 		file(relativePath: { eq: "hero_img.jpg" }) {
 			childImageSharp {
-				fluid(maxWidth: 600) {
+				fluid(maxWidth: 800) {
 					...GatsbyImageSharpFluid_withWebp_noBase64
 				}
 			}

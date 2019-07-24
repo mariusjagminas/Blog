@@ -6,6 +6,7 @@ import H3Sidebar from '../H3Sidebar/H3Sidebar';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Date from '../Date/Date';
+import _ from 'lodash';
 
 const StyledUl = styled.ul`
 	margin: 0;
@@ -23,12 +24,11 @@ const StyledLink = styled(Link)`
 	display: flex;
 `;
 
-const ImgWrapper = styled.div`
+const StyledImg = styled(Img)`
 	width: 60px;
 	height: 60px;
-	overflow: hidden;
 	border-radius: 60px;
-	background: ${({ theme }) => theme.secondary};
+	// background: ${({ theme }) => theme.secondary};
 `;
 
 const Wrapper = styled.div`
@@ -43,9 +43,6 @@ const StyledH4 = styled.h4`
 	color: ${({ theme }) => theme.primary};
 	line-height: 1.1;
 	width: 200px;
-	height: 33px;
-	overflow: hidden;
-	text-overflow: elipsis;
 `;
 
 const LatestArticles = ({ intl: { locale } }) => {
@@ -59,12 +56,10 @@ const LatestArticles = ({ intl: { locale } }) => {
 				{articlesData.map((data, i) => (
 					<StyledLi key={i}>
 						<StyledLink to={data.slug}>
-							<ImgWrapper>
-								<Img fluid={data.image.fluid} />
-							</ImgWrapper>
+							<StyledImg imgStyle={{ objectFit: 'cover' }} fluid={data.image.fluid} />
 							<Wrapper>
 								<Date small date={data.date} />
-								<StyledH4>{data.title}</StyledH4>
+								<StyledH4>{_.truncate(data.title, { length: 55 })}</StyledH4>
 							</Wrapper>
 						</StyledLink>
 					</StyledLi>
@@ -86,7 +81,7 @@ const query = graphql`
 					titlePl
 					titleFr
 					articleImage {
-						fluid(maxWidth: 50) {
+						fluid(maxWidth: 100) {
 							...GatsbyContentfulFluid_withWebp_noBase64
 						}
 					}
@@ -96,7 +91,7 @@ const query = graphql`
 
 		file(relativePath: { eq: "hero_img.jpg" }) {
 			childImageSharp {
-				fluid(maxWidth: 50) {
+				fluid(maxWidth: 100) {
 					...GatsbyImageSharpFluid_withWebp_noBase64
 				}
 			}
