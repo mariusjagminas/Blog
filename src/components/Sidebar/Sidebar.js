@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LatestArticles from '../LatestArticles/LatestArticles';
+import Archive from '../Archive/Archive';
 
 const StyledSidebar = styled.div`
 	width: 320px;
@@ -15,6 +16,7 @@ const StyledSidebar = styled.div`
 const Sidebar = () => (
 	<StyledSidebar>
 		<LatestArticles />
+		<Archive />
 	</StyledSidebar>
 );
 export default Sidebar;

@@ -50,7 +50,7 @@ const ArticleShort = ({ data }) => (
 		<Title title={data.title} />
 		<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={data.image.fluid} />
 		<ArticleSocialIcons />
-		<StyledLink to={data.slug}>Read Article</StyledLink>
+		<StyledLink to={`/${data.slug}`}>Read Article</StyledLink>
 	</Wrapper>
 );
 

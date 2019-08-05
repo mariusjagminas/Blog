@@ -55,7 +55,7 @@ const LatestArticles = ({ intl: { locale } }) => {
 			<StyledUl>
 				{articlesData.map((data, i) => (
 					<StyledLi key={i}>
-						<StyledLink to={data.slug}>
+						<StyledLink to={`/${data.slug}`}>
 							<StyledImg imgStyle={{ objectFit: 'cover' }} fluid={data.image.fluid} />
 							<Wrapper>
 								<Date small date={data.date} />

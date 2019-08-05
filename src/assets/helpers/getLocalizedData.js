@@ -5,7 +5,7 @@ const getLocalizedData = (data, loc, indexFrom, indexUntil) => {
 		.map(node => {
 			return {
 				title: loc === 'pl' ? node.node.titlePl : node.node.titleFr,
-				slug: `/${node.node.slug}`,
+				slug: node.node.slug,
 				date: node.node.date,
 				image: node.node.articleImage || data.file.childImageSharp
 			};
