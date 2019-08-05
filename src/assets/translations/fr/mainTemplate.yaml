@@ -10,5 +10,8 @@ menu:
 banner:
   title: "Littérature extrême-contemporaine"
 
+latest:
+  title: "derniers articles"
+
 archive:
   title: "archives"

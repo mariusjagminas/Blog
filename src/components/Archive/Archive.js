@@ -12,15 +12,18 @@ const Archive = ({ intl: { locale }, intl }) => {
   const datesArray = _.map(groupedDates, item => item[0].node.date)
 
   const StyledDiv = styled.div`
-    margin-top: 50px;
+    margin-top: 105px;
   `
 
   const StyledUl = styled.ul`
     padding: 0;
+    margin-bottom: 50px;
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 600px;
+    flex-wrap: wrap;
   `
 
   const StyledLink = styled(Link)`
@@ -28,13 +31,13 @@ const Archive = ({ intl: { locale }, intl }) => {
     color: ${({ theme }) => theme.primary};
     font-size: ${({ theme }) => theme.font.size.m};
     font-weight: ${({ theme }) => theme.font.weight.bold};
-    padding: 5px 20px;
+    padding: 5px 10px;
     border-bottom: 1px solid black;
     transition: color 0.3s, border-color 0.3s;
   `
 
   const StyledLi = styled.li`
-    margin: 3px 0;
+    margin: 3px;
     transition: transform 0.3s ease-in-out;
 
     &:hover {

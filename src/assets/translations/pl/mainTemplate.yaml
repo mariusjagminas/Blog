@@ -10,5 +10,8 @@ menu:
 banner:
   title: "Literatura najnowsza"
 
+latest:
+  title: "najnowsze artykuły"
+
 archive:
   title: "archiwum"
