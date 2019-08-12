@@ -19,7 +19,7 @@ module.exports = {
         // language file path
         defaultLanguage: "pl",
         // option to redirect to `/pl` when connecting `/`
-        redirect: false,
+        redirect: true,
       },
     },
     {
