@@ -49,7 +49,7 @@ const Archive = ({ intl: { locale }, intl }) => {
       border-color: ${({ theme }) => theme.secondary};
     }
   `
-  console.log(intl)
+
   return (
     <StyledDiv>
       <H3Sidebar title={intl.formatMessage({ id: "archive.title" })} />

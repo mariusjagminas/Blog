@@ -84,13 +84,13 @@ exports.createPages = ({ graphql, actions }) => {
 
     Array.from({ length: pagesCount }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/` : `/${i + 1}`,
+        path: i === 0 ? `/` : `/${i}`,
         component: path.resolve(`./src/templates/articlesList/articlesList.js`),
         context: {
           pagesCount: pagesCount,
           articlesPerPage: articlesPerPage,
           skip: i * articlesPerPage,
-          currentPage: i + 1,
+          currentPage: i,
         },
       })
     })
