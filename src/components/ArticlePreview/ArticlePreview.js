@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const ArticleShort = ({ data, falbackImage }) => {
+const ArticlePreview = ({ data, falbackImage }) => {
   const fluidImage = data.articleImage ? data.articleImage.fluid : falbackImage
   return (
     <Wrapper>
@@ -57,4 +57,4 @@ const ArticleShort = ({ data, falbackImage }) => {
   )
 }
 
-export default ArticleShort
+export default ArticlePreview

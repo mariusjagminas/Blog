@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import styled from "styled-components"
 import { injectIntl, Link } from "gatsby-plugin-intl"
-import ArticleShort from "../../components/ArticleShort/ArticleShort"
+import ArticlePreview from "../../components/ArticlePreview/ArticlePreview"
 
 const Container = styled.div`
   max-width: 1360px;
@@ -57,7 +57,7 @@ const Index = ({ data, pageContext, intl: { locale } }) => {
       <Container>
         <Wrapper>
           {articlesData.map((data, i) => (
-            <ArticleShort data={data} falbackImage={falbackImage} key={i} />
+            <ArticlePreview data={data} falbackImage={falbackImage} key={i} />
           ))}
           {!isFirstPage && (
             <LinkToPrevious
