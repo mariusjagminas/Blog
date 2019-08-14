@@ -10,5 +10,4 @@
 
 ## in development
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e48c03f7-1217-4c47-92dd-ceebb49e7998/deploy-status)](https://app.netlify.com/sites/nostalgic-cray-9a6dd5/deploys)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c0b46ffd-4e06-4490-96d8-76fe3c57d2b1/deploy-status)](https://app.netlify.com/sites/gallant-kare-5fe476/deploys)
