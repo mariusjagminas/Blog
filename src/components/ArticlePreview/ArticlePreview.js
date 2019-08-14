@@ -5,7 +5,6 @@ import { Link } from "gatsby-plugin-intl"
 import Date from "../Date/Date"
 import Title from "../Title/Title"
 import ArticleSocialIcons from "../ArticleSocialIcons/ArticleSocialIcons"
-import truncate from "lodash/truncate"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -45,16 +44,13 @@ const StyledLink = styled(Link)`
   }
 `
 // TODO: style article-prewiew  exerpt
-const ArticlePreview = ({ data, falbackImage }) => {
-  const fluidImage = data.articleImage ? data.articleImage.fluid : falbackImage
-  const contentExerpt = data.content.json.content[0].content[0].value
-  console.log(data)
+const ArticlePreview = ({ data }) => {
   return (
     <Wrapper>
       <Date date={data.date} />
       <Title title={data.title} />
-      <StyledImg imgStyle={{ objectFit: "contain" }} fluid={fluidImage} />
-      <p>{truncate(contentExerpt, { length: 300 })}</p>
+      <StyledImg imgStyle={{ objectFit: "contain" }} fluid={data.image} />
+      <p>{data.exerpt}</p>
       <ArticleSocialIcons />
       <StyledLink to={`/${data.slug}`}>Read Article</StyledLink>
     </Wrapper>
