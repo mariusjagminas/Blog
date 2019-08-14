@@ -1,18 +1,24 @@
-const getLocalizedData = (data, loc, indexFrom, indexUntil) => {
-	const nodes = data.allContentfulArticles.edges;
+import truncate from "lodash/truncate"
 
-	const array = nodes
-		.map(node => {
-			return {
-				title: loc === 'pl' ? node.node.titlePl : node.node.titleFr,
-				slug: node.node.slug,
-				date: node.node.date,
-				image: node.node.articleImage || data.file.childImageSharp
-			};
-		})
-		.filter(obj => obj.title) // Discard nodes with empty titles
-		.slice(indexFrom, indexUntil);
+const getLocalizedData = (data, locale) => {
+  const localizedData = data[locale].nodes //Array for each locale
+  const fallbackImage = data.fallbackImage.childImageSharp.fluid
 
-	return array;
-};
-export default getLocalizedData;
+  return localizedData.map(data => {
+    const image = data.articleImage ? data.articleImage.fluid : fallbackImage
+    const text = data.content
+      ? data.content.json.content[0].content[0].value
+      : null
+    const exerpt = truncate(text, { length: 300 })
+
+    return {
+      title: data.title,
+      date: data.date,
+      slug: data.slug,
+      exerpt: exerpt,
+      image: image,
+    }
+  })
+}
+
+export default getLocalizedData

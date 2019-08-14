@@ -26,8 +26,9 @@ const Wrapper = styled.div`
 `
 
 const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
-  const array = getLocalizedData(data, locale)
-  const newArray = array.filter(item => checkForMatch(item, slugsArray))
+  const newArray = getLocalizedData(data, locale).filter(item =>
+    checkForMatch(item, slugsArray)
+  )
 
   function checkForMatch(item, slugsArray) {
     return slugsArray.find(e => e.node.slug === item.slug) ? true : false
@@ -47,24 +48,73 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
   )
 }
 
+export default injectIntl(Index)
+
 export const query = graphql`
-  query articlesGroupByDate {
-    allContentfulArticles(sort: { fields: date, order: DESC }) {
-      edges {
-        node {
-          date(formatString: "DD/MM/YYYY")
-          slug
-          titlePl
-          titleFr
-          articleImage {
-            fluid(maxWidth: 800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+  query articlesGroupByDateTemp {
+    #########
+    #########
+    pl: allContentfulArticles(
+      filter: { titlePl: { ne: null } }
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titlePl
+        date(formatString: "DD/MM/YYYY")
+        slug
+        content: contentPl {
+          json
+        }
+        articleImage {
+          fluid(maxWidth: 800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
     }
-    file(relativePath: { eq: "hero_img.jpg" }) {
+    ########
+    ########
+    fr: allContentfulArticles(
+      filter: { titleFr: { ne: null } }
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titleFr
+        date(formatString: "DD/MM/YYYY")
+        slug
+        content: contentFr {
+          json
+        }
+        articleImage {
+          fluid(maxWidth: 800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
+    }
+    ##########
+    ##########
+    en: allContentfulArticles(
+      filter: { titleEn: { ne: null } }
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titleEn
+        date(formatString: "DD/MM/YYYY")
+        slug
+        content: contentEn {
+          json
+        }
+        articleImage {
+          fluid(maxWidth: 800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
+    }
+    #######
+    #######
+    fallbackImage: file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
@@ -73,5 +123,3 @@ export const query = graphql`
     }
   }
 `
-
-export default injectIntl(Index)

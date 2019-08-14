@@ -1,5 +1,4 @@
 import React from "react"
-import getLocalizedData from "../../assets/helpers/getLocalizedData"
 import { useStaticQuery, graphql } from "gatsby"
 import { injectIntl, Link } from "gatsby-plugin-intl"
 import H3Sidebar from "../H3Sidebar/H3Sidebar"

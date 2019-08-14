@@ -5,7 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import styled from "styled-components"
 import { injectIntl, Link } from "gatsby-plugin-intl"
 import ArticlePreview from "../../components/ArticlePreview/ArticlePreview"
-import truncate from "lodash/truncate"
+import getLocalizedData from "../../assets/helpers/getLocalizedData"
 
 const Container = styled.div`
   max-width: 1360px;
@@ -45,24 +45,7 @@ const LinkToNext = styled(StyledLink)`
   right: 0;
 `
 const Index = ({ data, pageContext, intl: { locale } }) => {
-  const localizedData = data[locale].nodes //Array for each locale
-  const fallbackImage = data.fallbackImage.childImageSharp.fluid
-
-  const articlesData = localizedData.map(data => {
-    const image = data.articleImage ? data.articleImage.fluid : fallbackImage
-    const text = data.content
-      ? data.content.json.content[0].content[0].value
-      : null
-    const exerpt = truncate(text, { length: 300 })
-
-    return {
-      title: data.title,
-      date: data.date,
-      slug: data.slug,
-      exerpt: exerpt,
-      image: image,
-    }
-  })
+  const articlesData = getLocalizedData(data, locale)
 
   // Pagination
 
@@ -99,7 +82,7 @@ const Index = ({ data, pageContext, intl: { locale } }) => {
     </MainTemplate>
   )
 }
-// TODO:to many same queries, it posible to make less as in articleTemp query
+
 export const query = graphql`
   query ArticleList($skip: Int, $articlesPerPage: Int) {
     #########
