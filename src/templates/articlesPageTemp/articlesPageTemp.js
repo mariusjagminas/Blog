@@ -82,7 +82,7 @@ const Index = ({ data, pageContext, intl: { locale } }) => {
     </MainTemplate>
   )
 }
-
+// TODO:to many same queries, it posible to make less as in articleTemp query
 export const query = graphql`
   query ArticleList($skip: Int, $articlesPerPage: Int) {
     pl: allContentfulArticles(
@@ -129,6 +129,27 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    en: allContentfulArticles(
+      filter: { titleEn: { ne: null } }
+      skip: $skip
+      limit: $articlesPerPage
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titleEn
+        date(formatString: "DD/MM/YYYY")
+        slug
+        content: contentEn {
+          json
+        }
+        articleImage {
+          fluid(maxWidth: 800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
         }
       }
     }

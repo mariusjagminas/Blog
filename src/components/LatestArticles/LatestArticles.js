@@ -50,8 +50,9 @@ const StyledH4 = styled.h4`
 `
 
 const LatestArticles = ({ intl: { locale }, intl }) => {
-  const nodes = useStaticQuery(query)
-  const articlesData = getLocalizedData(nodes, locale, 0, 5)
+  const data = useStaticQuery(query)
+  const articlesData = data[locale].nodes
+  const fallBackImage = data.file.childImageSharp.fluid
 
   return (
     <Container>
@@ -62,7 +63,9 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
             <StyledLink to={`/${data.slug}`}>
               <StyledImg
                 imgStyle={{ objectFit: "cover" }}
-                fluid={data.image.fluid}
+                fluid={
+                  data.articleImage ? data.articleImage.fluid : fallBackImage
+                }
               />
               <Wrapper>
                 <Date small date={data.date} />
@@ -79,18 +82,51 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
 export default injectIntl(LatestArticles)
 
 const query = graphql`
-  query latestArticles {
-    allContentfulArticles(sort: { fields: date, order: DESC }) {
-      edges {
-        node {
-          date(formatString: "DD/MM/YYYY")
-          slug
-          titlePl
-          titleFr
-          articleImage {
-            fluid(maxWidth: 100) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+  query LatestArticles($limit: Int = 7) {
+    pl: allContentfulArticles(
+      filter: { titlePl: { ne: null } }
+      limit: $limit
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titlePl
+        date(formatString: "DD/MM/YYY")
+        slug
+        articleImage {
+          fluid(maxWidth: 100) {
+            src
+          }
+        }
+      }
+    }
+    fr: allContentfulArticles(
+      filter: { titleFr: { ne: null } }
+      limit: $limit
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titleFr
+        date(formatString: "DD/MM/YYY")
+        slug
+        articleImage {
+          fluid(maxWidth: 100) {
+            src
+          }
+        }
+      }
+    }
+    en: allContentfulArticles(
+      filter: { titleEn: { ne: null } }
+      limit: $limit
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        title: titleEn
+        date(formatString: "DD/MM/YYY")
+        slug
+        articleImage {
+          fluid(maxWidth: 100) {
+            src
           }
         }
       }

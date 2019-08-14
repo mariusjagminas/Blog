@@ -51,10 +51,7 @@ const Article = ({ article }) => {
     <Wrapper>
       <Date date={article.date} />
       <Title title={article.title} />
-      <StyledImg
-        imgStyle={{ objectFit: "contain" }}
-        fluid={article.image.fluid}
-      />
+      <StyledImg imgStyle={{ objectFit: "contain" }} fluid={article.image} />
       <ContentWrapper>
         {documentToReactComponents(article.content, options)}
       </ContentWrapper>

@@ -47,8 +47,8 @@ const StyledLink = styled(Link)`
 // TODO: style article-prewiew  exerpt
 const ArticlePreview = ({ data, falbackImage }) => {
   const fluidImage = data.articleImage ? data.articleImage.fluid : falbackImage
-
   const contentExerpt = data.content.json.content[0].content[0].value
+  console.log(data)
   return (
     <Wrapper>
       <Date date={data.date} />

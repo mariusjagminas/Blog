@@ -88,5 +88,16 @@ const query = graphql`
         }
       }
     }
+
+    en: allContentfulArticles(
+      filter: { titleEn: { ne: null } }
+      sort: { fields: date, order: DESC }
+    ) {
+      edges {
+        node {
+          date(formatString: "MM YYYY")
+        }
+      }
+    }
   }
 `
