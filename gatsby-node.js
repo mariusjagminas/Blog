@@ -67,7 +67,7 @@ exports.createPages = ({ graphql, actions }) => {
     articlesNodes.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
-        component: path.resolve(`./src/templates/article/article.js`),
+        component: path.resolve(`./src/templates/articleTemp/articleTemp.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
@@ -85,7 +85,9 @@ exports.createPages = ({ graphql, actions }) => {
     Array.from({ length: pagesCount }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/` : `/${i}`,
-        component: path.resolve(`./src/templates/articlesList/articlesList.js`),
+        component: path.resolve(
+          `./src/templates/articlesPageTemp/articlesPageTemp.js`
+        ),
         context: {
           pagesCount: pagesCount,
           articlesPerPage: articlesPerPage,
@@ -105,7 +107,7 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: `/archive/${date}`,
         component: path.resolve(
-          `./src/templates/articlesGroupByDate/articlesGroupByDate.js`
+          `./src/templates/articlesGroupByDateTemp/articlesGroupByDateTemp.js`
         ),
         context: {
           slugsArray: slugsArray,

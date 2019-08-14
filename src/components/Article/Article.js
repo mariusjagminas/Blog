@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Date from "../Date/Date"
 import Title from "../Title/Title"
 import Content from "../Content/Content"
+// TODO: remove MARKS from import
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"

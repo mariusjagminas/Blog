@@ -6,7 +6,7 @@ import H3Sidebar from "../H3Sidebar/H3Sidebar"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import Date from "../Date/Date"
-import _ from "lodash"
+import truncate from "lodash/truncate"
 
 const Container = styled.div`
   margin-top: 120px;
@@ -66,7 +66,7 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
               />
               <Wrapper>
                 <Date small date={data.date} />
-                <StyledH4>{_.truncate(data.title, { length: 55 })}</StyledH4>
+                <StyledH4>{truncate(data.title, { length: 55 })}</StyledH4>
               </Wrapper>
             </StyledLink>
           </StyledLi>
