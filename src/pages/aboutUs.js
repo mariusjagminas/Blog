@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import { injectIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 import ArticleSocialIcons from "../components/ArticleSocialIcons/ArticleSocialIcons"
+import RichTextContenful from "../components/RichTextContenful/RichTextContenful"
 
 const TextWrapper = styled.div`
   max-width: 780px;
@@ -16,12 +17,12 @@ const TextWrapper = styled.div`
   }
 `
 
-const Index = ({ data, intl }) => {
+const Index = ({ data, intl: { locale } }) => {
   return (
     <MainTemplate>
       <Hero data={data} />
       <TextWrapper>
-        <h2>ABOUT_US_PAGE</h2>
+        <RichTextContenful richText={data.page[locale].json} />
         <ArticleSocialIcons />
       </TextWrapper>
     </MainTemplate>
@@ -29,12 +30,23 @@ const Index = ({ data, intl }) => {
 }
 
 export const query = graphql`
-  query About {
+  query aboutUs {
     file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
+      }
+    }
+    page: contentfulPages(pageName: { eq: "about-us" }) {
+      pl: childContentfulPagesPagePlRichTextNode {
+        json
+      }
+      fr: childContentfulPagesPageFrRichTextNode {
+        json
+      }
+      en: childContentfulPagesPageEnRichTextNode {
+        json
       }
     }
   }

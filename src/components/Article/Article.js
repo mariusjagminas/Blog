@@ -3,11 +3,8 @@ import styled from "styled-components"
 import Date from "../Date/Date"
 import Title from "../Title/Title"
 import Content from "../Content/Content"
-// TODO: remove MARKS from import
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
-import ContentfulImage from "../../assets/helpers/ContentfulImage"
+import RichTextContenful from "../RichTextContenful/RichTextContenful"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,26 +22,6 @@ const StyledImg = styled(Img)`
 const ContentWrapper = styled.div`
   padding: 20px;
 `
-const ImageWrapper = styled.div`
-  width: 250px;
-  float: left;
-  margin-right: 20px;
-
-  &:nth-of-type(even) {
-    float: right;
-    margin-left: 20px;
-  }
-`
-
-const options = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: node => (
-      <ImageWrapper>
-        <ContentfulImage contentfulId={node.data.target.sys.id} />
-      </ImageWrapper>
-    ),
-  },
-}
 
 const Article = ({ article }) => {
   return (
@@ -53,7 +30,7 @@ const Article = ({ article }) => {
       <Title title={article.title} />
       <StyledImg imgStyle={{ objectFit: "contain" }} fluid={article.image} />
       <ContentWrapper>
-        {documentToReactComponents(article.content, options)}
+        <RichTextContenful richText={article.content} />
       </ContentWrapper>
       <Content />
     </Wrapper>

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle` 
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Roboto&display=swap');
@@ -20,8 +20,9 @@ html {
 
 p {
   font-size: 1.1rem;
+  font-weight: 400;
 }
 
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

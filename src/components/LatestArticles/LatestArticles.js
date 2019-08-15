@@ -52,7 +52,7 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
   const data = useStaticQuery(query)
   const articlesData = data[locale].nodes
   const fallBackImage = data.file.childImageSharp.fluid
-  console.log(articlesData.articleImage)
+  //  FIXME data shown incorect
 
   return (
     <Container>
@@ -95,7 +95,7 @@ const query = graphql`
         date(formatString: "DD/MM/YYY")
         slug
         articleImage {
-          fluid(maxWidth: 100) {
+          fluid(maxWidth: 300) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
@@ -113,7 +113,7 @@ const query = graphql`
         date(formatString: "DD/MM/YYY")
         slug
         articleImage {
-          fluid(maxWidth: 100) {
+          fluid(maxWidth: 300) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
@@ -131,7 +131,7 @@ const query = graphql`
         date(formatString: "DD/MM/YYY")
         slug
         articleImage {
-          fluid(maxWidth: 100) {
+          fluid(maxWidth: 300) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
@@ -141,7 +141,7 @@ const query = graphql`
     #######
     file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 100) {
+        fluid(maxWidth: 300) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
