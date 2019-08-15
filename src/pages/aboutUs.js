@@ -4,7 +4,6 @@ import Hero from "../components/Hero/Hero"
 import { graphql } from "gatsby"
 import { injectIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
-import Markdown from "react-remarkable"
 import ArticleSocialIcons from "../components/ArticleSocialIcons/ArticleSocialIcons"
 
 const TextWrapper = styled.div`
@@ -22,7 +21,7 @@ const Index = ({ data, intl }) => {
     <MainTemplate>
       <Hero data={data} />
       <TextWrapper>
-        <Markdown>{intl.formatMessage({ id: "about_page.content" })}</Markdown>
+        <h2>ABOUT_US_PAGE</h2>
         <ArticleSocialIcons />
       </TextWrapper>
     </MainTemplate>

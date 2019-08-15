@@ -1,0 +1,21 @@
+---
+menu:
+  about_us: "O nas"
+  articles: "Artykuły"
+  about_me: "O mnie"
+  contact: "Kontakt"
+  theater_history: "null"
+
+banner:
+  title: "Literatura najnowsza"
+
+latest:
+  title: "najnowsze artykuły"
+
+archive:
+  title: "archiwum"
+
+article:
+  read: "Przeczytaj artykuł"
+  previous: "Poprzednie artykuły"
+  next: "Następne artykuły"

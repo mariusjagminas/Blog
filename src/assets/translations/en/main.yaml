@@ -1,0 +1,21 @@
+---
+menu:
+  about_us: "About us"
+  articles: "Articles"
+  about_me: "About Me"
+  contact: "Contact"
+  theater_history: "null"
+
+banner:
+  title: "Conteporary literature"
+
+latest:
+  title: "Latest articles"
+
+archive:
+  title: "archive"
+
+article:
+  read: "Read article"
+  previous: "Previous articles"
+  next: "Next articles"

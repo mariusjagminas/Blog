@@ -41,6 +41,11 @@ const MenuList = styled.ul`
 
 const MenuItem = styled.li`
   margin: 20px;
+
+  &:nth-child(3) {
+    display: none;
+  }
+  // TODO: hide historie du theatre element on polish and english pages
   ${({ theme }) => theme.mq.laptop} {
     margin: 0 8px;
   }
@@ -54,7 +59,7 @@ const StyledLink = styled(Link)`
   padding: 10px;
   transition: color 0.25s ease-in-out;
 
-  :hover {
+  &:hover {
     color: ${({ theme }) => theme.secondary};
   }
 
@@ -65,20 +70,17 @@ const StyledLink = styled(Link)`
 
 const Menu = ({ intl, isMenuOpen, ...props }) => {
   const links = [
-    { title: intl.formatMessage({ id: "menu.about" }), path: "/" },
-    { title: intl.formatMessage({ id: "menu.english" }), path: "/articles/1" },
+    { title: intl.formatMessage({ id: "menu.about_us" }), path: "/aboutUs" },
+    { title: intl.formatMessage({ id: "menu.articles" }), path: "/" },
     {
-      title: intl.formatMessage({ id: "menu.team" }),
-      path: "/french%20and%20polish",
+      title: intl.formatMessage({ id: "menu.theater_history" }),
+      path: "/no_path",
     },
     {
       title: intl.formatMessage({ id: "menu.about_me" }),
-      path: "/french%20only",
+      path: "/aboutMe",
     },
-    {
-      title: intl.formatMessage({ id: "menu.design" }),
-      path: "/polish",
-    },
+    { title: intl.formatMessage({ id: "menu.contact" }), path: "/contact" },
   ]
 
   return (

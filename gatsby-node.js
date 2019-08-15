@@ -12,6 +12,7 @@ const _ = require("lodash")
 exports.onPreBootstrap = () => {
   const plTranslation = loadTranslationObject("pl")
   const frTranslation = loadTranslationObject("fr")
+  const enTranslation = loadTranslationObject("en")
 
   // Create directory structure
   fs.existsSync(path.join(__dirname, "/public/intl")) ||
@@ -25,6 +26,10 @@ exports.onPreBootstrap = () => {
   fs.writeFileSync(
     path.join(__dirname, "/public/intl/fr.json"),
     JSON.stringify(flatten(frTranslation))
+  )
+  fs.writeFileSync(
+    path.join(__dirname, "/public/intl/en.json"),
+    JSON.stringify(flatten(enTranslation))
   )
 
   function loadTranslationObject(languageCode) {

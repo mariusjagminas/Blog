@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import { Link } from "gatsby-plugin-intl"
+import { injectIntl, Link } from "gatsby-plugin-intl"
 import Date from "../Date/Date"
 import Title from "../Title/Title"
 import ArticleSocialIcons from "../ArticleSocialIcons/ArticleSocialIcons"
@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
   }
 `
 // TODO: style article-prewiew  exerpt
-const ArticlePreview = ({ data }) => {
+const ArticlePreview = ({ data, intl }) => {
   return (
     <Wrapper>
       <Date date={data.date} />
@@ -52,9 +52,11 @@ const ArticlePreview = ({ data }) => {
       <StyledImg imgStyle={{ objectFit: "contain" }} fluid={data.image} />
       <p>{data.exerpt}</p>
       <ArticleSocialIcons />
-      <StyledLink to={`/${data.slug}`}>Read Article</StyledLink>
+      <StyledLink to={`/${data.slug}`}>
+        {intl.formatMessage({ id: "article.read" })}
+      </StyledLink>
     </Wrapper>
   )
 }
 
-export default ArticlePreview
+export default injectIntl(ArticlePreview)

@@ -44,7 +44,7 @@ const LinkToPrevious = styled(StyledLink)`
 const LinkToNext = styled(StyledLink)`
   right: 0;
 `
-const Index = ({ data, pageContext, intl: { locale } }) => {
+const Index = ({ data, pageContext, intl: { locale }, intl }) => {
   const articlesData = getLocalizedData(data, locale)
 
   // Pagination
@@ -67,12 +67,12 @@ const Index = ({ data, pageContext, intl: { locale } }) => {
                   : `/${pageContext.currentPage - 1}`
               }
             >
-              ← Newer articles
+              {`←${intl.formatMessage({ id: "article.previous" })}`}
             </LinkToPrevious>
           )}
           {!isLastPage && (
             <LinkToNext to={`/${pageContext.currentPage + 1}`}>
-              Older articles →
+              {`${intl.formatMessage({ id: "article.next" })}→`}
             </LinkToNext>
           )}
         </Wrapper>

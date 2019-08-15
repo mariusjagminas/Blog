@@ -1,0 +1,21 @@
+---
+menu:
+  about_us: "À propos"
+  articles: "Articles"
+  about_me: "Qui suis-je"
+  contact: "Contact"
+  theater_history: "Histoire du théâtre"
+
+banner:
+  title: "Littérature extrême-contemporaine"
+
+latest:
+  title: "derniers articles"
+
+archive:
+  title: "archives"
+
+article:
+  read: "Lire l'article"
+  previous: "Articles précédents"
+  next: "Prochains articles"
