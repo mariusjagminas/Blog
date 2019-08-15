@@ -52,6 +52,7 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
   const data = useStaticQuery(query)
   const articlesData = data[locale].nodes
   const fallBackImage = data.file.childImageSharp.fluid
+  console.log(articlesData.articleImage)
 
   return (
     <Container>
@@ -82,6 +83,8 @@ export default injectIntl(LatestArticles)
 
 const query = graphql`
   query LatestArticles($limit: Int = 7) {
+    #######
+    #######
     pl: allContentfulArticles(
       filter: { titlePl: { ne: null } }
       limit: $limit
@@ -93,11 +96,13 @@ const query = graphql`
         slug
         articleImage {
           fluid(maxWidth: 100) {
-            src
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
     }
+    #######
+    #######
     fr: allContentfulArticles(
       filter: { titleFr: { ne: null } }
       limit: $limit
@@ -109,11 +114,13 @@ const query = graphql`
         slug
         articleImage {
           fluid(maxWidth: 100) {
-            src
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
     }
+    #######
+    #######
     en: allContentfulArticles(
       filter: { titleEn: { ne: null } }
       limit: $limit
@@ -125,12 +132,13 @@ const query = graphql`
         slug
         articleImage {
           fluid(maxWidth: 100) {
-            src
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
     }
-
+    #######
+    #######
     file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 100) {

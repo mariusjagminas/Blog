@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 `
 
 const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
-  const newArray = getLocalizedData(data, locale).filter(item =>
+  const articleData = getLocalizedData(data, locale).filter(item =>
     checkForMatch(item, slugsArray)
   )
 
@@ -38,7 +38,7 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
     <MainTemplate>
       <Container>
         <Wrapper>
-          {newArray.map((data, i) => (
+          {articleData.map((data, i) => (
             <ArticlePreview data={data} key={i} />
           ))}
         </Wrapper>
