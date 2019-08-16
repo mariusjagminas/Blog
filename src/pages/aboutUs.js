@@ -10,7 +10,7 @@ import RichTextContenful from "../components/RichTextContenful/RichTextContenful
 const TextWrapper = styled.div`
   max-width: 780px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0 10px;
   text-align: center;
   ${({ theme }) => theme.mq.laptop} {
     font-size: ${({ theme }) => theme.font.size.m};

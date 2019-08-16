@@ -9,7 +9,7 @@ const getLocalizedData = (data, locale) => {
     const text = data.content
       ? data.content.json.content[0].content[0].value
       : null
-    const exerpt = truncate(text, { length: 300 })
+    const exerpt = truncate(text, { length: 400 })
 
     return {
       title: data.title,

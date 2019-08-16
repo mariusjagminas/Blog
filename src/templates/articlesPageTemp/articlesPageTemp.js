@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 880px;
   position: relative;
-  padding: 0 10px 70px 10px;
+  padding: 0 0 70px 0;
 `
 
 const StyledLink = styled(Link)`
