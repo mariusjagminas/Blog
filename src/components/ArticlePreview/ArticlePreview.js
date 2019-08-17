@@ -24,6 +24,7 @@ const StyledImg = styled(Img)`
 `
 const TextWrapper = styled.div`
   padding: 0 10px 10px 10px;
+  width: 100%;
 `
 const StyledLink = styled(Link)`
   text-decoration: none;

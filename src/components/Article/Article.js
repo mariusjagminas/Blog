@@ -23,6 +23,7 @@ const StyledImg = styled(Img)`
 
 const ContentWrapper = styled.div`
   padding: 10px;
+  width: 100%;
 `
 
 const Article = ({ article }) => {
