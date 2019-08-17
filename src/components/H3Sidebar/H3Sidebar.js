@@ -1,7 +1,22 @@
 import React from "react"
 import styled from "styled-components"
 
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:before,
+  &:after {
+    content: "";
+    height: 1px;
+    background: ${({ theme }) => theme.grey};
+    flex: 1;
+  }
+`
 const StyledH3 = styled.h3`
+  margin: 0 10px;
   text-align: center;
   text-transform: uppercase;
   font-family: ${({ theme }) => theme.font.family.second};
@@ -9,27 +24,12 @@ const StyledH3 = styled.h3`
   letter-spacing: 2px;
   font-weight: ${({ theme }) => theme.font.weight.bold};
   color: ${({ theme }) => theme.primaryLight};
-  position: relative;
-
-  &:before,
-  &:after {
-    position: absolute;
-    content: "";
-    height: 1px;
-    width: 50px;
-    top: 13px;
-    background: ${({ theme }) => theme.grey};
-  }
-
-  &:before {
-    left: 0;
-  }
-
-  &:after {
-    right: 0;
-  }
 `
 
-const H3Sidebar = ({ title }) => <StyledH3>{title}</StyledH3>
+const H3Sidebar = ({ title }) => (
+  <Wrapper>
+    <StyledH3>{title}</StyledH3>
+  </Wrapper>
+)
 // FIXME: text is overlaping line
 export default H3Sidebar

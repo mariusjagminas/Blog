@@ -8,6 +8,7 @@ import RichTextContenful from "../RichTextContenful/RichTextContenful"
 
 const Wrapper = styled.div`
   width: 100%;
+  margin: 0 auto;
   max-width: 880px;
   display: flex;
   flex-direction: column;
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
 
 const StyledImg = styled(Img)`
   max-height: 550px;
-  width: 95%;
+  width: 100%;
   background: ${({ theme }) => theme.lightGrey};
 `
 
@@ -29,8 +30,8 @@ const Article = ({ article }) => {
     <Wrapper>
       <Date date={article.date} />
       <Title title={article.title} />
-      <StyledImg imgStyle={{ objectFit: "contain" }} fluid={article.image} />
       <ContentWrapper>
+        <StyledImg imgStyle={{ objectFit: "contain" }} fluid={article.image} />
         <RichTextContenful richText={article.content} />
       </ContentWrapper>
       <Content />
@@ -39,3 +40,4 @@ const Article = ({ article }) => {
 }
 
 export default Article
+// TODO: Add 'Back to articles' button at the end of a an article

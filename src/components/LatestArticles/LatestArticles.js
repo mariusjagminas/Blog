@@ -92,7 +92,7 @@ const query = graphql`
     ) {
       nodes {
         title: titlePl
-        date(formatString: "DD/MM/YYY")
+        date(formatString: "DD/MM/YYYY")
         slug
         articleImage {
           fluid(maxWidth: 300) {
@@ -110,7 +110,7 @@ const query = graphql`
     ) {
       nodes {
         title: titleFr
-        date(formatString: "DD/MM/YYY")
+        date(formatString: "DD/MM/YYYY")
         slug
         articleImage {
           fluid(maxWidth: 300) {
@@ -128,7 +128,7 @@ const query = graphql`
     ) {
       nodes {
         title: titleEn
-        date(formatString: "DD/MM/YYY")
+        date(formatString: "DD/MM/YYYY")
         slug
         articleImage {
           fluid(maxWidth: 300) {
