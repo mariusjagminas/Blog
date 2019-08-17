@@ -3,8 +3,10 @@ export const theme = {
   primaryLight: "#222222", // lighter black egzample: footer
   secondary: "#9AC7C4", // blue :hover links, social icons
   secondaryLight: "#F0F8FA", // light blue backround
+  secondaryDark: "rgb(61, 170, 163)",
   bright: "#ffffff", // white
   grey: "#D3D3D3",
+  lightGrey: "#f5f5f5", // photos background
   font: {
     size: {
       s: "0.8rem", // 14px

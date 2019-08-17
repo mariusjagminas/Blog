@@ -17,10 +17,11 @@ const Wrapper = styled.div`
 const StyledImg = styled(Img)`
   max-height: 550px;
   width: 95%;
+  background: ${({ theme }) => theme.lightGrey};
 `
 
 const ContentWrapper = styled.div`
-  padding: 20px;
+  padding: 10px;
 `
 
 const Article = ({ article }) => {

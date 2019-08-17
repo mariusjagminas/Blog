@@ -1,5 +1,5 @@
 import React from "react"
-import { BLOCKS } from "@contentful/rich-text-types"
+import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ContentfulImage from "../../assets/helpers/ContentfulImage"
 import styled from "styled-components"
@@ -14,6 +14,16 @@ const ImageWrapper = styled.div`
     margin-left: 20px;
   }
 `
+const StyledB = styled.b`
+  color: ${({ theme }) => theme.secondaryDark};
+`
+
+const StyledA = styled.a`
+  color: red;
+`
+const Bold = ({ children }) => <StyledB>{children}</StyledB>
+
+const StyledHyperlink = ({ children }) => <StyledA>{children}</StyledA>
 
 const options = {
   renderNode: {
@@ -22,6 +32,14 @@ const options = {
         <ContentfulImage contentfulId={node.data.target.sys.id} />
       </ImageWrapper>
     ),
+    [INLINES.HYPERLINK]: node => (
+      <StyledHyperlink href={node.data.uri}>
+        {node.content[0].value}
+      </StyledHyperlink>
+    ),
+  },
+  renderMark: {
+    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
   },
 }
 
