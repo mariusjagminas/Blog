@@ -4,9 +4,9 @@ import { FacebookShareButton, TwitterShareButton } from "react-share"
 import { FacebookIcon, TwitterIcon } from "react-share"
 
 const Wrapper = styled.div`
+  display: ${({ aboutPage }) => (aboutPage ? "flex" : "none")};
   width: 100%;
-  padding: 5px;
-  display: flex;
+  padding: ${({ aboutPage }) => (aboutPage ? "20px" : "5px")};
   justify-content: center;
   align-items: center;
 
@@ -18,7 +18,8 @@ const Wrapper = styled.div`
     background: ${({ theme }) => theme.grey};
   }
   ${({ theme }) => theme.mq.laptop} {
-    padding: 15px 0;
+    display: flex;
+    padding: ${({ aboutPage }) => (aboutPage ? "30px" : "15px 0")};
   }
 `
 
@@ -47,9 +48,9 @@ const TwitterButton = styled(TwitterShareButton)`
   ${sharedStyle}
 `
 
-const ShareLinks = ({ theme }) => {
+const ShareLinks = ({ theme, aboutPage }) => {
   return (
-    <Wrapper>
+    <Wrapper aboutPage={aboutPage}>
       <IconsWrapper>
         <FacebookButton url={"https://gallant-kare-5fe476.netlify.com/"}>
           <FacebookIcon
@@ -69,5 +70,5 @@ const ShareLinks = ({ theme }) => {
     </Wrapper>
   )
 }
-
+// TODO: Make custom share buttons for every page and article
 export default withTheme(ShareLinks)

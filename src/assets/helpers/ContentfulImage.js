@@ -29,6 +29,7 @@ const ContentfulImage = ({ contentfulId }) => {
     edge => edge.node.contentful_id === fixId(contentfulId)
   )
 
-  return <Image fluid={image.node.fluid} />
+  return image ? <Image fluid={image.node.fluid} /> : null
+  //FIXME:  article gretkowska with polish locale returns node as 'undefied'? maybe it is contenfull isue?
 }
 export default ContentfulImage

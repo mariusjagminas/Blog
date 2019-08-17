@@ -4,8 +4,8 @@ import Hero from "../components/Hero/Hero"
 import { graphql } from "gatsby"
 import { injectIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
-import ArticleSocialIcons from "../components/ArticleSocialIcons/ArticleSocialIcons"
 import RichTextContenful from "../components/RichTextContenful/RichTextContenful"
+import ShareLinks from "../components/ShareLinks/ShareLinks"
 
 const TextWrapper = styled.div`
   max-width: 780px;
@@ -23,7 +23,7 @@ const Index = ({ data, intl: { locale } }) => {
       <Hero data={data} />
       <TextWrapper>
         <RichTextContenful richText={data.page[locale].json} />
-        <ArticleSocialIcons />
+        <ShareLinks aboutPage />
       </TextWrapper>
     </MainTemplate>
   )

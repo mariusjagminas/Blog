@@ -9,18 +9,21 @@ import SharedLinks from "../ShareLinks/ShareLinks"
 const Wrapper = styled.div`
   width: 100%;
   max-width: 880px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${({ theme }) => theme.mq.laptop} {
+    padding-bottom: 20px;
+  }
 `
 const StyledImg = styled(Img)`
   max-height: 550px;
-  width: 95%;
+  width: 100%;
   background: ${({ theme }) => theme.lightGrey};
 `
 const TextWrapper = styled.div`
-  padding: 10px;
+  padding: 0 10px 10px 10px;
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -28,6 +31,7 @@ const StyledLink = styled(Link)`
   border: 1px solid ${({ theme }) => theme.grey};
   border-radius: 3px;
   position: relative;
+  margin-top -10px;
   padding: 6px 40px;
   transition-property: background, border;
   transition-duration: 0.5s;
@@ -49,6 +53,11 @@ const StyledLink = styled(Link)`
     :before {
       border: 1px solid ${({ theme }) => theme.secondary};
     }
+
+    
+  }
+  ${({ theme }) => theme.mq.laptop}{
+    margin: 0px;
   }
 `
 // FIXME: style article-prewiew  exerpt is not working as expected. It renders only first node.Its stops rendering if italic mark in paragraph node
@@ -57,8 +66,8 @@ const ArticlePreview = ({ data, intl }) => {
     <Wrapper>
       <Date date={data.date} />
       <Title title={data.title} />
-      <StyledImg imgStyle={{ objectFit: "contain" }} fluid={data.image} />
       <TextWrapper>
+        <StyledImg imgStyle={{ objectFit: "contain" }} fluid={data.image} />
         <p>{data.exerpt}</p>
         <SharedLinks />
       </TextWrapper>
