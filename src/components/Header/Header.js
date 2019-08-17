@@ -8,7 +8,8 @@ import Banner from "../Banner/Banner"
 import Languages from "../Languages/Languages"
 
 const Wrapper = styled.div`
-  max-width: 1200px;
+  max-width: 1420px;
+  padding: 0 20px;
   height: 60px;
   margin: 0 auto;
   display: flex;
