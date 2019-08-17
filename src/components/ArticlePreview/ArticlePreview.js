@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import { injectIntl, Link } from "gatsby-plugin-intl"
 import Date from "../Date/Date"
 import Title from "../Title/Title"
-import ArticleSocialIcons from "../ArticleSocialIcons/ArticleSocialIcons"
+import SharedLinks from "../ShareLinks/ShareLinks"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ const StyledLink = styled(Link)`
     }
   }
 `
-// TODO: style article-prewiew  exerpt
+// FIXME: style article-prewiew  exerpt is not working as expected. It renders only first node.Its stops rendering if italic mark in paragraph node
 const ArticlePreview = ({ data, intl }) => {
   return (
     <Wrapper>
@@ -60,9 +60,8 @@ const ArticlePreview = ({ data, intl }) => {
       <StyledImg imgStyle={{ objectFit: "contain" }} fluid={data.image} />
       <TextWrapper>
         <p>{data.exerpt}</p>
-        <ArticleSocialIcons />
+        <SharedLinks />
       </TextWrapper>
-
       <StyledLink to={`/${data.slug}`}>
         {intl.formatMessage({ id: "article.read" })}
       </StyledLink>
