@@ -41,9 +41,8 @@ const MenuList = styled.ul`
 
 const MenuItem = styled.li`
   margin: 20px;
-
   &:nth-child(3) {
-    display: none;
+    display: ${({ locale }) => (locale == "fr" ? "inherit" : "none")};
   }
   // TODO: hide historie du theatre element on polish and english pages
   ${({ theme }) => theme.mq.laptop} {
@@ -68,7 +67,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Menu = ({ intl, isMenuOpen, ...props }) => {
+const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
   const links = [
     { title: intl.formatMessage({ id: "menu.about_us" }), path: "/aboutUs" },
     { title: intl.formatMessage({ id: "menu.articles" }), path: "/" },
@@ -86,7 +85,7 @@ const Menu = ({ intl, isMenuOpen, ...props }) => {
   return (
     <MenuList isMenuOpen={isMenuOpen} {...props}>
       {links.map(link => (
-        <MenuItem key={link.title} {...props}>
+        <MenuItem key={link.title} locale={locale} {...props}>
           <StyledLink {...props} to={link.path}>
             {link.title}
           </StyledLink>
