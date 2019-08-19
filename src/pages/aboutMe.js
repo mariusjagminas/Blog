@@ -4,11 +4,12 @@ import { graphql } from "gatsby"
 import { injectIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 import RichTextContenful from "../components/RichTextContenful/RichTextContenful"
+import HeaderAboutMe from "../components/HeaderAboutMe/HeaderAboutMe"
 
 const TextWrapper = styled.div`
   max-width: 900px;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 0 20px;
   text-align: left;
   background: ${({ theme }) => theme.bright};
   ${({ theme }) => theme.mq.laptop} {
@@ -23,6 +24,7 @@ const Index = ({ data, intl: { locale } }) => {
   return (
     <MainTemplate>
       <TextWrapper>
+        <HeaderAboutMe />
         <RichTextContenful richText={data.page[locale].json} />
       </TextWrapper>
     </MainTemplate>

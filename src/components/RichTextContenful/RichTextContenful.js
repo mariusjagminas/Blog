@@ -19,7 +19,7 @@ const StyledB = styled.b`
 `
 
 const StyledA = styled.a`
-  color: red;
+  color: ${({ theme }) => theme.secondaryDark};
 `
 const Bold = ({ children }) => <StyledB>{children}</StyledB>
 
