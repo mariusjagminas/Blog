@@ -1,50 +1,83 @@
 import React from "react"
-import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl"
+import { changeLocale } from "gatsby-plugin-intl"
 import styled from "styled-components"
 import flagPoland from "../../assets/images/flag-poland.png"
 import flagFrance from "../../assets/images/flag-france.png"
-import flagBritish from "../../assets/images/flag-british.jpg"
+import flagBritish from "../../assets/images/flag-uk.png"
 
-const Wrapper = styled.div`
-  display: ${({ inMobileMenu }) => (inMobileMenu ? "inline-flex" : "none")};
+const StyledUl = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
   ${({ theme }) => theme.mq.laptop} {
-    display: ${({ inMobileMenu }) => (inMobileMenu ? "none" : "inline-flex")};
+    display: ${({ inMobileMenu }) => (inMobileMenu ? "none" : "flex")};
+  }
+`
+
+const StyledButton = styled.button`
+  border: none;
+  display: flex;
+  background: ${({ theme }) => theme.bright};
+  height: 37px;
+  margin: 5px;
+  &:focus {
+    outline: none;
+  }
+
+  ${({ theme }) => theme.mq.laptop} {
+    margin: 0;
+    padding: 5px 20px 5px 0;
+    height: auto;
+    &:hover {
+      background: ${({ theme }) => theme.secondaryLight};
+    }
   }
 `
 
 const ImgWrapper = styled.div`
-  width: 35px;
-  margin: 0 20px;
+  width: 30px;
 
   ${({ theme }) => theme.mq.laptop} {
-    width: 25px;
+    width: 30px;
     margin: 0 10px;
   }
 `
-
 const StyledImg = styled.img`
   width: 100%;
   height: auto;
 `
 
-const Language = ({ inMobileMenu }) => {
+const StyledText = styled.p`
+  margin: 6px 0 0 10px;
+`
+
+const Languages = ({ inMobileMenu }) => {
   return (
-    <IntlContextConsumer>
-      {() => (
-        <Wrapper inMobileMenu={inMobileMenu}>
-          <ImgWrapper onClick={() => changeLocale("pl")}>
+    <>
+      <StyledUl inMobileMenu={inMobileMenu}>
+        <StyledButton onClick={() => changeLocale("pl")}>
+          <ImgWrapper>
             <StyledImg src={flagPoland} />
           </ImgWrapper>
-          <ImgWrapper onClick={() => changeLocale("fr")}>
+          <StyledText>Polski</StyledText>
+        </StyledButton>
+        <StyledButton onClick={() => changeLocale("fr")}>
+          <ImgWrapper>
             <StyledImg src={flagFrance} />
           </ImgWrapper>
-          <ImgWrapper onClick={() => changeLocale("en")}>
+          <StyledText>Français</StyledText>
+        </StyledButton>
+        <StyledButton onClick={() => changeLocale("en")}>
+          <ImgWrapper>
             <StyledImg src={flagBritish} />
           </ImgWrapper>
-        </Wrapper>
-      )}
-    </IntlContextConsumer>
+          <StyledText>English</StyledText>
+        </StyledButton>
+      </StyledUl>
+    </>
   )
 }
 
-export default Language
+export default Languages

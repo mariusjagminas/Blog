@@ -5,7 +5,7 @@ import { useState } from "react"
 import Hamburger from "../Hamburger/Hamburger"
 import SocialIcons from "../SocialIcons/SocialIcons"
 import Banner from "../Banner/Banner"
-import Languages from "../Languages/Languages"
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
 
 const Wrapper = styled.div`
   max-width: 1420px;
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   }
 `
 const EmptySpaceFiller = styled.div`
-  widht: 100%;
+  width: 100%;
   height: 60px;
   ${({ theme }) => theme.mq.laptop} {
     display: none;
@@ -48,8 +48,7 @@ const Header = () => {
       <Wrapper>
         <Hamburger onClick={toggleMenu} isMenuOpen={isMenuOpen} />
         <Menu isMenuOpen={isMenuOpen} />
-        <SocialIcons />
-        <Languages />
+        <LanguageSwitcher />
       </Wrapper>
       <EmptySpaceFiller />
       <Banner />
