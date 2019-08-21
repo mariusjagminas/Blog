@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { injectIntl, Link } from "gatsby-plugin-intl"
-import Languages from "../Languages/Languages"
+import LanguagesSwitcher from "../LanguageSwitcher/LanguageSwitcher"
 
 const MenuList = styled.ul`
   list-style: none;
@@ -91,7 +91,7 @@ const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
           </StyledLink>
         </MenuItem>
       ))}
-      <Languages inMobileMenu />
+      <LanguagesSwitcher isMobileMenu />
     </MenuList>
   )
 }
