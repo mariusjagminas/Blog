@@ -21,14 +21,14 @@ const StyledButton = styled.button`
   display: flex;
   background: ${({ theme }) => theme.bright};
   height: 37px;
-  margin: 5px;
+  margin: 0 0 10px 15px;
+  padding: 5px 20px 5px 0;
   &:focus {
     outline: none;
   }
 
   ${({ theme }) => theme.mq.laptop} {
     margin: 0;
-    padding: 5px 20px 5px 0;
     height: auto;
     &:hover {
       background: ${({ theme }) => theme.secondaryLight};
@@ -51,6 +51,8 @@ const StyledImg = styled.img`
 
 const StyledText = styled.p`
   margin: 6px 0 0 10px;
+  font-family: ${({ theme }) => theme.font.family.main};
+  font-size: 16px;
 `
 
 const Languages = ({ inMobileMenu }) => {

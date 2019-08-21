@@ -12,20 +12,20 @@ const image = {
   en: flagBritish,
 }
 
-export const buttonStyles = css`
-  border: none;
-  background: ${({ theme }) => theme.bright};
-  height: 37px;
-  &:focus {
-    outline: none;
-  }
-`
+// export const buttonStyles = css`
+//   border: none;
+//   background: ${({ theme }) => theme.bright};
+//   height: 37px;
+//   &:focus {
+//     outline: none;
+//   }
+// `
 
-const StyledButton = styled.button`
-  ${buttonStyles};
-  position: relative;
-  padding: 0 20px;
+const StyledDiv = styled.div`
   display: ${({ isMobileMenu }) => (isMobileMenu ? "flex" : "none")};
+  position: relative;
+  height: 35px;
+  padding: 0 20px;
   &:before {
     content: "";
     position: absolute;
@@ -49,25 +49,22 @@ const DropdownMenu = styled.div`
   position: absolute;
   z-index: 5;
   background: white;
-  right: -15px;
   top: 40px;
-  width: 100%;
+  right: 0;
   box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
-  ${({ theme }) => theme.mq.laptop} {
-    width: auto;
-    right: -21px;
-    &:before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      width: 10px;
-      height: 10px;
-      background: white;
-      box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
-      top: -6px;
-      right: 21px;
-      transform: rotateZ(45deg);
-    }
+  width: auto;
+  right: -21px;
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 10px;
+    height: 10px;
+    background: white;
+    box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
+    top: -6px;
+    right: 21px;
+    transform: rotateZ(45deg);
   }
 `
 
@@ -81,7 +78,7 @@ const StyledImage = styled.img`
 `
 
 const StyledParagraph = styled.p`
-  margin: 5px 0 0 7px;
+  margin: 2px 0 0 7px;
 `
 
 const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu }) => {
@@ -91,7 +88,7 @@ const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu }) => {
   }
 
   return (
-    <StyledButton isMobileMenu={isMobileMenu} onClick={toggleMenu}>
+    <StyledDiv isMobileMenu={isMobileMenu} onClick={toggleMenu}>
       <ImageWrapper>
         <StyledImage src={image[locale]} />
       </ImageWrapper>
@@ -101,7 +98,7 @@ const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu }) => {
       <DropdownMenu isOpen={isOpen}>
         <Languages />
       </DropdownMenu>
-    </StyledButton>
+    </StyledDiv>
   )
 }
 
