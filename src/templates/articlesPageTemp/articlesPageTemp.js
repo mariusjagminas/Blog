@@ -48,10 +48,17 @@ const LinkToNext = styled(StyledLink)`
 const Index = ({ data, pageContext, intl: { locale }, intl }) => {
   const articlesData = getLocalizedData(data, locale)
 
-  // Pagination
-
   const isFirstPage = pageContext.currentPage === 0
-  const isLastPage = pageContext.currentPage === pageContext.pagesCount - 1
+
+  // Graphql queries for next page info, how many articles(ID's) could be in it.
+  // if  there is no articles in next page, then this page is last
+
+  const nextPageArticlesCount = {
+    pl: data.plNextPage.nodes.length,
+    fr: data.frNextPage.nodes.length,
+    en: data.enNextPage.nodes.length,
+  }
+  const isLastPage = nextPageArticlesCount[locale] <= 0
 
   return (
     <MainTemplate>
@@ -85,7 +92,7 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 }
 
 export const query = graphql`
-  query ArticleList($skip: Int, $articlesPerPage: Int) {
+  query ArticleList($skip: Int, $articlesPerPage: Int, $skipToNextPage: Int) {
     #########
     #########
     pl: allContentfulArticles(
@@ -159,6 +166,36 @@ export const query = graphql`
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
+      }
+    }
+    #######
+    #######
+    #
+    #
+    ######
+    ######
+    plNextPage: allContentfulArticles(
+      filter: { titlePl: { ne: null } }
+      skip: $skipToNextPage
+    ) {
+      nodes {
+        id
+      }
+    }
+    frNextPage: allContentfulArticles(
+      filter: { titleFr: { ne: null } }
+      skip: $skipToNextPage
+    ) {
+      nodes {
+        id
+      }
+    }
+    enNextPage: allContentfulArticles(
+      filter: { titleEn: { ne: null } }
+      skip: $skipToNextPage
+    ) {
+      nodes {
+        id
       }
     }
   }

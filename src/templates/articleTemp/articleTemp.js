@@ -5,7 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import styled from "styled-components"
 import Article from "../../components/Article/Article"
 import { injectIntl } from "gatsby-plugin-intl"
-
+import ArticleNotAvailable from "../../components/ArticleNotAvailable/ArticleNotAvailable"
 const Wrapper = styled.div`
   max-width: 1360px;
   margin: 0 auto;
@@ -18,14 +18,8 @@ const Wrapper = styled.div`
 `
 
 const Index = ({ data, intl: { locale } }) => {
-  const falbackText = {
-    pl: "ten artykuł jeszcze nie zostal przetlumaczony",
-    fr: "cet article n'a pas encore été traduit",
-    en: "article is not available in English",
-  }
-
   const article = {
-    title: data[locale].title || falbackText[locale],
+    title: data[locale].title || null,
     content: data[locale].content ? data[locale].content.json : null,
     image: data.node.articleImage
       ? data.node.articleImage.fluid
@@ -36,7 +30,11 @@ const Index = ({ data, intl: { locale } }) => {
   return (
     <MainTemplate>
       <Wrapper>
-        <Article article={article} />
+        {article.title && article.content ? (
+          <Article article={article} />
+        ) : (
+          <ArticleNotAvailable />
+        )}
         <Sidebar />
       </Wrapper>
     </MainTemplate>

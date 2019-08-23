@@ -81,7 +81,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    // Create Polish-French articles list with pagination
+    // Create Polish-French-English articles list with pagination
 
     const articlesCount = articlesNodes.totalCount
     const articlesPerPage = 3
@@ -98,6 +98,7 @@ exports.createPages = ({ graphql, actions }) => {
           articlesPerPage: articlesPerPage,
           skip: i * articlesPerPage,
           currentPage: i,
+          skipToNextPage: i * articlesPerPage + articlesPerPage,
         },
       })
     })
