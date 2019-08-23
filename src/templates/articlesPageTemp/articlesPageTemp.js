@@ -50,7 +50,7 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 
   const isFirstPage = pageContext.currentPage === 0
 
-  // Graphql queries for next page info, how many articles(ID's) could be in it.
+  // Graphql queries for next page info,  how many articles(ID's) could be in it.
   // if  there is no articles in next page, then this page is last
 
   const nextPageArticlesCount = {
