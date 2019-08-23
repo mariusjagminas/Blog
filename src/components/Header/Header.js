@@ -44,7 +44,7 @@ const Header = () => {
   }
 
   return (
-    <>
+    <header>
       <Wrapper>
         <Hamburger onClick={toggleMenu} isMenuOpen={isMenuOpen} />
         <Menu isMenuOpen={isMenuOpen} />
@@ -52,7 +52,7 @@ const Header = () => {
       </Wrapper>
       <EmptySpaceFiller />
       <Banner />
-    </>
+    </header>
   )
 }
 

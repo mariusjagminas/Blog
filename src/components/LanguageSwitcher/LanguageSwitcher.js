@@ -21,7 +21,7 @@ const image = {
 //   }
 // `
 
-const StyledDiv = styled.div`
+const Nav = styled.nav`
   display: ${({ isMobileMenu }) => (isMobileMenu ? "flex" : "none")};
   position: relative;
   height: 35px;
@@ -88,7 +88,7 @@ const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu }) => {
   }
 
   return (
-    <StyledDiv isMobileMenu={isMobileMenu} onClick={toggleMenu}>
+    <Nav isMobileMenu={isMobileMenu} onClick={toggleMenu}>
       <ImageWrapper>
         <StyledImage src={image[locale]} />
       </ImageWrapper>
@@ -98,7 +98,7 @@ const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu }) => {
       <DropdownMenu isOpen={isOpen}>
         <Languages />
       </DropdownMenu>
-    </StyledDiv>
+    </Nav>
   )
 }
 

@@ -11,7 +11,7 @@ const Archive = ({ intl: { locale }, intl }) => {
   const groupedDates = _.groupBy(data[locale].edges, item => item.node.date)
   const datesArray = _.map(groupedDates, item => item[0].node.date)
 
-  const StyledDiv = styled.div`
+  const Wrapper = styled.section`
     margin-top: 105px;
   `
 
@@ -51,7 +51,7 @@ const Archive = ({ intl: { locale }, intl }) => {
   `
 
   return (
-    <StyledDiv>
+    <Wrapper>
       <H3Sidebar title={intl.formatMessage({ id: "archive.title" })} />
       <StyledUl>
         {datesArray.map((item, i) => (
@@ -60,7 +60,7 @@ const Archive = ({ intl: { locale }, intl }) => {
           </StyledLi>
         ))}
       </StyledUl>
-    </StyledDiv>
+    </Wrapper>
   )
 }
 

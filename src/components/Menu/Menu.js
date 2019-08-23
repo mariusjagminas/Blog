@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { injectIntl, Link } from "gatsby-plugin-intl"
 import LanguagesSwitcher from "../LanguageSwitcher/LanguageSwitcher"
 
+const StyledNav = styled.nav``
+
 const MenuList = styled.ul`
   list-style: none;
   margin: 0;
@@ -44,7 +46,6 @@ const MenuItem = styled.li`
   &:nth-child(3) {
     display: ${({ locale }) => (locale == "fr" ? "inherit" : "none")};
   }
-  // TODO: hide historie du theatre element on polish and english pages
   ${({ theme }) => theme.mq.laptop} {
     margin: 0 8px;
   }
@@ -83,16 +84,18 @@ const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
   ]
 
   return (
-    <MenuList isMenuOpen={isMenuOpen} {...props}>
-      {links.map(link => (
-        <MenuItem key={link.title} locale={locale} {...props}>
-          <StyledLink {...props} to={link.path}>
-            {link.title}
-          </StyledLink>
-        </MenuItem>
-      ))}
-      <LanguagesSwitcher isMobileMenu />
-    </MenuList>
+    <nav>
+      <MenuList isMenuOpen={isMenuOpen} {...props}>
+        {links.map(link => (
+          <MenuItem key={link.title} locale={locale} {...props}>
+            <StyledLink {...props} to={link.path}>
+              {link.title}
+            </StyledLink>
+          </MenuItem>
+        ))}
+        <LanguagesSwitcher isMobileMenu />
+      </MenuList>
+    </nav>
   )
 }
 

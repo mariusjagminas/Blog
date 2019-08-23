@@ -7,7 +7,7 @@ import styled from "styled-components"
 import Date from "../Date/Date"
 import truncate from "lodash/truncate"
 
-const Container = styled.div`
+const Container = styled.section`
   margin-top: 120px;
 `
 
@@ -52,7 +52,6 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
   const data = useStaticQuery(query)
   const articlesData = data[locale].nodes
   const fallBackImage = data.file.childImageSharp.fluid
-  //  FIXME data shown incorect
 
   return (
     <Container>
