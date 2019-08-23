@@ -12,14 +12,7 @@ const image = {
   en: flagBritish,
 }
 
-// export const buttonStyles = css`
-//   border: none;
-//   background: ${({ theme }) => theme.bright};
-//   height: 37px;
-//   &:focus {
-//     outline: none;
-//   }
-// `
+// TODO: I don't like LanguageSwitcher and Language components architekture
 
 const StyledDiv = styled.div`
   display: ${({ isMobileMenu }) => (isMobileMenu ? "flex" : "none")};
