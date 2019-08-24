@@ -6,25 +6,7 @@ import styled from "styled-components"
 import { injectIntl, Link } from "gatsby-plugin-intl"
 import ArticlePreview from "../../components/ArticlePreview/ArticlePreview"
 import getLocalizedData from "../../assets/helpers/getLocalizedData"
-
-const Container = styled.div`
-  max-width: 1360px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: flex-start;
-  background: ${({ theme }) => theme.bright};
-  ${({ theme }) => theme.mq.laptop} {
-    padding-left: 80px;
-  }
-`
-
-const Wrapper = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  max-width: 880px;
-  position: relative;
-  padding: 0 0 70px 0;
-`
+import { MainContainer, MainWrapper } from "../../assets/styles/layout"
 
 const StyledLink = styled(Link)`
   position: absolute;
@@ -62,8 +44,8 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 
   return (
     <MainTemplate>
-      <Container>
-        <Wrapper>
+      <MainContainer>
+        <MainWrapper>
           {articlesData.map((data, i) => (
             <ArticlePreview data={data} key={i} />
           ))}
@@ -83,10 +65,10 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
               {`${intl.formatMessage({ id: "article.next" })}→`}
             </LinkToNext>
           )}
-        </Wrapper>
+        </MainWrapper>
 
         <Sidebar />
-      </Container>
+      </MainContainer>
     </MainTemplate>
   )
 }

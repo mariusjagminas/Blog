@@ -6,24 +6,7 @@ import styled from "styled-components"
 import { injectIntl } from "gatsby-plugin-intl"
 import ArticlePreview from "../../components/ArticlePreview/ArticlePreview"
 import getLocalizedData from "../../assets/helpers/getLocalizedData"
-
-const Container = styled.div`
-  max-width: 1360px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: flex-start;
-  background: ${({ theme }) => theme.bright};
-  ${({ theme }) => theme.mq.laptop} {
-    padding-left: 80px;
-  }
-`
-
-const Wrapper = styled.div`
-  width: 100%;
-  max-width: 880px;
-  position: relative;
-  padding: 0 10px 70px 10px;
-`
+import { MainContainer, MainWrapper } from "../../assets/styles/layout"
 
 const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
   const articleData = getLocalizedData(data, locale).filter(item =>
@@ -36,14 +19,14 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
 
   return (
     <MainTemplate>
-      <Container>
-        <Wrapper>
+      <MainContainer>
+        <MainWrapper>
           {articleData.map((data, i) => (
             <ArticlePreview data={data} key={i} />
           ))}
-        </Wrapper>
+        </MainWrapper>
         <Sidebar />
-      </Container>
+      </MainContainer>
     </MainTemplate>
   )
 }

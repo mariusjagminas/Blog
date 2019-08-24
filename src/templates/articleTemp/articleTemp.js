@@ -6,7 +6,7 @@ import styled from "styled-components"
 import Article from "../../components/Article/Article"
 import { injectIntl } from "gatsby-plugin-intl"
 import ArticleNotAvailable from "../../components/ArticleNotAvailable/ArticleNotAvailable"
-const Wrapper = styled.div`
+const Container = styled.div`
   max-width: 1360px;
   margin: 0 auto;
   display: flex;
@@ -29,14 +29,14 @@ const Index = ({ data, intl: { locale } }) => {
 
   return (
     <MainTemplate>
-      <Wrapper>
+      <Container>
         {article.title && article.content ? (
           <Article article={article} />
         ) : (
           <ArticleNotAvailable />
         )}
         <Sidebar />
-      </Wrapper>
+      </Container>
     </MainTemplate>
   )
 }
