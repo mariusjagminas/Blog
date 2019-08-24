@@ -65,14 +65,14 @@ exports.createPages = ({ graphql, actions }) => {
       Promise.reject(result.errors)
     }
 
-    // Create Polish-French article
+    // Create Polish-French-English  article
 
     const articlesNodes = result.data.allContentfulArticles
 
     articlesNodes.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
-        component: path.resolve(`./src/templates/articleTemp/articleTemp.js`),
+        component: path.resolve(`./src/templates/post/post.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
@@ -90,9 +90,7 @@ exports.createPages = ({ graphql, actions }) => {
     Array.from({ length: pagesCount }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/` : `/${i}`,
-        component: path.resolve(
-          `./src/templates/articlesPageTemp/articlesPageTemp.js`
-        ),
+        component: path.resolve(`./src/templates/articles/articles.js`),
         context: {
           pagesCount: pagesCount,
           articlesPerPage: articlesPerPage,
@@ -112,9 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
     groupedArticlesByMonth.forEach(([date, slugsArray]) => {
       createPage({
         path: `/archive/${date}`,
-        component: path.resolve(
-          `./src/templates/articlesGroupByDateTemp/articlesGroupByDateTemp.js`
-        ),
+        component: path.resolve(`./src/templates/archive/archive.js`),
         context: {
           slugsArray: slugsArray,
         },
