@@ -31,5 +31,5 @@ const H3Sidebar = ({ title }) => (
     <StyledH3>{title}</StyledH3>
   </Wrapper>
 )
-// FIXME: text is overlaping line
+
 export default H3Sidebar

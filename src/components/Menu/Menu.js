@@ -68,7 +68,7 @@ const StyledLink = styled(Link)`
 
 const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
   const links = [
-    { title: intl.formatMessage({ id: "menu.about_us" }), path: "/aboutUs" },
+    { title: intl.formatMessage({ id: "menu.about_us" }), path: "/about-us" },
     { title: intl.formatMessage({ id: "menu.articles" }), path: "/" },
     {
       title: intl.formatMessage({ id: "menu.theater_history" }),
@@ -76,7 +76,7 @@ const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
     },
     {
       title: intl.formatMessage({ id: "menu.about_me" }),
-      path: "/aboutMe",
+      path: "/about-me",
     },
     { title: intl.formatMessage({ id: "menu.contact" }), path: "/contact" },
   ]

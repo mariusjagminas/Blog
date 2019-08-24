@@ -30,6 +30,5 @@ const ContentfulImage = ({ contentfulId }) => {
   )
 
   return image ? <Image fluid={image.node.fluid} /> : null
-  //FIXME:  article gretkowska with polish locale returns node as 'undefied'? maybe it is contenfull isue?
 }
 export default ContentfulImage

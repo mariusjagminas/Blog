@@ -23,7 +23,9 @@ const StyledA = styled.a`
 `
 const Bold = ({ children }) => <StyledB>{children}</StyledB>
 
-const StyledHyperlink = ({ children }) => <StyledA>{children}</StyledA>
+const StyledHyperlink = ({ children, href }) => (
+  <StyledA href={href}>{children}</StyledA>
+)
 
 const options = {
   renderNode: {

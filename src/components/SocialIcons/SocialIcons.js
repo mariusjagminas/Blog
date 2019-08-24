@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { FaFacebookF, FaTwitter } from "react-icons/fa"
-// TODO: refactor to share on facebook and twiter
+
 const IconsWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
