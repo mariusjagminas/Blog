@@ -74,7 +74,7 @@ const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
     { title: intl.formatMessage({ id: "menu.articles" }), path: "/" },
     {
       title: intl.formatMessage({ id: "menu.theater_history" }),
-      path: "/no_path",
+      path: "/history-of-theater",
     },
     {
       title: intl.formatMessage({ id: "menu.about_me" }),

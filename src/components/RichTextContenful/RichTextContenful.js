@@ -7,15 +7,15 @@ import styled from "styled-components"
 const ImageWrapper = styled.div`
   width: 250px;
   float: right;
-  margin-right: 20px;
+  margin-left: 20px;
 
   &:nth-of-type(even) {
     float: left;
-    margin-left: 20px;
+    margin-right: 20px;
   }
 `
 const StyledB = styled.b`
-  color: ${({ theme }) => theme.secondaryDark};
+  color: ${({ theme }) => theme.primary};
 `
 
 const StyledA = styled.a`
