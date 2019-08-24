@@ -3,8 +3,6 @@ import styled from "styled-components"
 import { injectIntl, Link } from "gatsby-plugin-intl"
 import LanguagesSwitcher from "../LanguageSwitcher/LanguageSwitcher"
 
-const StyledNav = styled.nav``
-
 const MenuList = styled.ul`
   list-style: none;
   margin: 0;
@@ -44,7 +42,7 @@ const MenuList = styled.ul`
 const MenuItem = styled.li`
   margin: 20px;
   &:nth-child(3) {
-    display: ${({ locale }) => (locale == "fr" ? "inherit" : "none")};
+    display: ${({ locale }) => (locale === "fr" ? "inherit" : "none")};
   }
   ${({ theme }) => theme.mq.laptop} {
     margin: 0 8px;

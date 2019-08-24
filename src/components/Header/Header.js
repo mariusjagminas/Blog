@@ -3,7 +3,6 @@ import styled from "styled-components"
 import Menu from "../Menu/Menu"
 import { useState } from "react"
 import Hamburger from "../Hamburger/Hamburger"
-import SocialIcons from "../SocialIcons/SocialIcons"
 import Banner from "../Banner/Banner"
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
 

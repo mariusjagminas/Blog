@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { injectIntl } from "gatsby-plugin-intl"
 import Languages from "../Languages/Languages"
 import flagPoland from "../../assets/images/flag-poland.png"
