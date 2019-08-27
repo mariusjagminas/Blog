@@ -1,25 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
-import Title from '../Title/Title';
+import Img from '../Img/Img';
 import ArticleExcerpt from '../ArticleExcerpt/ArticleExcerpt';
 
 const Article = styled.article``;
-const ImgWrapper = styled.div`
-	width: 100%;
-	max-width: 600px;
-`;
-const Wrapper = styled.div``;
 
-const ArticlePreviewSmall = ({ data }) => {
+const Wrapper = styled.div``;
+const Title = styled.h2`
+	font-size: 30px;
+`;
+const ArticlePreviewSmall = ({ title, image, content }) => {
 	return (
 		<Article>
-			<ImgWrapper>
-				<Img fluid={data.image} />
-			</ImgWrapper>
+			<Img fluid={image} />
 			<Wrapper>
-				<Title title={data.title} />
-				<ArticleExcerpt content={data.content} length={200} />
+				<Title>{title}</Title>
+				<ArticleExcerpt content={content} length={200} />
 			</Wrapper>
 		</Article>
 	);

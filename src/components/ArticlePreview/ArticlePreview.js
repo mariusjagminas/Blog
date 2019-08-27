@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import Img from '../Img/Img';
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import Date from '../Date/Date';
 import Title from '../Title/Title';
@@ -23,6 +23,11 @@ const StyledImg = styled(Img)`
 	width: 100%;
 	background: ${({ theme }) => theme.lightGrey};
 `;
+
+const StyledExerpt = styled(ArticleExcerpt)`
+	margin: 15px 0 0 0;
+`;
+
 const Wrapper = styled.div`
 	padding: 0 10px 10px 10px;
 	width: 100%;
@@ -61,17 +66,17 @@ const StyledLink = styled(Link)`
 	}
 `;
 
-const ArticlePreview = ({ data, intl }) => {
+const ArticlePreview = ({ date, title, image, content, slug, intl }) => {
 	return (
 		<ArticleWrapper>
-			<Date date={data.date} />
-			<Title title={data.title} />
+			<Date date={date} />
+			<Title title={title} />
 			<Wrapper>
-				<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={data.image} />
-				<ArticleExcerpt content={data.content} length={500} />
+				<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={image} />
+				<StyledExerpt content={content} length={500} />
 				<SharedLinks />
 			</Wrapper>
-			<StyledLink to={`/${data.slug}`}>{intl.formatMessage({ id: 'article.read' })}</StyledLink>
+			<StyledLink to={`/${slug}`}>{intl.formatMessage({ id: 'article.read' })}</StyledLink>
 		</ArticleWrapper>
 	);
 };

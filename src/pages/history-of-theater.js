@@ -4,19 +4,29 @@ import { MainContainer, MainWrapper } from '../assets/styles/layout';
 import Sidebar from '../components/Sidebar/Sidebar';
 import { graphql } from 'gatsby';
 import ArticlePreviewSmall from '../components/ArticlePreviewSmall/ArticlePreviewSmall';
-import getLocalizedData from '../assets/helpers/getLocalizedData';
 import { injectIntl } from 'gatsby-plugin-intl';
+import ArticleNotAvailable from '../components/ArticleNotAvailable/ArticleNotAvailable';
 
 const Index = ({ data, intl: { locale } }) => {
-	const articles = getLocalizedData(data, locale);
-
+	const locArticles = data[locale] ? data[locale].nodes : null;
 	return (
 		<MainTemplate>
 			<MainContainer>
 				<MainWrapper>
-					{articles.map((data, i) => (
-						<ArticlePreviewSmall data={data} key={i} />
-					))}
+					{locArticles ? (
+						locArticles.map((node, i) => {
+							return (
+								<ArticlePreviewSmall
+									key={i}
+									title={node.title}
+									image={node.articleImage.fluid}
+									content={node.content.json}
+								/>
+							);
+						})
+					) : (
+						<ArticleNotAvailable />
+					)}
 				</MainWrapper>
 				<Sidebar />
 			</MainContainer>
@@ -39,13 +49,6 @@ export const query = graphql`
 				}
 				content: contentFr {
 					json
-				}
-			}
-		}
-		fallbackImage: file(relativePath: { eq: "hero_img.jpg" }) {
-			childImageSharp {
-				fluid(maxWidth: 800) {
-					...GatsbyImageSharpFluid_withWebp_noBase64
 				}
 			}
 		}
