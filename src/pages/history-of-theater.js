@@ -6,13 +6,37 @@ import { graphql } from 'gatsby';
 import ArticlePreviewSmall from '../components/ArticlePreviewSmall/ArticlePreviewSmall';
 import { injectIntl } from 'gatsby-plugin-intl';
 import ArticleNotAvailable from '../components/ArticleNotAvailable/ArticleNotAvailable';
+import styled from 'styled-components';
+
+const StyledMainWrapper = styled(MainWrapper)`
+	padding: 15px 0;
+	min-height: calc(100vh - 225px);
+`;
+
+const Info = styled.p`
+	margin: 0 auto -23px auto;
+	font-size: 27px;
+	max-width: 250px;
+	text-align: center;
+	box-shadow: 0px 5px 2px -5px rgba(0, 0, 0, 0.16);
+	display: none;
+	${({ theme }) => theme.mq.tablet} {
+		display: block;
+	}
+	${({ theme }) => theme.mq.laptop} {
+		margin: 19px auto -3px auto;
+		font-size: 52px;
+		max-width: 443px;
+	}
+`;
 
 const Index = ({ data, intl: { locale } }) => {
 	const locArticles = data[locale] ? data[locale].nodes : null;
 	return (
 		<MainTemplate>
 			<MainContainer>
-				<MainWrapper>
+				<StyledMainWrapper>
+					<Info>Histoire du théâtre</Info>
 					{locArticles ? (
 						locArticles.map((node, i) => {
 							return (
@@ -27,7 +51,7 @@ const Index = ({ data, intl: { locale } }) => {
 					) : (
 						<ArticleNotAvailable />
 					)}
-				</MainWrapper>
+				</StyledMainWrapper>
 				<Sidebar />
 			</MainContainer>
 		</MainTemplate>
