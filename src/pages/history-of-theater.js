@@ -13,20 +13,19 @@ const StyledMainWrapper = styled(MainWrapper)`
 	min-height: calc(100vh - 225px);
 `;
 
-const Info = styled.p`
+export const Info = styled.p`
 	margin: 0 auto -23px auto;
 	font-size: 27px;
 	max-width: 250px;
 	text-align: center;
 	box-shadow: 0px 5px 2px -5px rgba(0, 0, 0, 0.16);
 	display: none;
+
 	${({ theme }) => theme.mq.tablet} {
 		display: block;
-	}
-	${({ theme }) => theme.mq.laptop} {
-		margin: 19px auto -3px auto;
-		font-size: 52px;
-		max-width: 443px;
+		margin: 29px auto -3px auto;
+		font-size: 38px;
+		max-width: 360px;
 	}
 `;
 
@@ -45,6 +44,7 @@ const Index = ({ data, intl: { locale } }) => {
 									title={node.title}
 									image={node.articleImage.fluid}
 									content={node.content.json}
+									slug={node.slug}
 								/>
 							);
 						})

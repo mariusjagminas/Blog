@@ -3,9 +3,11 @@ import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import styled from 'styled-components';
-import Article from '../../components/Article/Article';
 import { injectIntl } from 'gatsby-plugin-intl';
 import ArticleNotAvailable from '../../components/ArticleNotAvailable/ArticleNotAvailable';
+import RichTextContentful from '../../components/RichTextContenful/RichTextContenful';
+import { Info } from '../../pages/history-of-theater';
+
 const Container = styled.div`
 	max-width: 1360px;
 	margin: 0 auto;
@@ -17,17 +19,37 @@ const Container = styled.div`
 	}
 `;
 
+const Wrapper = styled.article`
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 10px;
+	max-width: 880px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
+const ContentWrapper = styled.div`
+	width: 100%;
+`;
+
+const StyledH2 = styled.h2`
+	font-size: 36px;
+	text-align: center;
+`;
+
 const Index = ({ data, intl: { locale } }) => {
 	return (
 		<MainTemplate>
 			<Container>
-				{data[locale].title && data[locale].content ? (
-					<Article
-						title={data[locale].title}
-						content={data[locale].content.json}
-						image={data.node.articleImage ? data.node.articleImage.fluid : null}
-						date={data.node.date}
-					/>
+				{data[locale] ? (
+					<Wrapper>
+						<Info>Histoire du théâtre</Info>
+						<StyledH2>{data[locale].title}</StyledH2>
+						<ContentWrapper>
+							<RichTextContentful richText={data[locale].content.json} />
+						</ContentWrapper>
+					</Wrapper>
 				) : (
 					<ArticleNotAvailable />
 				)}
@@ -38,33 +60,12 @@ const Index = ({ data, intl: { locale } }) => {
 };
 
 export const query = graphql`
-	query articleTemp($slug: String) {
-		pl: contentfulArticles(slug: { eq: $slug }) {
-			title: titlePl
-			content: contentPl {
-				json
-			}
-		}
-		fr: contentfulArticles(slug: { eq: $slug }) {
+	query postHistoryOfTheater($slug: String) {
+		fr: contentfulHistoryOfTheater(slug: { eq: $slug }) {
 			title: titleFr
 			content: contentFr {
 				json
 			}
-		}
-		en: contentfulArticles(slug: { eq: $slug }) {
-			title: titleEn
-			content: contentEn {
-				json
-			}
-		}
-
-		node: contentfulArticles(slug: { eq: $slug }) {
-			articleImage {
-				fluid(maxWidth: 800) {
-					...GatsbyContentfulFluid_withWebp_noBase64
-				}
-			}
-			date(formatString: "DD/MM/YYYY")
 		}
 	}
 `;

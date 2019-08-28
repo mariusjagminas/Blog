@@ -65,10 +65,10 @@ const StyledExcerpt = styled(ArticleExcerpt)`
 	}
 `;
 
-const ArticlePreviewSmall = ({ title, image, content }) => {
+const ArticlePreviewSmall = ({ title, image, content,slug }) => {
 	return (
 		<Article>
-			<StyledLink to="/">
+			<StyledLink to={`/${slug}`}>
 				<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={image} />
 				<Wrapper>
 					<Title>{title}</Title>
