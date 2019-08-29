@@ -2,30 +2,11 @@ import React from 'react';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import styled from 'styled-components';
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import ArticlePreview from '../../components/ArticlePreview/ArticlePreview';
 import { MainContainer, MainWrapper } from '../../assets/styles/layout';
+import { LinkToPrevious, LinkToNext } from '../../assets/styles/Links';
 
-const StyledLink = styled(Link)`
-	position: absolute;
-	bottom: 0;
-	text-decoration: none;
-	padding: 20px;
-	color: ${({ theme }) => theme.primary};
-	transition: color 0.5s ease-in-out;
-	&:hover {
-		color: ${({ theme }) => theme.secondary};
-	}
-`;
-
-const LinkToPrevious = styled(StyledLink)`
-	left: 0;
-`;
-
-const LinkToNext = styled(StyledLink)`
-	right: 0;
-`;
 const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	const locArticlesNodes = data[locale].nodes;
 
@@ -57,12 +38,12 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 					))}
 					{!isFirstPage && (
 						<LinkToPrevious to={pageContext.currentPage === 1 ? '/' : `/${pageContext.currentPage - 1}`}>
-							{`←${intl.formatMessage({ id: 'article.previous' })}`}
+							{`← ${intl.formatMessage({ id: 'article.previous' })}`}
 						</LinkToPrevious>
 					)}
 					{!isLastPage && (
 						<LinkToNext to={`/${pageContext.currentPage + 1}`}>
-							{`${intl.formatMessage({ id: 'article.next' })}→`}
+							{`${intl.formatMessage({ id: 'article.next' })} →`}
 						</LinkToNext>
 					)}
 				</MainWrapper>

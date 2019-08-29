@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from '../Img/Img';
-import { injectIntl, Link } from 'gatsby-plugin-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
 import Date from '../Date/Date';
 import Title from '../Title/Title';
 import SharedLinks from '../ShareLinks/ShareLinks';
 import ArticleExcerpt from '../ArticleExcerpt/ArticleExcerpt';
+import { LinkFramed } from '../../assets/styles/Links';
 
 const ArticleWrapper = styled.article`
 	width: 100%;
@@ -32,39 +33,6 @@ const Wrapper = styled.div`
 	padding: 0 10px 10px 10px;
 	width: 100%;
 `;
-const StyledLink = styled(Link)`
-	text-decoration: none;
-	color: ${({ theme }) => theme.primaryLight};
-	border: 1px solid ${({ theme }) => theme.grey};
-	border-radius: 3px;
-	position: relative;
-	margin-top: -10px;
-	padding: 6px 40px;
-	transition-property: background-color, border;
-	transition-duration: 0.5s;
-	&:before {
-		content: '';
-		position: absolute;
-		top: 2px;
-		bottom: 2px;
-		left: 2px;
-		right: 2px;
-		border: 1px solid ${({ theme }) => theme.grey};
-		border-radius: 3px;
-	}
-
-	&:hover {
-		background: ${({ theme }) => theme.secondaryLight};
-		border: 1px solid ${({ theme }) => theme.secondary};
-
-		:before {
-			border: 1px solid ${({ theme }) => theme.secondary};
-		}
-	}
-	${({ theme }) => theme.mq.laptop} {
-		margin: 0px;
-	}
-`;
 
 const ArticlePreview = ({ date, title, image, content, slug, intl }) => {
 	return (
@@ -76,7 +44,7 @@ const ArticlePreview = ({ date, title, image, content, slug, intl }) => {
 				<StyledExerpt content={content} length={500} />
 				<SharedLinks />
 			</Wrapper>
-			<StyledLink to={`/${slug}`}>{intl.formatMessage({ id: 'article.read' })}</StyledLink>
+			<LinkFramed to={`/${slug}`}>{intl.formatMessage({ id: 'article.read' })}</LinkFramed>
 		</ArticleWrapper>
 	);
 };
