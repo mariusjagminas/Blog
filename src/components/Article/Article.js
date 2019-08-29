@@ -41,4 +41,4 @@ const Article = ({ title, content, image, date }) => {
 };
 
 export default Article;
-// TODO: Add 'Back to articles' button at the end of a an article
+// TODO: Add Next and previous article buttons

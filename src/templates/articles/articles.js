@@ -2,7 +2,7 @@ import React from 'react';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { injectIntl, Link } from 'gatsby-plugin-intl';
+import { injectIntl} from 'gatsby-plugin-intl';
 import ArticlePreview from '../../components/ArticlePreview/ArticlePreview';
 import { MainContainer, MainWrapper } from '../../assets/styles/layout';
 import { LinkToPrevious, LinkToNext } from '../../assets/styles/Links';

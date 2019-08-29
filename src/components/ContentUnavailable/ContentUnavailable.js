@@ -32,3 +32,5 @@ const ContentUnavailable = ({ intl: { locale } }) => {
 };
 
 export default injectIntl(ContentUnavailable);
+
+// TODO: Change component apearance
