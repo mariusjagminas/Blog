@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import { injectIntl } from 'gatsby-plugin-intl';
-import ArticleNotAvailable from '../../components/ArticleNotAvailable/ArticleNotAvailable';
+import ContentUnavailable from '../../components/ContentUnavailable/ContentUnavailable';
 import RichTextContentful from '../../components/RichTextContenful/RichTextContenful';
 import { Info } from '../../pages/history-of-theater';
 
@@ -51,7 +51,7 @@ const Index = ({ data, intl: { locale } }) => {
 						</ContentWrapper>
 					</Wrapper>
 				) : (
-					<ArticleNotAvailable />
+					<ContentUnavailable />
 				)}
 				<Sidebar />
 			</Container>

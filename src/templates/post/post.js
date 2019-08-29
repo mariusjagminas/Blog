@@ -5,7 +5,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import Article from '../../components/Article/Article';
 import { injectIntl } from 'gatsby-plugin-intl';
-import ArticleNotAvailable from '../../components/ArticleNotAvailable/ArticleNotAvailable';
+import ContentUnavailable from '../../components/ContentUnavailable/ContentUnavailable';
 const Container = styled.div`
 	max-width: 1360px;
 	margin: 0 auto;
@@ -29,7 +29,7 @@ const Index = ({ data, intl: { locale } }) => {
 						date={data.node.date}
 					/>
 				) : (
-					<ArticleNotAvailable />
+					<ContentUnavailable />
 				)}
 				<Sidebar />
 			</Container>

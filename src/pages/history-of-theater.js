@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import { graphql } from 'gatsby';
 import ArticlePreviewSmall from '../components/ArticlePreviewSmall/ArticlePreviewSmall';
 import { injectIntl } from 'gatsby-plugin-intl';
-import ArticleNotAvailable from '../components/ArticleNotAvailable/ArticleNotAvailable';
+import ContentUnavailable from '../components/ContentUnavailable/ContentUnavailable';
 import styled from 'styled-components';
 
 const StyledMainWrapper = styled(MainWrapper)`
@@ -49,7 +49,7 @@ const Index = ({ data, intl: { locale } }) => {
 							);
 						})
 					) : (
-						<ArticleNotAvailable />
+						<ContentUnavailable />
 					)}
 				</StyledMainWrapper>
 				<Sidebar />

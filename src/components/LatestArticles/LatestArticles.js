@@ -23,7 +23,7 @@ const LatestArticles = ({ intl: { locale }, intl }) => {
 export default injectIntl(LatestArticles);
 
 const query = graphql`
-	query LatestArticles($limit: Int = 7) {
+	query LatestArticles($limit: Int = 4) {
 		#######
 		#######
 		pl: allContentfulArticles(

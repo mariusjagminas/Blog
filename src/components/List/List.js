@@ -33,6 +33,11 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	justify-content: ${({ isDateAvailable }) => (isDateAvailable ? 'flex-start' : 'center')};
 	margin-left: 20px;
+	opacity: 1;
+	transition: opacity 0.2s ease-in-out;
+	&:hover {
+		opacity: 0.6;
+	}
 `;
 
 const StyledH4 = styled.h4`
