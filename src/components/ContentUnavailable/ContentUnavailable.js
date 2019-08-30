@@ -33,4 +33,5 @@ const ContentUnavailable = ({ intl: { locale } }) => {
 
 export default injectIntl(ContentUnavailable);
 
-// TODO: Change component apearance
+// FIXME: make content unavailable reusable, or create new 404 page with link 'go back to main page'
+// It would be nice if 'go back' button would be available in ContentUnavailable page

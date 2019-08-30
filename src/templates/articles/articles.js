@@ -2,7 +2,7 @@ import React from 'react';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { injectIntl} from 'gatsby-plugin-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
 import ArticlePreview from '../../components/ArticlePreview/ArticlePreview';
 import { MainContainer, MainWrapper } from '../../assets/styles/layout';
 import { LinkToPrevious, LinkToNext } from '../../assets/styles/Links';
@@ -23,7 +23,7 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	const isLastPage = nextPageArticlesCount[locale] <= 0;
 
 	return (
-		<MainTemplate>
+		<MainTemplate isRedirectToHomePage={true}>
 			<MainContainer>
 				<MainWrapper>
 					{locArticlesNodes.map((node, i) => (
@@ -145,3 +145,8 @@ export const query = graphql`
 `;
 
 export default injectIntl(Index);
+//  FIXME: Check all links in rich text field, and remove/replace links with url to old website
+// FIXME: Please make content lintint for articles and history-of-theater pages
+// FIXME: Remove floats in ContenfullImage for mobile view
+// FIXME: Photo which is coming from contenfull rich text does't renders???
+// FIXME: In about-me page add dowloadable links for .PDF assets

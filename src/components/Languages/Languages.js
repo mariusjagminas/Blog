@@ -1,85 +1,90 @@
-import React from "react"
-import { changeLocale } from "gatsby-plugin-intl"
-import styled from "styled-components"
-import flagPoland from "../../assets/images/flag-poland.png"
-import flagFrance from "../../assets/images/flag-france.png"
-import flagBritish from "../../assets/images/flag-uk.png"
+import React from 'react';
+import { changeLocale } from 'gatsby-plugin-intl';
+import styled from 'styled-components';
+import flagPoland from '../../assets/images/flag-poland.png';
+import flagFrance from '../../assets/images/flag-france.png';
+import flagBritish from '../../assets/images/flag-uk.png';
 
 const StyledUl = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  ${({ theme }) => theme.mq.laptop} {
-    display: ${({ inMobileMenu }) => (inMobileMenu ? "none" : "flex")};
-  }
-`
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	${({ theme }) => theme.mq.laptop} {
+		display: ${({ inMobileMenu }) => (inMobileMenu ? 'none' : 'flex')};
+	}
+`;
+
+const StyledLi = styled.li`
+	margin: 0;
+	padding: 0;
+`;
 
 const StyledButton = styled.button`
-  border: none;
-  display: flex;
-  background: ${({ theme }) => theme.bright};
-  height: 37px;
-  margin: 0 0 10px 15px;
-  padding: 5px 20px 5px 0;
-  &:focus {
-    outline: none;
-  }
+	border: none;
+	display: flex;
+	background: ${({ theme }) => theme.bright};
+	height: 37px;
+	margin: 0 0 10px 15px;
+	padding: 5px 20px 5px 0;
+	&:focus {
+		outline: none;
+	}
 
-  ${({ theme }) => theme.mq.laptop} {
-    margin: 0;
-    height: auto;
-    &:hover {
-      background: ${({ theme }) => theme.secondaryLight};
-    }
-  }
-`
+	${({ theme }) => theme.mq.laptop} {
+		margin: 0;
+		height: auto;
+		&:hover {
+			background: ${({ theme }) => theme.secondaryLight};
+		}
+	}
+`;
 
 const ImgWrapper = styled.div`
-  width: 30px;
+	width: 30px;
 
-  ${({ theme }) => theme.mq.laptop} {
-    width: 30px;
-    margin: 0 10px;
-  }
-`
+	${({ theme }) => theme.mq.laptop} {
+		width: 30px;
+		margin: 0 10px;
+	}
+`;
 const StyledImg = styled.img`
-  width: 100%;
-  height: auto;
-`
+	width: 100%;
+	height: auto;
+`;
 
 const StyledText = styled.p`
-  margin: 6px 0 0 10px;
-  font-family: ${({ theme }) => theme.font.family.main};
-  font-size: 16px;
-`
+	margin: 6px 0 0 10px;
+	font-family: ${({ theme }) => theme.font.family.main};
+	font-size: 16px;
+`;
 
-const Languages = ({ inMobileMenu }) => {
-  return (
-    <>
-      <StyledUl inMobileMenu={inMobileMenu}>
-        <StyledButton onClick={() => changeLocale("pl")}>
-          <ImgWrapper>
-            <StyledImg src={flagPoland} />
-          </ImgWrapper>
-          <StyledText>Polski</StyledText>
-        </StyledButton>
-        <StyledButton onClick={() => changeLocale("fr")}>
-          <ImgWrapper>
-            <StyledImg src={flagFrance} />
-          </ImgWrapper>
-          <StyledText>Français</StyledText>
-        </StyledButton>
-        <StyledButton onClick={() => changeLocale("en")}>
-          <ImgWrapper>
-            <StyledImg src={flagBritish} />
-          </ImgWrapper>
-          <StyledText>English</StyledText>
-        </StyledButton>
-      </StyledUl>
-    </>
-  )
-}
+const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {
+	const path = isRedirectToHomePage ? '/' : null;
+	const data = [
+		{ locale: 'pl', img: flagPoland, text: 'Polski' },
+		{ locale: 'fr', img: flagFrance, text: 'Français' },
+		{ locale: 'en', img: flagBritish, text: 'English' }
+	];
+	return (
+		<StyledUl inMobileMenu={inMobileMenu}>
+			{data.map(({ locale, img, text }, i) => (
+				<StyledLi key={i}>
+					<StyledButton onClick={() => changeLocale(locale, path)}>
+						<ImgWrapper>
+							<StyledImg src={img} />
+						</ImgWrapper>
+						<StyledText>{text}</StyledText>
+					</StyledButton>
+				</StyledLi>
+			))}
+		</StyledUl>
+	);
+};
 
-export default Languages
+export default Languages;
+
+Languages.defaultProps = {
+	isRedirectToHomePage: false
+};

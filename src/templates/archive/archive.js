@@ -14,7 +14,7 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
 	const locArticlesNodes = data[locale].nodes.filter(item => checkForMatch(item, slugsArray));
 
 	return (
-		<MainTemplate>
+		<MainTemplate isRedirectToHomePage={true}>
 			<MainContainer>
 				<MainWrapper>
 					{locArticlesNodes.map((node, i) => (
