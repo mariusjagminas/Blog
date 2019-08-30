@@ -25,8 +25,8 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledImg = styled(Img)`
-	width: 50px;
-	height: 50px;
+	min-width: 50%;
+	height: 140px;
 	background-color: ${({ theme }) => theme.lightGrey};
 	${({ theme }) => theme.mq.tablet} {
 		min-width: 440px;
@@ -50,10 +50,10 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h2`
-	font-size: 16px;
+	font-size: 20px;
 	margin: 0;
 	${({ theme }) => theme.mq.tablet} {
-		font-size: 22px;
+		font-size: 24px;
 		margin: 10px 0;
 	}
 `;
@@ -65,7 +65,7 @@ const StyledExcerpt = styled(ArticleExcerpt)`
 	}
 `;
 
-const ArticlePreviewSmall = ({ title, image, content,slug }) => {
+const ArticlePreviewSmall = ({ title, image, content, slug }) => {
 	return (
 		<Article>
 			<StyledLink to={`/${slug}`}>

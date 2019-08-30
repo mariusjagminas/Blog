@@ -70,7 +70,7 @@ const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {
 	return (
 		<StyledUl inMobileMenu={inMobileMenu}>
 			{data.map(({ locale, img, text }, i) => (
-				<StyledLi key={i}>
+				<StyledLi key={i}> 
 					<StyledButton onClick={() => changeLocale(locale, path)}>
 						<ImgWrapper>
 							<StyledImg src={img} />
