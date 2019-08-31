@@ -26,7 +26,6 @@ const ContentfulImage = ({ contentfulId }) => {
 	`);
 
 	const image = data.allContentfulAsset.edges.find(edge => edge.node.contentful_id === fixId(contentfulId));
-	console.log(contentfulId);
 
 	return image ? <Image fluid={image.node.fluid} /> : null;
 };

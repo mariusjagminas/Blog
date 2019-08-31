@@ -48,7 +48,7 @@ module.exports = {
 			options: {
 				spaceId: process.env.CONTENFUL_SPACE_ID,
 				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-				downloadLocal: false
+				downloadLocal: true
 			}
 		},
 		{

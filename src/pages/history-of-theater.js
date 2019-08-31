@@ -79,4 +79,3 @@ export const query = graphql`
 	}
 `;
 
-// FIXME: Change mobile view in history-of-theater

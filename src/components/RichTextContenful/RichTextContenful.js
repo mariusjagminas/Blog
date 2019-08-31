@@ -22,12 +22,13 @@ const StyledB = styled.b`
 	color: ${({ theme }) => theme.primary};
 `;
 
-const StyledA = styled.a`
+const StyledHyperlink = styled.a`
 	color: ${({ theme }) => theme.secondaryDark};
 `;
 const Bold = ({ children }) => <StyledB>{children}</StyledB>;
 
-const StyledHyperlink = ({ children, href }) => <StyledA href={href}>{children}</StyledA>;
+const HyperlinkToUrl = ({ children, href }) => <StyledHyperlink href={href}>{children}</StyledHyperlink>;
+const HyperlinkToAsset = ({ children, href }) => <StyledHyperlink href={href}>{children}</StyledHyperlink>;
 
 const options = {
 	renderNode: {
@@ -36,7 +37,12 @@ const options = {
 				<ContentfulImage contentfulId={node.data.target.sys.id} />
 			</ImageWrapper>
 		),
-		[INLINES.HYPERLINK]: node => <StyledHyperlink href={node.data.uri}>{node.content[0].value}</StyledHyperlink>
+		[INLINES.HYPERLINK]: node => <HyperlinkToUrl href={node.data.uri}>{node.content[0].value}</HyperlinkToUrl>,
+		[INLINES.ASSET_HYPERLINK]: node => (
+			<HyperlinkToAsset href={`${node.data.target.fields.file['pl-PL'].url}`}>
+				{node.content[0].value}
+			</HyperlinkToAsset>
+		)
 	},
 	renderMark: {
 		[MARKS.BOLD]: text => <Bold>{text}</Bold>
