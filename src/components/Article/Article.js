@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Date from '../Date/Date';
 import Title from '../Title/Title';
-import Content from '../Content/Content';
 import Img from '../Img/Img';
 import RichTextContenful from '../RichTextContenful/RichTextContenful';
+import ShareLinks from '../ShareLinks/ShareLinks';
 
 const Wrapper = styled.article`
 	width: 100%;
@@ -26,7 +26,7 @@ const ContentWrapper = styled.div`
 	width: 100%;
 `;
 
-const Article = ({ title, content, image, date }) => {
+const Article = ({ title, content, image, date, slug }) => {
 	return (
 		<Wrapper>
 			<Date date={date} />
@@ -34,8 +34,8 @@ const Article = ({ title, content, image, date }) => {
 			<ContentWrapper>
 				<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={image} />
 				<RichTextContenful richText={content} />
+				<ShareLinks slug={slug} title={title} />
 			</ContentWrapper>
-			<Content />
 		</Wrapper>
 	);
 };

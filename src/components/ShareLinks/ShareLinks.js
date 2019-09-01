@@ -59,14 +59,13 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
 				<FacebookButton url={postUrl} quote={title}>
 					<FacebookIcon size={30} round={true} iconBgStyle={{ fill: `${theme.secondary}` }} />
 				</FacebookButton>
-				<TwitterButton url={postUrl} via={'via test'}>
+				<TwitterButton url={postUrl}>
 					<TwitterIcon size={30} round={true} iconBgStyle={{ fill: `${theme.secondary}` }} />
 				</TwitterButton>
 			</IconsWrapper>
 		</Wrapper>
 	);
 };
-// TODO: Add share buttons at the end off every article
 
 // TODO: Add share buttons to history-of-theater posts
 export default injectIntl(withTheme(ShareLinks));

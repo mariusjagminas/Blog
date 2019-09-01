@@ -17,7 +17,7 @@ const Container = styled.div`
 	}
 `;
 
-const Index = ({ data, intl: { locale } }) => {
+const Index = ({ data, intl: { locale }, pageContext: { slug } }) => {
 	return (
 		<MainTemplate>
 			<Container>
@@ -27,6 +27,7 @@ const Index = ({ data, intl: { locale } }) => {
 						content={data[locale].content.json}
 						image={data.node.articleImage ? data.node.articleImage.fluid : null}
 						date={data.node.date}
+						slug={slug}
 					/>
 				) : (
 					<ContentUnavailable />

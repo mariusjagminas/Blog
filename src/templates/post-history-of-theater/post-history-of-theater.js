@@ -7,6 +7,7 @@ import { injectIntl } from 'gatsby-plugin-intl';
 import ContentUnavailable from '../../components/ContentUnavailable/ContentUnavailable';
 import RichTextContentful from '../../components/RichTextContenful/RichTextContenful';
 import { Info } from '../../pages/history-of-theater';
+import ShareLinks from '../../components/ShareLinks/ShareLinks';
 
 const Container = styled.div`
 	max-width: 1360px;
@@ -38,7 +39,7 @@ const StyledH2 = styled.h2`
 	text-align: center;
 `;
 
-const Index = ({ data, intl: { locale } }) => {
+const Index = ({ data, intl: { locale }, pageContext: { slug } }) => {
 	return (
 		<MainTemplate>
 			<Container>
@@ -49,6 +50,7 @@ const Index = ({ data, intl: { locale } }) => {
 						<ContentWrapper>
 							<RichTextContentful richText={data[locale].content.json} />
 						</ContentWrapper>
+						<ShareLinks slug={slug} title={data[locale].title} />
 					</Wrapper>
 				) : (
 					<ContentUnavailable />
