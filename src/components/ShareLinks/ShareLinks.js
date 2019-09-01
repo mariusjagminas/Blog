@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { withTheme, css } from 'styled-components';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import { FacebookIcon, TwitterIcon } from 'react-share';
+import { injectIntl } from 'gatsby-plugin-intl';
 
 const Wrapper = styled.div`
 	display: ${({ aboutPage }) => (aboutPage ? 'flex' : 'none')};
@@ -48,14 +49,17 @@ const TwitterButton = styled(TwitterShareButton)`
 	${sharedStyle}
 `;
 
-const ShareLinks = ({ theme, aboutPage }) => {
+const baseUrl = 'https://gallant-kare-5fe476.netlify.com';
+
+const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
+	const postUrl = `${baseUrl}/${locale}/${slug}`;
 	return (
 		<Wrapper aboutPage={aboutPage}>
 			<IconsWrapper>
-				<FacebookButton url={'https://gallant-kare-5fe476.netlify.com/'}>
+				<FacebookButton url={postUrl} quote={title}>
 					<FacebookIcon size={30} round={true} iconBgStyle={{ fill: `${theme.secondary}` }} />
 				</FacebookButton>
-				<TwitterButton url={'https://gallant-kare-5fe476.netlify.com/'}>
+				<TwitterButton url={postUrl} via={'via test'}>
 					<TwitterIcon size={30} round={true} iconBgStyle={{ fill: `${theme.secondary}` }} />
 				</TwitterButton>
 			</IconsWrapper>
@@ -63,6 +67,6 @@ const ShareLinks = ({ theme, aboutPage }) => {
 	);
 };
 // TODO: Add share buttons at the end off every article
-// TODO: Make custom share buttons for every article and article preview
+
 // TODO: Add share buttons to history-of-theater posts
-export default withTheme(ShareLinks);
+export default injectIntl(withTheme(ShareLinks));

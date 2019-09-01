@@ -42,7 +42,7 @@ const ArticlePreview = ({ date, title, image, content, slug, intl }) => {
 			<Wrapper>
 				<StyledImg imgStyle={{ objectFit: 'contain' }} fluid={image} />
 				<StyledExerpt content={content} length={500} />
-				<SharedLinks />
+				<SharedLinks slug={slug} title={title} />
 			</Wrapper>
 			<LinkFramed to={`/${slug}`}>{intl.formatMessage({ id: 'article.read' })}</LinkFramed>
 		</ArticleWrapper>
