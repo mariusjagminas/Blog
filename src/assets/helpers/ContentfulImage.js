@@ -9,7 +9,7 @@ function fixId(id) {
 	}
 }
 
-const ContentfulImage = ({ contentfulId }) => {
+const ContentfulImage = ({ contentfulId, ...props }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			allContentfulAsset {
@@ -27,6 +27,6 @@ const ContentfulImage = ({ contentfulId }) => {
 
 	const image = data.allContentfulAsset.edges.find(edge => edge.node.contentful_id === fixId(contentfulId));
 
-	return image ? <Image fluid={image.node.fluid} /> : null;
+	return image ? <Image {...props} fluid={image.node.fluid} /> : null;
 };
 export default ContentfulImage;
