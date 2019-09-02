@@ -145,6 +145,5 @@ export const query = graphql`
 `;
 
 export default injectIntl(Index);
-// FIXME: Please make content lintint for articles and history-of-theater pages
 
 // FIXME: Photo which is coming from contenfull rich text does't renders???

@@ -44,5 +44,3 @@ const ReturnToLink = ({ text, intl }) => {
 };
 
 export default injectIntl(ReturnToLink);
-
-// FIXME: make content unavailable reusable, or create new 404 page with link 'go back to main page'

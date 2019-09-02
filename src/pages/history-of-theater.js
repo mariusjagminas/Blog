@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import { graphql } from 'gatsby';
 import ArticlePreviewSmall from '../components/ArticlePreviewSmall/ArticlePreviewSmall';
 import { injectIntl } from 'gatsby-plugin-intl';
-import ContentUnavailable from '../components/ContentUnavailable/ContentUnavailable';
+import ReturnToLink from '../components/ReturnToLink/ReturnToLink';
 import styled from 'styled-components';
 
 const StyledMainWrapper = styled(MainWrapper)`
@@ -29,7 +29,7 @@ export const Info = styled.p`
 	}
 `;
 
-const Index = ({ data, intl: { locale } }) => {
+const Index = ({ data,intl, intl: { locale } }) => {
 	const locArticles = data[locale] ? data[locale].nodes : null;
 	return (
 		<MainTemplate>
@@ -49,7 +49,7 @@ const Index = ({ data, intl: { locale } }) => {
 							);
 						})
 					) : (
-						<ContentUnavailable />
+						<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
 					)}
 				</StyledMainWrapper>
 				<Sidebar />
