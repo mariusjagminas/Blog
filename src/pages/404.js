@@ -23,3 +23,6 @@ const Index = ({ intl }) => (
 );
 
 export default injectIntl(Index);
+
+//FIXME: Redicection is always to main 404 page, so localized versions of that
+// page are ignored. Make sharebale page 404.

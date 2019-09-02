@@ -10,14 +10,14 @@ const Container = styled.main`
 	max-width: 100%;
 `;
 
-const MainTemplate = props => (
+const MainTemplate = ({ title, children, isRedirectToHomePage }) => (
 	<>
 		<GlobalStyle />
 		<ThemeProvider theme={theme}>
 			<>
-				<Seo />
-				<Header isRedirectToHomePage={props.isRedirectToHomePage} />
-				<Container>{props.children}</Container>
+				<Seo title={title} />
+				<Header isRedirectToHomePage={isRedirectToHomePage} />
+				<Container>{children}</Container>
 				<Footer />
 			</>
 		</ThemeProvider>

@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	return (
-		<MainTemplate>
+		<MainTemplate title={data[locale].title}>
 			<Container>
 				{data[locale].title && data[locale].content ? (
 					<Article

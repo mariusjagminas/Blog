@@ -76,7 +76,7 @@ const Menu = ({ intl, intl: { locale }, isMenuOpen, isRedirectToHomePage, ...pro
 			title: intl.formatMessage({ id: 'menu.about_me' }),
 			path: '/about-me'
 		},
-		{ title: intl.formatMessage({ id: 'menu.contact' }), path: '/contact' }
+		// { title: intl.formatMessage({ id: 'menu.contact' }), path: '/contact' }
 	];
 
 	return (

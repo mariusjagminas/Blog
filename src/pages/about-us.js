@@ -17,9 +17,9 @@ const ReturnToLink = styled.div`
 	}
 `;
 
-const Index = ({ data, intl: { locale } }) => {
+const Index = ({ data, intl, intl: { locale } }) => {
 	return (
-		<MainTemplate>
+		<MainTemplate title={intl.formatMessage({ id: 'menu.about_us' })}>
 			<Hero data={data} />
 			<ReturnToLink>
 				<RichTextContenful richText={data.page[locale].json} />

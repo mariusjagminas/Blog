@@ -40,13 +40,14 @@ const StyledH2 = styled.h2`
 `;
 
 const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
+	const locTitle = data[locale] ? data[locale].title : null;
 	return (
-		<MainTemplate>
+		<MainTemplate title={locTitle}>
 			<Container>
-				{data[locale] ? (
+				{locTitle ? (
 					<Wrapper>
 						<Info>Histoire du théâtre</Info>
-						<StyledH2>{data[locale].title}</StyledH2>
+						<StyledH2>{locTitle}</StyledH2>
 						<ContentWrapper>
 							<RichTextContentful richText={data[locale].content.json} />
 						</ContentWrapper>
