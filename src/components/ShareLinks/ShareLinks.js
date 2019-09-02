@@ -6,9 +6,9 @@ import { injectIntl } from 'gatsby-plugin-intl';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const Wrapper = styled.div`
-	display: ${({ aboutPage }) => (aboutPage ? 'flex' : 'none')};
+	display: flex;
 	width: 100%;
-	padding: ${({ aboutPage }) => (aboutPage ? '20px' : '5px')};
+	padding: ${({ aboutPage }) => (aboutPage ? '20px' : '10px')};
 	justify-content: center;
 	align-items: center;
 
@@ -19,8 +19,7 @@ const Wrapper = styled.div`
 		height: 1px;
 		background: ${({ theme }) => theme.grey};
 	}
-	${({ theme }) => theme.mq.laptop} {
-		display: flex;
+	${({ theme }) => theme.mq.tablet} {
 		padding: ${({ aboutPage }) => (aboutPage ? '30px' : '15px 0')};
 	}
 `;
@@ -57,7 +56,9 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
 		}
 	} = useStaticQuery(query);
 
-	const postUrl = `${baseUrl}${locale === 'pl' ? '' : '/' + locale}/${slug} `;
+	const locPrefix = locale === 'pl' ? '' : '/' + locale;
+
+	const postUrl = `${baseUrl}${locPrefix}/${slug} `;
 
 	return (
 		<Wrapper aboutPage={aboutPage}>
@@ -84,3 +85,5 @@ const query = graphql`
 		}
 	}
 `;
+
+//FIXME: Share links in about page does't have a path
