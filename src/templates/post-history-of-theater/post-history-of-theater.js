@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import { injectIntl } from 'gatsby-plugin-intl';
-import ContentUnavailable from '../../components/ContentUnavailable/ContentUnavailable';
 import RichTextContentful from '../../components/RichTextContenful/RichTextContenful';
 import { Info } from '../../pages/history-of-theater';
 import ShareLinks from '../../components/ShareLinks/ShareLinks';

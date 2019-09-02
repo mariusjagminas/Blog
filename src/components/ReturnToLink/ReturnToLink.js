@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Link } from 'gatsby-plugin-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
 
 const StyledDiv = styled.div`
@@ -38,7 +38,7 @@ const ReturnToLink = ({ text, intl }) => {
 	return (
 		<StyledDiv>
 			<Text>{text}</Text>
-			<StyledLink to={'./'}>{`← ${intl.formatMessage({ id: 'go_back_link' })}`}</StyledLink>
+			<StyledLink to={'/'}>{`← ${intl.formatMessage({ id: 'go_back_link' })}`}</StyledLink>
 		</StyledDiv>
 	);
 };
