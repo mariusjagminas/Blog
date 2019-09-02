@@ -4,9 +4,7 @@ require('dotenv').config({
 
 module.exports = {
 	siteMetadata: {
-		title: `Literatura`,
-		description: `Literatura najnowsza`,
-		author: `Pawel Hladki`
+		baseUrl: 'https://gallant-kare-5fe476.netlify.com'
 	},
 	plugins: [
 		{
@@ -14,6 +12,15 @@ module.exports = {
 			options: {
 				// language JSON resource path
 				path: `${__dirname}/public/intl`,
+				// #####
+				// To avoid page duplication ( egz. www.url.com/ www.url.com/pl)
+				// language pl is not set in supported language list below.
+				// Default path '/' is set to Polish content pages now,
+				// for that reason some changes are made in these components:
+				// 1.Languages.js var locale is set to '/' instead of 'pl'
+				// 2.ShareLinks.js var postUrl is assembled that way, if intl.locale var is 'pl' then localization
+				// prefix is empty string ''
+				//######
 				// supported language
 				languages: [`fr`, 'en'],
 				// language file path

@@ -12,7 +12,7 @@ const Seo = ({ intl: { locale }, title }) => {
 		<Helmet>
 			<html lang={`${locale}`} />
 			<title>{title || defaultTitle[locale]}</title>
-			<meta name="author" content="Pawel Hladki" />
+			<meta name="author" content="Pawel Hladki" />w
 		</Helmet>
 	);
 };

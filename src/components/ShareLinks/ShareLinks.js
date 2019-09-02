@@ -3,6 +3,7 @@ import styled, { withTheme, css } from 'styled-components';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import { FacebookIcon, TwitterIcon } from 'react-share';
 import { injectIntl } from 'gatsby-plugin-intl';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const Wrapper = styled.div`
 	display: ${({ aboutPage }) => (aboutPage ? 'flex' : 'none')};
@@ -49,10 +50,15 @@ const TwitterButton = styled(TwitterShareButton)`
 	${sharedStyle}
 `;
 
-const baseUrl = 'https://gallant-kare-5fe476.netlify.com';
-
 const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
-	const postUrl = `${baseUrl}/${locale}/${slug}`;
+	const {
+		site: {
+			siteMetadata: { baseUrl }
+		}
+	} = useStaticQuery(query);
+
+	const postUrl = `${baseUrl}${locale === 'pl' ? '' : '/' + locale}/${slug} `;
+
 	return (
 		<Wrapper aboutPage={aboutPage}>
 			<IconsWrapper>
@@ -67,5 +73,14 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
 	);
 };
 
-
 export default injectIntl(withTheme(ShareLinks));
+
+const query = graphql`
+	query shareLinks {
+		site {
+			siteMetadata {
+				baseUrl
+			}
+		}
+	}
+`;
