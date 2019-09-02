@@ -64,7 +64,7 @@ const StyledLink = styled(Link)`
 	}
 `;
 
-const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
+const Menu = ({ intl, intl: { locale }, isMenuOpen, isRedirectToHomePage, ...props }) => {
 	const links = [
 		{ title: intl.formatMessage({ id: 'menu.about_us' }), path: '/about-us' },
 		{ title: intl.formatMessage({ id: 'menu.articles' }), path: '/' },
@@ -89,7 +89,7 @@ const Menu = ({ intl, intl: { locale }, isMenuOpen, ...props }) => {
 						</StyledLink>
 					</MenuItem>
 				))}
-				<LanguagesSwitcher isMobileMenu />
+				<LanguagesSwitcher isMobileMenu isRedirectToHomePage={isRedirectToHomePage} />
 			</MenuList>
 		</nav>
 	);

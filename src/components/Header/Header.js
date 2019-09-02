@@ -46,7 +46,7 @@ const Header = ({ isRedirectToHomePage }) => {
 		<header>
 			<Wrapper>
 				<Hamburger onClick={toggleMenu} isMenuOpen={isMenuOpen} />
-				<Menu isMenuOpen={isMenuOpen} />
+				<Menu isMenuOpen={isMenuOpen} isRedirectToHomePage={isRedirectToHomePage} />
 				<LanguageSwitcher isRedirectToHomePage={isRedirectToHomePage} />
 			</Wrapper>
 			<EmptySpaceFiller />
