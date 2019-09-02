@@ -24,3 +24,9 @@ article:
 
 aboutMe:
   title: "Paweł Hładki"
+
+content_unavailable: "Contenu non disponible en français"  
+
+go_back_link: "Retournez à la page d'accueil"
+
+not_found: "404 Page non trouvée"

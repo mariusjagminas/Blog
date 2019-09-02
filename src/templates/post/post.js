@@ -5,7 +5,8 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import Article from '../../components/Article/Article';
 import { injectIntl } from 'gatsby-plugin-intl';
-import ContentUnavailable from '../../components/ContentUnavailable/ContentUnavailable';
+import ReturnToLink from '../../components/ReturnToLink/ReturnToLink';
+
 const Container = styled.div`
 	max-width: 1360px;
 	margin: 0 auto;
@@ -17,7 +18,7 @@ const Container = styled.div`
 	}
 `;
 
-const Index = ({ data, intl: { locale }, pageContext: { slug } }) => {
+const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	return (
 		<MainTemplate>
 			<Container>
@@ -30,7 +31,7 @@ const Index = ({ data, intl: { locale }, pageContext: { slug } }) => {
 						slug={slug}
 					/>
 				) : (
-					<ContentUnavailable />
+					<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
 				)}
 				<Sidebar />
 			</Container>

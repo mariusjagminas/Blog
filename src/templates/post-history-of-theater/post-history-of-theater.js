@@ -8,6 +8,7 @@ import ContentUnavailable from '../../components/ContentUnavailable/ContentUnava
 import RichTextContentful from '../../components/RichTextContenful/RichTextContenful';
 import { Info } from '../../pages/history-of-theater';
 import ShareLinks from '../../components/ShareLinks/ShareLinks';
+import ReturnToLink from '../../components/ReturnToLink/ReturnToLink';
 
 const Container = styled.div`
 	max-width: 1360px;
@@ -39,7 +40,7 @@ const StyledH2 = styled.h2`
 	text-align: center;
 `;
 
-const Index = ({ data, intl: { locale }, pageContext: { slug } }) => {
+const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	return (
 		<MainTemplate>
 			<Container>
@@ -53,7 +54,7 @@ const Index = ({ data, intl: { locale }, pageContext: { slug } }) => {
 						<ShareLinks slug={slug} title={data[locale].title} />
 					</Wrapper>
 				) : (
-					<ContentUnavailable />
+					<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
 				)}
 				<Sidebar />
 			</Container>

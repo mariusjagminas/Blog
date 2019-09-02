@@ -63,14 +63,14 @@ const StyledText = styled.p`
 const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {
 	const path = isRedirectToHomePage ? '/' : null;
 	const data = [
-		{ locale: 'pl', img: flagPoland, text: 'Polski' },
+		{ locale: '/', img: flagPoland, text: 'Polski' },
 		{ locale: 'fr', img: flagFrance, text: 'Français' },
 		{ locale: 'en', img: flagBritish, text: 'English' }
 	];
 	return (
 		<StyledUl inMobileMenu={inMobileMenu}>
 			{data.map(({ locale, img, text }, i) => (
-				<StyledLi key={i}> 
+				<StyledLi key={i}>
 					<StyledButton onClick={() => changeLocale(locale, path)}>
 						<ImgWrapper>
 							<StyledImg src={img} />

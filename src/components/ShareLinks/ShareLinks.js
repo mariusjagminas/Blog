@@ -67,5 +67,5 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
 	);
 };
 
-// TODO: Add share buttons to history-of-theater posts
+
 export default injectIntl(withTheme(ShareLinks));

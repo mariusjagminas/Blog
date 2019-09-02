@@ -6,7 +6,7 @@ import styled from "styled-components"
 import RichTextContenful from "../components/RichTextContenful/RichTextContenful"
 import HeaderAboutMe from "../components/HeaderAboutMe/HeaderAboutMe"
 
-const TextWrapper = styled.div`
+const ReturnToLink = styled.div`
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
@@ -23,10 +23,10 @@ const TextWrapper = styled.div`
 const Index = ({ data, intl: { locale } }) => {
   return (
     <MainTemplate>
-      <TextWrapper>
+      <ReturnToLink>
         <HeaderAboutMe />
         <RichTextContenful richText={data.page[locale].json} />
-      </TextWrapper>
+      </ReturnToLink>
     </MainTemplate>
   )
 }

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import RichTextContenful from '../components/RichTextContenful/RichTextContenful';
 import ShareLinks from '../components/ShareLinks/ShareLinks';
 
-const TextWrapper = styled.div`
+const ReturnToLink = styled.div`
 	max-width: 780px;
 	margin: 0 auto;
 	padding: 0 10px;
@@ -21,10 +21,10 @@ const Index = ({ data, intl: { locale } }) => {
 	return (
 		<MainTemplate>
 			<Hero data={data} />
-			<TextWrapper>
+			<ReturnToLink>
 				<RichTextContenful richText={data.page[locale].json} />
 				<ShareLinks aboutPage />
-			</TextWrapper>
+			</ReturnToLink>
 		</MainTemplate>
 	);
 };
