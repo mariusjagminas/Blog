@@ -12,7 +12,7 @@ const image = {
 	en: flagBritish
 };
 
-// FIXME: In mobile view hide languages option menu when menu is closed 
+// FIXME: In mobile view hide languages option menu when menu is closed
 
 const Nav = styled.nav`
 	display: ${({ isMobileMenu }) => (isMobileMenu ? 'flex' : 'none')};
@@ -42,22 +42,27 @@ const DropdownMenu = styled.div`
 	position: absolute;
 	z-index: 5;
 	background: white;
-	top: 40px;
-	right: 0;
+	top: 65px;
+	width: 318px;
+	right: -97px;
 	box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
-	width: auto;
-	right: -21px;
-	&:before {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		width: 10px;
-		height: 10px;
-		background: white;
-		box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
-		top: -6px;
-		right: 21px;
-		transform: rotateZ(45deg);
+
+	${({ theme }) => theme.mq.laptop} {
+		top: 40px;
+		width: auto;
+		right: -21px;
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			width: 10px;
+			height: 10px;
+			background: white;
+			box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
+			top: -6px;
+			right: 21px;
+			transform: rotateZ(45deg);
+		}
 	}
 `;
 

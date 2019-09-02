@@ -10,9 +10,10 @@ const StyledUl = styled.ul`
 	padding: 0;
 	list-style: none;
 	display: flex;
-	flex-direction: column;
+	justify-content: space-around;
 	${({ theme }) => theme.mq.laptop} {
 		display: ${({ inMobileMenu }) => (inMobileMenu ? 'none' : 'flex')};
+		flex-direction: column;
 	}
 `;
 
@@ -26,8 +27,7 @@ const StyledButton = styled.button`
 	display: flex;
 	background: ${({ theme }) => theme.bright};
 	height: 37px;
-	margin: 0 0 10px 15px;
-	padding: 5px 20px 5px 0;
+
 	&:focus {
 		outline: none;
 	}
@@ -35,6 +35,8 @@ const StyledButton = styled.button`
 	${({ theme }) => theme.mq.laptop} {
 		margin: 0;
 		height: auto;
+		padding: 5px 20px 5px 0;
+
 		&:hover {
 			background: ${({ theme }) => theme.secondaryLight};
 		}
