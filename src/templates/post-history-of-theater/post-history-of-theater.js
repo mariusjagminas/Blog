@@ -9,6 +9,7 @@ import { Info } from '../../pages/history-of-theater';
 import ShareLinks from '../../components/ShareLinks/ShareLinks';
 import ReturnToLink from '../../components/ReturnToLink/ReturnToLink';
 import { MainContainer, MainWrapper, ContentWrapper, RichTextWrapper } from '../../assets/styles/layout';
+import NextPrevLinks from '../../components/NextPrevLinks/NextPrevLinks';
 
 const StyledH2 = styled.h2`
 	font-size: 36px;
@@ -17,6 +18,11 @@ const StyledH2 = styled.h2`
 
 const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const locTitle = data[locale] ? data[locale].title : null;
+	const node = data[locale] ? data[`${locale}_slugs`].edges.find(item => item.node.slug === slug) : null;
+	// Do some data validation and get next and prev articles paths
+	const prevPagePath = node && node.previous ? `/${node.previous.slug}` : null;
+	const nextPagePath = node && node.next ? `/${node.next.slug}` : null;
+
 	return (
 		<MainTemplate title={locTitle}>
 			<MainContainer>
@@ -29,6 +35,12 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 								<RichTextContentful richText={data[locale].content.json} />
 							</RichTextWrapper>
 							<ShareLinks slug={slug} title={data[locale].title} />
+							<NextPrevLinks
+								pathPrev={prevPagePath}
+								textPrev={intl.formatMessage({ id: 'history_of_theater.previous' })}
+								pathNext={nextPagePath}
+								textNext={intl.formatMessage({ id: 'history_of_theater.next' })}
+							/>
 						</ContentWrapper>
 					) : (
 						<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
@@ -46,6 +58,21 @@ export const query = graphql`
 			title: titleFr
 			content: contentFr {
 				json
+			}
+		}
+		#####
+		#####
+		fr_slugs: allContentfulHistoryOfTheater(filter: { titleFr: { ne: null } }, sort: { order: ASC, fields: date }) {
+			edges {
+				previous {
+					slug
+				}
+				node {
+					slug
+				}
+				next {
+					slug
+				}
 			}
 		}
 	}

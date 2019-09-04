@@ -11,16 +11,9 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	const locArticlesNodes = data[locale].nodes;
 
 	const isFirstPage = pageContext.currentPage === 0;
-
-	// Graphql queries for next page info,  how many articles(ID's) could be in it.
-	// if  there is no articles in next page, then this page is last
-
-	const nextPageArticlesCount = {
-		pl: data.plNextPage.nodes.length,
-		fr: data.frNextPage.nodes.length,
-		en: data.enNextPage.nodes.length
-	};
-	const isLastPage = nextPageArticlesCount[locale] <= 0;
+	// Graphql query returns the count of articles, which could be published in the next page
+	// if there is no article for a next page, then current page is the last one.
+	const isLastPage = data[`${locale}NextPage`].nodes.length <= 0;
 	// paths to next and previous page
 	const prevPagePath = pageContext.currentPage === 1 ? '/' : `/${pageContext.currentPage - 1}`;
 	const nextPagePath = `/${pageContext.currentPage + 1}`;

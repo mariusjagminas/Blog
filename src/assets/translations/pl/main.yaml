@@ -34,3 +34,7 @@ not_found: "404 Strona nie znaleziona"
 post:
   previous: "Poprzedni artykuł"
   next: "Nastepny artykuł"
+
+history_of_theater:
+  previous: "Poprzedni"
+  next: "Kolejny"
