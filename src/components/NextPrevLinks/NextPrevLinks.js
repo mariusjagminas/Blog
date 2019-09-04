@@ -4,6 +4,7 @@ import { Link } from 'gatsby-plugin-intl';
 
 const Wrapper = styled.div`
 	width: 100%;
+	min-height: 40px;
 	display: flex;
 	justify-content: space-between;
 `;

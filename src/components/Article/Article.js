@@ -8,8 +8,6 @@ import ShareLinks from '../ShareLinks/ShareLinks';
 
 const Wrapper = styled.article`
 	width: 100%;
-	margin: 0 auto;
-	max-width: 880px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -41,4 +39,3 @@ const Article = ({ title, content, image, date, slug }) => {
 };
 
 export default Article;
-// TODO: Add Next and previous article buttons

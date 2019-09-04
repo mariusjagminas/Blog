@@ -32,3 +32,6 @@ go_back_link: "Go back to homepage"
 
 not_found: "404 Page not found"
 
+post:
+  previous: "Previous article"
+  next: "Next article"

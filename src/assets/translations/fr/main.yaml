@@ -30,3 +30,7 @@ content_unavailable: "Contenu non disponible en français"
 go_back_link: "Retournez à la page d'accueil"
 
 not_found: "404 Page non trouvée"
+
+post:
+  previous: "Article précédent"
+  next: "Prochain article"

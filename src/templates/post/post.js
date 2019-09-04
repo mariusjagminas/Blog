@@ -2,39 +2,45 @@ import React from 'react';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import { graphql } from 'gatsby';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import styled from 'styled-components';
 import Article from '../../components/Article/Article';
 import { injectIntl } from 'gatsby-plugin-intl';
 import ReturnToLink from '../../components/ReturnToLink/ReturnToLink';
-
-const Container = styled.div`
-	max-width: 1360px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: flex-start;
-	background: ${({ theme }) => theme.bright};
-	${({ theme }) => theme.mq.laptop} {
-		padding-left: 80px;
-	}
-`;
+import { MainContainer, MainWrapper } from '../../assets/styles/layout';
+import NextPrevLinks from '../../components/NextPrevLinks/NextPrevLinks';
 
 const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
+	// Get matching node from node list for every language
+	const node = data[`${locale}_slugs`].edges.find(item => item.node.slug === slug);
+	// Do some data validation and get next and prev articles paths
+	const prevPagePath = node && node.previous ? `/${node.previous.slug}` : null;
+	const nextPagePath = node && node.next ? `/${node.next.slug}` : null;
+
 	return (
 		<MainTemplate title={data[locale].title}>
-			<Container>
-				{data[locale].title && data[locale].content ? (
-					<Article
-						title={data[locale].title}
-						content={data[locale].content.json}
-						image={data.node.articleImage ? data.node.articleImage.fluid : null}
-						date={data.node.date}
-						slug={slug}
-					/>
-				) : (
-					<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
-				)}
+			<MainContainer>
+				<MainWrapper>
+					{data[locale].title && data[locale].content ? (
+						<>
+							<Article
+								title={data[locale].title}
+								content={data[locale].content.json}
+								image={data.node.articleImage ? data.node.articleImage.fluid : null}
+								date={data.node.date}
+								slug={slug}
+							/>
+							<NextPrevLinks
+								pathPrev={prevPagePath}
+								textPrev={intl.formatMessage({ id: 'post.previous' })}
+								pathNext={nextPagePath}
+								textNext={intl.formatMessage({ id: 'post.next' })}
+							/>
+						</>
+					) : (
+						<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
+					)}
+				</MainWrapper>
 				<Sidebar />
-			</Container>
+			</MainContainer>
 		</MainTemplate>
 	);
 };
@@ -59,7 +65,9 @@ export const query = graphql`
 				json
 			}
 		}
-
+		#######
+		#######
+		#######
 		node: contentfulArticles(slug: { eq: $slug }) {
 			articleImage {
 				fluid(maxWidth: 800) {
@@ -67,6 +75,38 @@ export const query = graphql`
 				}
 			}
 			date(formatString: "DD/MM/YYYY")
+		}
+		######
+		######
+		######
+		pl_slugs: allContentfulArticles(filter: { titlePl: { ne: null } }, sort: { order: DESC, fields: date }) {
+			edges {
+				...prevCurrentNextSlug
+			}
+		}
+		fr_slugs: allContentfulArticles(filter: { titleFr: { ne: null } }, sort: { order: DESC, fields: date }) {
+			edges {
+				...prevCurrentNextSlug
+			}
+		}
+		en_slugs: allContentfulArticles(filter: { titleEn: { ne: null } }, sort: { order: DESC, fields: date }) {
+			edges {
+				...prevCurrentNextSlug
+			}
+		}
+	}
+`;
+
+export const prevCurrentNextSlug = graphql`
+	fragment prevCurrentNextSlug on ContentfulArticlesEdge {
+		previous {
+			slug
+		}
+		node {
+			slug
+		}
+		next {
+			slug
 		}
 	}
 `;
