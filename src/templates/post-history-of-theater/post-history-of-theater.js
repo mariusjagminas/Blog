@@ -8,31 +8,7 @@ import RichTextContentful from '../../components/RichTextContenful/RichTextConte
 import { Info } from '../../pages/history-of-theater';
 import ShareLinks from '../../components/ShareLinks/ShareLinks';
 import ReturnToLink from '../../components/ReturnToLink/ReturnToLink';
-
-const Container = styled.div`
-	max-width: 1360px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: flex-start;
-	background: ${({ theme }) => theme.bright};
-	${({ theme }) => theme.mq.laptop} {
-		padding-left: 80px;
-	}
-`;
-
-const Wrapper = styled.article`
-	width: 100%;
-	margin: 0 auto;
-	padding: 0 10px;
-	max-width: 880px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
-
-const ContentWrapper = styled.div`
-	width: 100%;
-`;
+import { MainContainer, MainWrapper, ContentWrapper, RichTextWrapper } from '../../assets/styles/layout';
 
 const StyledH2 = styled.h2`
 	font-size: 36px;
@@ -43,21 +19,23 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const locTitle = data[locale] ? data[locale].title : null;
 	return (
 		<MainTemplate title={locTitle}>
-			<Container>
-				{locTitle ? (
-					<Wrapper>
-						<Info>Histoire du théâtre</Info>
-						<StyledH2>{locTitle}</StyledH2>
+			<MainContainer>
+				<MainWrapper>
+					{locTitle ? (
 						<ContentWrapper>
-							<RichTextContentful richText={data[locale].content.json} />
+							<Info>Histoire du théâtre</Info>
+							<StyledH2>{locTitle}</StyledH2>
+							<RichTextWrapper>
+								<RichTextContentful richText={data[locale].content.json} />
+							</RichTextWrapper>
+							<ShareLinks slug={slug} title={data[locale].title} />
 						</ContentWrapper>
-						<ShareLinks slug={slug} title={data[locale].title} />
-					</Wrapper>
-				) : (
-					<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
-				)}
+					) : (
+						<ReturnToLink text={intl.formatMessage({ id: 'content_unavailable' })} />
+					)}
+				</MainWrapper>
 				<Sidebar />
-			</Container>
+			</MainContainer>
 		</MainTemplate>
 	);
 };

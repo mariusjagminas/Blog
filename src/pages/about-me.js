@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import RichTextContenful from '../components/RichTextContenful/RichTextContenful';
 import HeaderAboutMe from '../components/HeaderAboutMe/HeaderAboutMe';
 
-const ReturnToLink = styled.div`
+const Wrapper = styled.div`
 	max-width: 900px;
 	margin: 0 auto;
-	padding: 0 20px;
+	padding: 0 20px 25px 20px;
 	text-align: left;
 	background: ${({ theme }) => theme.bright};
 	${({ theme }) => theme.mq.laptop} {
@@ -23,10 +23,10 @@ const ReturnToLink = styled.div`
 const Index = ({ data, intl, intl: { locale } }) => {
 	return (
 		<MainTemplate title={intl.formatMessage({ id: 'menu.about_me' })}>
-			<ReturnToLink>
+			<Wrapper>
 				<HeaderAboutMe />
 				<RichTextContenful richText={data.page[locale].json} />
-			</ReturnToLink>
+			</Wrapper>
 		</MainTemplate>
 	);
 };

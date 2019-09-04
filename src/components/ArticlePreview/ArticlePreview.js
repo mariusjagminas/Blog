@@ -10,7 +10,6 @@ import { LinkFramed } from '../../assets/styles/Links';
 
 const ArticleWrapper = styled.article`
 	width: 100%;
-	max-width: 880px;
 	padding-bottom: 40px;
 	display: flex;
 	flex-direction: column;

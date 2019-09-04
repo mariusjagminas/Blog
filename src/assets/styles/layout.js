@@ -18,3 +18,15 @@ export const MainWrapper = styled.div`
 	position: relative;
 	padding: 0;
 `;
+
+export const ContentWrapper = styled.article`
+	width: 100%;
+	padding: 0 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
+export const RichTextWrapper = styled.div`
+	width: 100%;
+`;
