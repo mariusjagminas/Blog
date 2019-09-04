@@ -5,7 +5,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { injectIntl } from 'gatsby-plugin-intl';
 import ArticlePreview from '../../components/ArticlePreview/ArticlePreview';
 import { MainContainer, MainWrapper } from '../../assets/styles/layout';
-import { LinkToPrevious, LinkToNext } from '../../assets/styles/Links';
+import NextPrevLinks from '../../components/NextPrevLinks/NextPrevLinks';
 
 const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	const locArticlesNodes = data[locale].nodes;
@@ -21,6 +21,9 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 		en: data.enNextPage.nodes.length
 	};
 	const isLastPage = nextPageArticlesCount[locale] <= 0;
+	// paths to next and previous page
+	const prevPagePath = pageContext.currentPage === 1 ? '/' : `/${pageContext.currentPage - 1}`;
+	const nextPagePath = `/${pageContext.currentPage + 1}`;
 
 	return (
 		<MainTemplate isRedirectToHomePage={true}>
@@ -36,18 +39,13 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 							slug={node.slug}
 						/>
 					))}
-					{!isFirstPage && (
-						<LinkToPrevious to={pageContext.currentPage === 1 ? '/' : `/${pageContext.currentPage - 1}`}>
-							{`← ${intl.formatMessage({ id: 'article.previous' })}`}
-						</LinkToPrevious>
-					)}
-					{!isLastPage && (
-						<LinkToNext to={`/${pageContext.currentPage + 1}`}>
-							{`${intl.formatMessage({ id: 'article.next' })} →`}
-						</LinkToNext>
-					)}
+					<NextPrevLinks
+						pathPrev={!isFirstPage && prevPagePath}
+						textPrev={intl.formatMessage({ id: 'article.previous' })}
+						pathNext={!isLastPage && nextPagePath}
+						textNext={intl.formatMessage({ id: 'article.next' })}
+					/>
 				</MainWrapper>
-
 				<Sidebar />
 			</MainContainer>
 		</MainTemplate>
