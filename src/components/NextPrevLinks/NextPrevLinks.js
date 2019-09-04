@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const StyledLink = styled(Link)`
 	text-decoration: none;
-	padding: 30px 10px;
+	padding: 5px 10px 30px 10px;
 	font-size: 14.4px;
 	color: ${({ theme }) => theme.primary};
 	transition: color 0.2s ease-in-out;

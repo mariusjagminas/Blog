@@ -27,9 +27,17 @@ const StyledB = styled.b`
 const StyledHyperlink = styled.a`
 	color: ${({ theme }) => theme.secondaryDark};
 `;
-const Bold = ({ children }) => <StyledB>{children}</StyledB>;
+
+const Span = styled.span`
+	display: block;
+	text-align: center;
+`;
 
 const Hyperlink = ({ children, href }) => <StyledHyperlink href={href}>{children}</StyledHyperlink>;
+
+const Bold = ({ children }) => <StyledB>{children}</StyledB>;
+
+const TextAlignCenter = ({ children }) => <Span>{children}</Span>;
 
 const options = {
 	renderNode: {
@@ -40,7 +48,8 @@ const options = {
 		)
 	},
 	renderMark: {
-		[MARKS.BOLD]: text => <Bold>{text}</Bold>
+		[MARKS.BOLD]: text => <Bold>{text}</Bold>,
+		[MARKS.CODE]: text => <TextAlignCenter>{text}</TextAlignCenter>
 	}
 };
 

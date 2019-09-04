@@ -26,7 +26,7 @@ const StyledButton = styled.button`
 	border: none;
 	display: flex;
 	background: ${({ theme }) => theme.bright};
-	height: 37px;
+	height: 50px;
 
 	&:focus {
 		outline: none;

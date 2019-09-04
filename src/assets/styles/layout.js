@@ -29,4 +29,15 @@ export const ContentWrapper = styled.article`
 
 export const RichTextWrapper = styled.div`
 	width: 100%;
+	& > blockquote {
+		width: fit-content;
+		margin: 20px auto;
+		padding: 20px;
+		background: #fcfcfc;
+
+		& > p {
+			margin: 0;
+			text-align: center;
+		}
+	}
 `;

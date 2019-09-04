@@ -5,6 +5,11 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { injectIntl } from 'gatsby-plugin-intl';
 import ArticlePreview from '../../components/ArticlePreview/ArticlePreview';
 import { MainContainer, MainWrapper } from '../../assets/styles/layout';
+import styled from 'styled-components';
+
+const StyledMainWrapper = styled(MainWrapper)`
+	margin: 0 auto 50px auto;
+`;
 
 const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
 	function checkForMatch(item, slugsArray) {
@@ -16,7 +21,7 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
 	return (
 		<MainTemplate isRedirectToHomePage={true}>
 			<MainContainer>
-				<MainWrapper>
+				<StyledMainWrapper>
 					{locArticlesNodes.map((node, i) => (
 						<ArticlePreview
 							key={i}
@@ -27,7 +32,7 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
 							slug={node.slug}
 						/>
 					))}
-				</MainWrapper>
+				</StyledMainWrapper>
 				<Sidebar />
 			</MainContainer>
 		</MainTemplate>
