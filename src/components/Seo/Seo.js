@@ -14,6 +14,7 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 
 	const url = slug ? `${baseUrl}/${slug}` : null;
 	const description = truncate(documentToPlainTextString(contentJson), { length: 200 });
+	const image = `http:${imgFixed || defaultImage}`;
 
 	return (
 		<Helmet>
@@ -24,16 +25,16 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 			{/* Open Graph tags */}
 			<meta property="og:title" content={title || intl.formatMessage({ id: 'seo.title' })} />
 			<meta property="og:description" content={description || intl.formatMessage({ id: 'seo.description' })} />
-			{title && contentJson ? <meta property="og:type" content="article" /> : null}
+			{title ? <meta property="og:type" content="article" /> : null}
 			<meta property="og:url" content={url || baseUrl} />
-			<meta property="og:image" content={imgFixed || defaultImage} />
+			<meta property="og:image" content={image} />
 			<meta property="og:locale" content={`${locale}`} />
 			{/* Twitter tags */}
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta name="twitter:creator" content={author} />
 			<meta name="twitter:title" content={title || intl.formatMessage({ id: 'seo.title' })} />
 			<meta name="twitter:description" content={description || intl.formatMessage({ id: 'seo.description' })} />
-			<meta name="twitter:image" content={imgFixed || defaultImage} />
+			<meta name="twitter:image" content={image} />
 		</Helmet>
 	);
 };

@@ -63,7 +63,7 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
 	return (
 		<Wrapper aboutPage={aboutPage}>
 			<IconsWrapper>
-				<FacebookButton url={postUrl} quote={title}>
+				<FacebookButton url={postUrl}>
 					<FacebookIcon size={30} round={true} iconBgStyle={{ fill: `${theme.secondary}` }} />
 				</FacebookButton>
 				<TwitterButton url={postUrl}>
