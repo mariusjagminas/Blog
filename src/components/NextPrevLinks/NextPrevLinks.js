@@ -16,7 +16,7 @@ const StyledLink = styled(Link)`
 	color: ${({ theme }) => theme.primary};
 	transition: color 0.2s ease-in-out;
 	${({ theme }) => theme.mq.tablet} {
-		font-size: 18px;
+		font-size: 16px;
 		padding: 40px 10px;
 	}
 	&:hover {

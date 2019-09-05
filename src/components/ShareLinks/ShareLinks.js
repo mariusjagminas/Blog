@@ -49,7 +49,7 @@ const TwitterButton = styled(TwitterShareButton)`
 	${sharedStyle}
 `;
 
-const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
+const ShareLinks = ({ theme, aboutPage, slug, intl: { locale } }) => {
 	const {
 		site: {
 			siteMetadata: { baseUrl }
@@ -57,7 +57,6 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale }, title }) => {
 	} = useStaticQuery(query);
 
 	const locPrefix = locale === 'pl' ? '' : '/' + locale;
-
 	const postUrl = `${baseUrl}${locPrefix}/${slug} `;
 
 	return (
@@ -87,3 +86,4 @@ const query = graphql`
 `;
 
 //FIXME: Share links in about page does't have a path
+//FIXME: twitter share window is empty

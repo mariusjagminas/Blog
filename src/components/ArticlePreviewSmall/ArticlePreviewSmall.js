@@ -19,9 +19,7 @@ const Article = styled.article`
 const StyledLink = styled(Link)`
 	display: flex;
 	align-items: center;
-	${({ theme }) => theme.mq.tablet} {
-		text-decoration: none;
-	}
+	text-decoration: none;
 `;
 
 const StyledImg = styled(Img)`

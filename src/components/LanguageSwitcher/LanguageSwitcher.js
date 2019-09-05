@@ -12,8 +12,6 @@ const image = {
 	en: flagBritish
 };
 
-// FIXME: In mobile view language option window is open even when main menu is closed
-
 const Nav = styled.nav`
 	display: ${({ isMobileMenu }) => (isMobileMenu ? 'flex' : 'none')};
 	position: relative;
@@ -42,9 +40,10 @@ const DropdownMenu = styled.div`
 	position: absolute;
 	z-index: 5;
 	background: white;
-	top: 65px;
 	width: 318px;
-	right: -97px;
+	left: 50%;
+	top: 50px;
+	transform: translateX(-50%);
 	box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
 
 	${({ theme }) => theme.mq.laptop} {
@@ -79,7 +78,7 @@ const StyledParagraph = styled.p`
 	margin: 2px 0 0 7px;
 `;
 
-const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu, isRedirectToHomePage }) => {
+const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu, isRedirectToHomePage, isMenuOpen }) => {
 	const [isOpen, setState] = useState(false);
 	const toggleMenu = () => {
 		setState(!isOpen);
@@ -91,7 +90,7 @@ const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu, isRedirectToHo
 				<StyledImage src={image[locale]} />
 			</ImageWrapper>
 			<StyledParagraph>{intl.formatMessage({ id: 'language_switcher' })}</StyledParagraph>
-			<DropdownMenu isOpen={isOpen}>
+			<DropdownMenu isOpen={isMenuOpen && isOpen}>
 				<Languages isRedirectToHomePage={isRedirectToHomePage} />
 			</DropdownMenu>
 		</Nav>
@@ -99,3 +98,7 @@ const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu, isRedirectToHo
 };
 
 export default injectIntl(LanguageSwitcher);
+
+LanguageSwitcher.defaultProps = {
+	isMenuOpen: true // desktop lang swicther can't open if default is not set to true
+};
