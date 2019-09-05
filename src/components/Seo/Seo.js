@@ -24,17 +24,12 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 			<title>{title || intl.formatMessage({ id: 'seo.title' })}</title>
 			<meta name="description" content={description || intl.formatMessage({ id: 'seo.description' })}></meta>
 			<meta name="author" content={author} />
-			{/* Open Graph tags */}
+			{/* Esential tags  */}
 			<meta property="og:title" content={title || intl.formatMessage({ id: 'seo.title' })} />
 			<meta property="og:description" content={description || intl.formatMessage({ id: 'seo.description' })} />
-			<meta property="og:url" content={url || baseUrl} />
 			<meta property="og:image" content={image} />
-			{/* Twitter tags */}
+			<meta property="og:url" content={url || baseUrl} />
 			<meta name="twitter:card" content="summary_large_image" />
-			<meta name="twitter:creator" content={author} />
-			<meta name="twitter:title" content={title || intl.formatMessage({ id: 'seo.title' })} />
-			<meta name="twitter:description" content={description || intl.formatMessage({ id: 'seo.description' })} />
-			<meta name="twitter:image" content={image} />
 		</Helmet>
 	);
 };
