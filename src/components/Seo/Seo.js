@@ -27,10 +27,8 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 			{/* Open Graph tags */}
 			<meta property="og:title" content={title || intl.formatMessage({ id: 'seo.title' })} />
 			<meta property="og:description" content={description || intl.formatMessage({ id: 'seo.description' })} />
-			{title ? <meta property="og:type" content="article" /> : null}
 			<meta property="og:url" content={url || baseUrl} />
 			<meta property="og:image" content={image} />
-			<meta property="og:locale" content={`${locale}`} />
 			{/* Twitter tags */}
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta name="twitter:creator" content={author} />
