@@ -12,9 +12,11 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 		}
 	} = useStaticQuery(query);
 
-	const url = slug ? `${baseUrl}/${slug}` : null;
 	const description = truncate(documentToPlainTextString(contentJson), { length: 200 });
 	const image = `http:${imgFixed || defaultImage}`;
+
+	const locPrefix = locale === 'pl' ? '' : '/' + locale;
+	const url = slug ? `${baseUrl}${locPrefix}/${slug} ` : null;
 
 	return (
 		<Helmet>
