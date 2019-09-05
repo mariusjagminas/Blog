@@ -4,7 +4,10 @@ require('dotenv').config({
 
 module.exports = {
 	siteMetadata: {
-		baseUrl: 'https://gallant-kare-5fe476.netlify.com'
+		baseUrl: 'https://gallant-kare-5fe476.netlify.com',
+		author: 'Pawel Hladki',
+		defaultImage:
+			'//images.ctfassets.net/mr4anmal14yv/14R5dOrZuMc1icND8HtGnr/d2a3ba42e6dce797b5061255b0d4dca7/asabolt_illustartion_m-gretkowska_trans.png?w=600&q=50'
 	},
 	plugins: [
 		{

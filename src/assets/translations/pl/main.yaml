@@ -38,3 +38,7 @@ post:
 history_of_theater:
   previous: "Poprzedni"
   next: "Kolejny"
+
+seo:
+  title: "Literatura najnowsza"
+  description: "Znajdziecie tu artykuły promujące książki wydane we Francji i w Polsce w ciągu ostatnich dwudziestu lat."

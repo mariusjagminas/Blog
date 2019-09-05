@@ -24,7 +24,6 @@ article:
 
 aboutMe:
   title: "Ph.D. Paweł Hładki"
-
   
 content_unavailable: "Content unavailable in English"
 
@@ -39,3 +38,7 @@ post:
 history_of_theater:
   previous: "Previous"
   next: "Next"
+
+seo:
+  title: "Conteporary literature"
+  description: "You will find here articles promoting books published in France and Poland in the last twenty years"

@@ -15,8 +15,14 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const prevPagePath = node && node.previous ? `/${node.previous.slug}` : null;
 	const nextPagePath = node && node.next ? `/${node.next.slug}` : null;
 
+	// data extraction and validation
+	const title = data[locale].title;
+	const contentJson = data[locale].content ? data[locale].content.json : null;
+	// const imgFluid = data.node.articleImage ? data.node.articleImage.fluid : null;
+	const imgFixed = data.node.articleImage ? data.node.articleImage.fixed.src : null;
+
 	return (
-		<MainTemplate title={data[locale].title}>
+		<MainTemplate seo={{ title: title, contentJson: contentJson, imgFixed: imgFixed, slug: slug }}>
 			<MainContainer>
 				<MainWrapper>
 					{data[locale].title && data[locale].content ? (
@@ -72,6 +78,10 @@ export const query = graphql`
 			articleImage {
 				fluid(maxWidth: 800) {
 					...GatsbyContentfulFluid_withWebp_noBase64
+				}
+
+				fixed(width: 600) {
+					src
 				}
 			}
 			date(formatString: "DD/MM/YYYY")

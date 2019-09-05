@@ -38,3 +38,7 @@ post:
 history_of_theater:
   previous: "Précédent"
   next: "Suivant"
+
+seo:
+  title: "Littérature extrême-contemporaine"
+  description: "Vous trouverez les articles promouvant la récente production littéraire en France et en Pologne sous le courant."

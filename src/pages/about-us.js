@@ -53,6 +53,7 @@ export const query = graphql`
 `;
 export default injectIntl(Index);
 // TODO: Get content for english version about-us and update content for french/polish(strona dwujenzycna)
-// TODO: add og: links to seo component
-// TODO: Make <Links lang=''/> available for every article
+
 // for pages articles/ archive/ conections only with first article pages
+// TODO: add google analitics
+// TODO: Add contact form

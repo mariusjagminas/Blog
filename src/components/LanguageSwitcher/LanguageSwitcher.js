@@ -12,7 +12,7 @@ const image = {
 	en: flagBritish
 };
 
-// FIXME: In mobile view hide languages option menu when menu is closed
+// FIXME: In mobile view language option window is open even when main menu is closed
 
 const Nav = styled.nav`
 	display: ${({ isMobileMenu }) => (isMobileMenu ? 'flex' : 'none')};

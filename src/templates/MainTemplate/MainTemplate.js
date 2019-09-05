@@ -10,18 +10,20 @@ const Container = styled.main`
 	max-width: 100%;
 `;
 
-const MainTemplate = ({ title, children, isRedirectToHomePage }) => (
-	<>
-		<GlobalStyle />
-		<ThemeProvider theme={theme}>
-			<>
-				<Seo title={title} />
-				<Header isRedirectToHomePage={isRedirectToHomePage} />
-				<Container>{children}</Container>
-				<Footer />
-			</>
-		</ThemeProvider>
-	</>
-);
+const MainTemplate = ({ seo, children, isRedirectToHomePage }) => {
+	return (
+		<>
+			<GlobalStyle />
+			<ThemeProvider theme={theme}>
+				<>
+					<Seo seo={seo} />
+					<Header isRedirectToHomePage={isRedirectToHomePage} />
+					<Container>{children}</Container>
+					<Footer />
+				</>
+			</ThemeProvider>
+		</>
+	);
+};
 
 export default MainTemplate;
