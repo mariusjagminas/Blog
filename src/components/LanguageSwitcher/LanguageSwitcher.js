@@ -41,15 +41,16 @@ const DropdownMenu = styled.div`
 	z-index: 5;
 	background: white;
 	width: 318px;
-	left: 50%;
+	right: 50%;
 	top: 50px;
-	transform: translateX(-50%);
+	transform: translateX(50%);
 	box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
 
 	${({ theme }) => theme.mq.laptop} {
 		top: 40px;
 		width: auto;
 		right: -21px;
+		transform: translateY(0);
 		&:before {
 			content: '';
 			position: absolute;

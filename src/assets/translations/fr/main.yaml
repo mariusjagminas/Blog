@@ -20,7 +20,7 @@ archive:
 article:
   read: "Lire l'article"
   previous: "Articles précédents"
-  next: "Prochains articles"
+  next: "Articles suivants"
 
 aboutMe:
   title: "Paweł Hładki"
@@ -33,7 +33,7 @@ not_found: "404 Page non trouvée"
 
 post:
   previous: "Article précédent"
-  next: "Prochain article"
+  next: "Article suivant"
 
 history_of_theater:
   previous: "Précédent"
