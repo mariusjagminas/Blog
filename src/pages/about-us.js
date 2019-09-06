@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 const Index = ({ data, intl, intl: { locale } }) => {
 	return (
-		<MainTemplate title={intl.formatMessage({ id: 'menu.about_us' })}>
+		<MainTemplate seo={{ title: intl.formatMessage({ id: 'menu.about_us' }), slug: 'about-us' }}>
 			<Hero data={data} />
 			<Wrapper>
 				<RichTextContenful richText={data.page[locale].json} />
@@ -54,6 +54,5 @@ export const query = graphql`
 export default injectIntl(Index);
 // TODO: Get content for english version about-us and update content for french/polish(strona dwujenzycna)
 
-// for pages articles/ archive/ conections only with first article pages
 // TODO: add google analitics
 // TODO: Add contact form

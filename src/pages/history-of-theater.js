@@ -33,7 +33,7 @@ const Index = ({ data, intl, intl: { locale } }) => {
 	const locArticles = data[locale] ? data[locale].nodes : null;
 
 	return (
-		<MainTemplate title={locArticles ? 'Histoire du théâtre' : null}>
+		<MainTemplate seo={{ title: 'Histoire du théâtre', isLangLinkAdded: false }}>
 			<MainContainer>
 				<StyledMainWrapper>
 					<Info>Histoire du théâtre</Info>

@@ -11,7 +11,7 @@ const StyledMainWrapper = styled(MainWrapper)`
 	margin: 0 auto 50px auto;
 `;
 
-const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
+const Index = ({ data, pageContext: { slugsArray }, intl, intl: { locale } }) => {
 	function checkForMatch(item, slugsArray) {
 		return slugsArray.find(e => e.node.slug === item.slug) ? true : false;
 	}
@@ -19,7 +19,10 @@ const Index = ({ data, pageContext: { slugsArray }, intl: { locale } }) => {
 	const locArticlesNodes = data[locale].nodes.filter(item => checkForMatch(item, slugsArray));
 
 	return (
-		<MainTemplate isRedirectToHomePage={true}>
+		<MainTemplate
+			isRedirectToHomePage={true}
+			seo={{ isLangLinkAdded: false, title: intl.formatMessage({ id: 'archive.title' }) }}
+		>
 			<MainContainer>
 				<StyledMainWrapper>
 					{locArticlesNodes.map((node, i) => (

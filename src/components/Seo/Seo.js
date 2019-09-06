@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import truncate from 'lodash/truncate';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
-const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson } }) => {
+const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson, isLangLinkAdded } }) => {
 	const {
 		site: {
 			siteMetadata: { baseUrl, author, defaultImage }
@@ -21,6 +21,20 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 	return (
 		<Helmet>
 			<html lang={`${locale}`} />
+			{/* Languages tags */}
+			{isLangLinkAdded ? (
+				<link rel="alternate" href={`${baseUrl}${slug ? '/' + slug : ''}`} hreflang="pl" />
+			) : null}
+			{isLangLinkAdded ? (
+				<link rel="alternate" href={`${baseUrl}/fr${slug ? '/' + slug : ''}`} hreflang="fr" />
+			) : null}
+			{isLangLinkAdded ? (
+				<link rel="alternate" href={`${baseUrl}/en${slug ? '/' + slug : ''}`} hreflang="x-default" />
+			) : null}
+			{isLangLinkAdded ? (
+				<link rel="alternate" href={`${baseUrl}/en${slug ? '/' + slug : ''}`} hreflang="en" />
+			) : null}
+			{/* Esential tags */}
 			<title>{title || intl.formatMessage({ id: 'seo.title' })}</title>
 			<meta name="description" content={description || intl.formatMessage({ id: 'seo.description' })}></meta>
 			<meta name="author" content={author} />
@@ -42,7 +56,7 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 export default injectIntl(Seo);
 
 Seo.defaultProps = {
-	seo: { title: null, imgFixed: null, slug: null, contentJson: null }
+	seo: { title: null, imgFixed: null, slug: null, contentJson: null, isLangLinkAdded: true }
 };
 
 const query = graphql`
@@ -57,6 +71,7 @@ const query = graphql`
 	}
 `;
 
-// TODO: Make <Links rel='alternate' lang=''/> available for every article??
-
-// query for image a
+//  <link hreflang=""/> meta tags are not embeded in these pages:
+// 1. history-of-theater
+// 2. post-history-of-theater
+// 3. archive
