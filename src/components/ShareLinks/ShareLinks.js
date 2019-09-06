@@ -57,8 +57,7 @@ const ShareLinks = ({ theme, aboutPage, slug, intl: { locale } }) => {
 	} = useStaticQuery(query);
 
 	const locPrefix = locale === 'pl' ? '' : '/' + locale;
-	const postUrl = `${baseUrl}${locPrefix}/${slug} `;
-
+	const postUrl = slug ? `${baseUrl}${locPrefix}/${slug}` : baseUrl;
 	return (
 		<Wrapper aboutPage={aboutPage}>
 			<IconsWrapper>
@@ -85,5 +84,7 @@ const query = graphql`
 	}
 `;
 
-//FIXME: Share links in about page does't have a path
-//FIXME: twitter share window is empty
+ShareLinks.defaultProps = {
+	aboutPage: false,
+	slug: null
+};
