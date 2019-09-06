@@ -33,7 +33,6 @@ const Index = ({ data, intl }) => {
 			<Hero data={data} />
 			<Wrapper>
 				<H2>{intl.formatMessage({ id: 'contact.title' })}</H2>
-				<Mail>p.hladki@yahoo.fr</Mail>
 			</Wrapper>
 		</MainTemplate>
 	);
