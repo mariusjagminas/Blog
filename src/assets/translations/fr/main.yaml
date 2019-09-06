@@ -25,6 +25,9 @@ article:
 aboutMe:
   title: "Paweł Hładki"
 
+contact:
+  title: "Contactez moi"
+
 content_unavailable: "Contenu non disponible en français"  
 
 go_back_link: "Retournez à la page d'accueil"
