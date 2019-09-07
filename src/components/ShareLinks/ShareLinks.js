@@ -52,12 +52,12 @@ const TwitterButton = styled(TwitterShareButton)`
 const ShareLinks = ({ theme, aboutPage, slug, intl: { locale } }) => {
 	const {
 		site: {
-			siteMetadata: { baseUrl }
+			siteMetadata: { siteUrl }
 		}
 	} = useStaticQuery(query);
 
 	const locPrefix = locale === 'pl' ? '' : '/' + locale;
-	const postUrl = slug ? `${baseUrl}${locPrefix}/${slug}` : baseUrl;
+	const postUrl = slug ? `${siteUrl}${locPrefix}/${slug}` : siteUrl;
 	return (
 		<Wrapper aboutPage={aboutPage}>
 			<IconsWrapper>
@@ -78,7 +78,7 @@ const query = graphql`
 	query shareLinks {
 		site {
 			siteMetadata {
-				baseUrl
+				siteUrl
 			}
 		}
 	}

@@ -8,7 +8,7 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson, isLangLinkAdded } }) => {
 	const {
 		site: {
-			siteMetadata: { baseUrl, author, defaultImage }
+			siteMetadata: { siteUrl, author, defaultImage }
 		}
 	} = useStaticQuery(query);
 
@@ -16,7 +16,7 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 	const image = `http:${imgFixed || defaultImage}`;
 
 	const locPrefix = locale === 'pl' ? '' : '/' + locale;
-	const url = slug ? `${baseUrl}${locPrefix}/${slug} ` : null;
+	const url = slug ? `${siteUrl}${locPrefix}/${slug} ` : null;
 
 	return (
 		<Helmet>
@@ -25,16 +25,16 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 			<meta name="robots" content="noindex,nofollow" />
 			{/* Languages tags */}
 			{isLangLinkAdded ? (
-				<link rel="alternate" href={`${baseUrl}${slug ? '/' + slug : ''}`} hreflang="pl" />
+				<link rel="alternate" href={`${siteUrl}${slug ? '/' + slug : ''}`} hreflang="pl" />
 			) : null}
 			{isLangLinkAdded ? (
-				<link rel="alternate" href={`${baseUrl}/fr${slug ? '/' + slug : ''}`} hreflang="fr" />
+				<link rel="alternate" href={`${siteUrl}/fr${slug ? '/' + slug : ''}`} hreflang="fr" />
 			) : null}
 			{isLangLinkAdded ? (
-				<link rel="alternate" href={`${baseUrl}/en${slug ? '/' + slug : ''}`} hreflang="x-default" />
+				<link rel="alternate" href={`${siteUrl}/en${slug ? '/' + slug : ''}`} hreflang="x-default" />
 			) : null}
 			{isLangLinkAdded ? (
-				<link rel="alternate" href={`${baseUrl}/en${slug ? '/' + slug : ''}`} hreflang="en" />
+				<link rel="alternate" href={`${siteUrl}/en${slug ? '/' + slug : ''}`} hreflang="en" />
 			) : null}
 			{/* Esential tags */}
 			<title>{title || intl.formatMessage({ id: 'seo.title' })}</title>
@@ -43,7 +43,7 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 			{/* Open Graph tags */}
 			<meta property="og:title" content={title || intl.formatMessage({ id: 'seo.title' })} />
 			<meta property="og:description" content={description || intl.formatMessage({ id: 'seo.description' })} />
-			<meta property="og:url" content={url || baseUrl} />
+			<meta property="og:url" content={url || siteUrl} />
 			<meta property="og:image" content={image} />
 			{/* Twitter tags */}
 			<meta name="twitter:card" content="summary_large_image" />
@@ -65,7 +65,7 @@ const query = graphql`
 	query Seo {
 		site {
 			siteMetadata {
-				baseUrl
+				siteUrl
 				author
 				defaultImage
 			}
