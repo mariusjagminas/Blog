@@ -21,6 +21,8 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 	return (
 		<Helmet>
 			<html lang={`${locale}`} />
+			{/* FIXME:Remove noindex nofollow metatags for */}
+			<meta name="robots" content="noindex,nofollow" />
 			{/* Languages tags */}
 			{isLangLinkAdded ? (
 				<link rel="alternate" href={`${baseUrl}${slug ? '/' + slug : ''}`} hreflang="pl" />
