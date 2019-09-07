@@ -6,21 +6,23 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 const Wrapper = styled.div`
-	max-width: 780px;
+	max-width: 430px;
 	margin: 0 auto;
 	padding: 0 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	min-height: calc(100vh - 746px);
-	${({ theme }) => theme.mq.laptop} {
-		min-height: 300px;
+	${({ theme }) => theme.mq.laptop} 
+		max-width: 780px;
 	}
 `;
 
 const Form = styled.form`
 	width: 100%;
-	height: 300px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 `;
 
 const Label = styled.label`
@@ -31,10 +33,17 @@ const Label = styled.label`
 const InputWrapper = styled.div`
 	width: 100%;
 	margin: 10px 0;
+	${({ theme }) => theme.mq.tablet} {
+		width: 43%;
+	}
+`;
+
+const TextAreaWrapper = styled.div`
+	width: 100%;
+	margin: 10px 0;
 `;
 
 const Input = styled.input`
-	position: relative;
 	padding: 10px;
 	width: 100%;
 	border: 1px solid ${({ theme }) => theme.grey};
@@ -56,7 +65,7 @@ const Textarea = styled.textarea`
 `;
 
 const Button = styled.button`
-	border: 1px solid red;
+	margin: 20px 20px 20px auto;
 `;
 
 const H2 = styled.h2`
@@ -70,8 +79,6 @@ const Index = ({ data, intl }) => {
 			<Hero data={data} />
 			<Wrapper>
 				<H2>{intl.formatMessage({ id: 'contact.title' })}</H2>
-<<<<<<< HEAD
-=======
 				<Form action="#" type="post">
 					<InputWrapper>
 						<Label htmlFor="name">Name</Label>
@@ -81,15 +88,13 @@ const Index = ({ data, intl }) => {
 						<Label htmlFor="mail">e-mail</Label>
 						<Input id="mail" type="email" name="user_email" />
 					</InputWrapper>
-					<InputWrapper>
+					<TextAreaWrapper>
 						<Label htmlFor="message">Message</Label>
 						<Textarea id="message" type="text" name="user_message" />
-					</InputWrapper>
-					<InputWrapper>
-						<Button type="submit">Send</Button>
-					</InputWrapper>
+					</TextAreaWrapper>
+
+					<Button type="submit">Send</Button>
 				</Form>
->>>>>>> contact-form
 			</Wrapper>
 		</MainTemplate>
 	);
