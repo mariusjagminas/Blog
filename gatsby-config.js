@@ -48,7 +48,9 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-robots-txt',
 			options: {
-				policy: [{ userAgent: '*', disallow: '/' }]
+				policy: [{ userAgent: '*', disallow: '/' }],
+				sitemap: null,
+				host: null
 			}
 		},
 		`gatsby-transformer-sharp`,
