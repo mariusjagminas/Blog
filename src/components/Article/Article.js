@@ -10,7 +10,6 @@ import { ContentWrapper, RichTextWrapper } from '../../assets/styles/layout';
 const StyledImg = styled(Img)`
 	max-height: 550px;
 	width: 100%;
-	background: ${({ theme }) => theme.lightGrey};
 `;
 
 const Article = ({ title, content, image, date, slug }) => {

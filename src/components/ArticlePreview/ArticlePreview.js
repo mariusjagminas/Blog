@@ -21,7 +21,6 @@ const ArticleWrapper = styled.article`
 const StyledImg = styled(Img)`
 	max-height: 550px;
 	width: 100%;
-	background: ${({ theme }) => theme.lightGrey};
 `;
 
 const StyledExerpt = styled(ArticleExcerpt)`

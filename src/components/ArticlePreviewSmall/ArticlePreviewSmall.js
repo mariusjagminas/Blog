@@ -25,11 +25,10 @@ const StyledLink = styled(Link)`
 const StyledImg = styled(Img)`
 	min-width: 50%;
 	height: 140px;
-	background-color: ${({ theme }) => theme.lightGrey};
 	${({ theme }) => theme.mq.tablet} {
 		min-width: 440px;
 		height: 280px;
-		box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.19);
+		/* box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.19); */
 	}
 `;
 
