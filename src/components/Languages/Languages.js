@@ -57,9 +57,9 @@ const StyledImg = styled.img`
 `;
 
 const StyledText = styled.p`
-	margin: 6px 0 0 10px;
+	margin: 8px 0 0 10px;
 	font-family: ${({ theme }) => theme.font.family.main};
-	font-size: 16px;
+	font-size: 14px;
 `;
 
 const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {

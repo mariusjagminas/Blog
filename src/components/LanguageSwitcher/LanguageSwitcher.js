@@ -76,7 +76,8 @@ const StyledImage = styled.img`
 `;
 
 const StyledParagraph = styled.p`
-	margin: 2px 0 0 7px;
+	margin: 5px 0 0 7px;
+	font-size: 14px;
 `;
 
 const LanguageSwitcher = ({ intl, intl: { locale }, isMobileMenu, isRedirectToHomePage, isMenuOpen }) => {
