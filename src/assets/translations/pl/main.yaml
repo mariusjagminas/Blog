@@ -27,6 +27,9 @@ aboutMe:
 
 contact:
   title: "Skontaktuj się ze mną"
+  name: "Imię"
+  message: "Wiadomość"
+  send: "Wysłać"
 
 content_unavailable: "Treść niedostępna w języku Polskim"
 

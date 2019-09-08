@@ -27,7 +27,10 @@ aboutMe:
 
 contact:
   title: "Contact me"
-  
+  name: "Name"
+  message: "Message"
+  send: "Send"
+
 content_unavailable: "Content unavailable in English"
 
 go_back_link: "Go back to homepage"

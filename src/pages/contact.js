@@ -13,8 +13,12 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	min-height: calc(100vh - 746px);
-	${({ theme }) => theme.mq.laptop} 
-		max-width: 780px;
+	${({ theme }) => theme.mq.tablet} {
+		max-width: 600px;
+	}
+
+	${({ theme }) => theme.mq.laptop} {
+		max-width: 800px;
 	}
 `;
 
@@ -22,7 +26,10 @@ const Form = styled.form`
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
+	${({ theme }) => theme.mq.laptop} {
+		margin-bottom: 60px;
+	}
 `;
 
 const Label = styled.label`
@@ -34,13 +41,9 @@ const InputWrapper = styled.div`
 	width: 100%;
 	margin: 10px 0;
 	${({ theme }) => theme.mq.tablet} {
-		width: 43%;
+		width: 31%;
+		margin: 10px 30px 10px 0;
 	}
-`;
-
-const TextAreaWrapper = styled.div`
-	width: 100%;
-	margin: 10px 0;
 `;
 
 const Input = styled.input`
@@ -53,10 +56,15 @@ const Input = styled.input`
 	}
 `;
 
+const TextAreaWrapper = styled.div`
+	width: 100%;
+	margin: 10px 0;
+`;
+
 const Textarea = styled.textarea`
 	width: 100%;
 	border: 1px solid ${({ theme }) => theme.grey};
-	height: 150px;
+	height: 155px;
 	resize: none;
 	outline: none;
 	&:focus {
@@ -65,11 +73,26 @@ const Textarea = styled.textarea`
 `;
 
 const Button = styled.button`
-	margin: 20px 20px 20px auto;
+	margin: 20px 0px 50px auto;
+	border: 1px solid ${({ theme }) => theme.secondaryDark};
+	background: none;
+	text-transform: uppercase;
+	color: ${({ theme }) => theme.secondaryDark};
+	padding: 10px 25px;
+	font-size: 13px;
+	font-weight: 600;
+	opacity: 1;
+	transition: opacity 0.2s ease-in-out;
+	&:hover {
+		opacity: 0.6;
+	}
 `;
 
 const H2 = styled.h2`
-	font-size: ${({ theme }) => theme.font.size.xl};
+	font-size: ${({ theme }) => theme.font.size.m};
+	${({ theme }) => theme.mq.tablet} {
+		font-size: ${({ theme }) => theme.font.size.xl};
+	}
 	text-align: center;
 `;
 
@@ -79,9 +102,9 @@ const Index = ({ data, intl }) => {
 			<Hero data={data} />
 			<Wrapper>
 				<H2>{intl.formatMessage({ id: 'contact.title' })}</H2>
-				<Form action="#" type="post">
+				<Form action="#">
 					<InputWrapper>
-						<Label htmlFor="name">Name</Label>
+						<Label htmlFor="name">{intl.formatMessage({ id: 'contact.name' })}</Label>
 						<Input id="name" type="text" name="user_name" />
 					</InputWrapper>
 					<InputWrapper>
@@ -89,11 +112,10 @@ const Index = ({ data, intl }) => {
 						<Input id="mail" type="email" name="user_email" />
 					</InputWrapper>
 					<TextAreaWrapper>
-						<Label htmlFor="message">Message</Label>
+						<Label htmlFor="message">{intl.formatMessage({ id: 'contact.message' })}</Label>
 						<Textarea id="message" type="text" name="user_message" />
 					</TextAreaWrapper>
-
-					<Button type="submit">Send</Button>
+					<Button type="button">{intl.formatMessage({ id: 'contact.send' })}</Button>
 				</Form>
 			</Wrapper>
 		</MainTemplate>

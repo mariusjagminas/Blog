@@ -27,6 +27,9 @@ aboutMe:
 
 contact:
   title: "Contactez moi"
+  name: "Nom"
+  message: "Message"
+  send: "Envoyer"
 
 content_unavailable: "Contenu non disponible en français"  
 
