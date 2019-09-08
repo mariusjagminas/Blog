@@ -1,9 +1,7 @@
 import React from 'react';
 import MainTemplate from '../templates/MainTemplate/MainTemplate';
-import Hero from '../components/Hero/Hero';
 import { injectIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
 
 const Wrapper = styled.div`
 	max-width: 430px;
@@ -12,13 +10,16 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-height: calc(100vh - 746px);
 	${({ theme }) => theme.mq.tablet} {
 		max-width: 600px;
+		min-height: calc(100vh - 200px);
 	}
 
 	${({ theme }) => theme.mq.laptop} {
-		max-width: 800px;
+		max-width: 900px;
+		background: white;
+		padding: 62px 116px 0px 116px;
+		min-height: auto;
 	}
 `;
 
@@ -99,7 +100,6 @@ const H2 = styled.h2`
 const Index = ({ data, intl }) => {
 	return (
 		<MainTemplate seo={{ title: intl.formatMessage({ id: 'contact.title' }), slug: 'contact' }}>
-			<Hero data={data} />
 			<Wrapper>
 				<H2>{intl.formatMessage({ id: 'contact.title' })}</H2>
 				<Form action="#">
@@ -123,15 +123,3 @@ const Index = ({ data, intl }) => {
 };
 
 export default injectIntl(Index);
-
-export const query = graphql`
-	query contact {
-		file(relativePath: { eq: "mail_img.jpg" }) {
-			childImageSharp {
-				fluid(maxWidth: 600) {
-					...GatsbyImageSharpFluid_withWebp_noBase64
-				}
-			}
-		}
-	}
-`;
