@@ -97,25 +97,34 @@ const H2 = styled.h2`
 	text-align: center;
 `;
 
-const Index = ({ data, intl }) => {
+const Index = ({ intl }) => {
 	return (
 		<MainTemplate seo={{ title: intl.formatMessage({ id: 'contact.title' }), slug: 'contact' }}>
 			<Wrapper>
 				<H2>{intl.formatMessage({ id: 'contact.title' })}</H2>
-				<Form action="#">
+				<Form
+					name="contact"
+					method="POST"
+					action="success"
+					netlify-honeypot="bot-field"
+					data-netlify="true"
+				>
+					<input type="hidden" name="bot-field" />
+					{/* Must inlude form-name input to let Netlify handle a form sumbision properly  */}
+					<input type="hidden" name="form-name" value="contact" />
 					<InputWrapper>
 						<Label htmlFor="name">{intl.formatMessage({ id: 'contact.name' })}</Label>
-						<Input id="name" type="text" name="user_name" />
+						<Input id="name" type="text" name="name" />
 					</InputWrapper>
 					<InputWrapper>
 						<Label htmlFor="mail">e-mail</Label>
-						<Input id="mail" type="email" name="user_email" />
+						<Input id="mail" type="email" name="email" />
 					</InputWrapper>
 					<TextAreaWrapper>
 						<Label htmlFor="message">{intl.formatMessage({ id: 'contact.message' })}</Label>
-						<Textarea id="message" type="text" name="user_message" />
+						<Textarea id="message" type="text" name="message" />
 					</TextAreaWrapper>
-					<Button type="button">{intl.formatMessage({ id: 'contact.send' })}</Button>
+					<Button type="submit">{intl.formatMessage({ id: 'contact.send' })}</Button>
 				</Form>
 			</Wrapper>
 		</MainTemplate>
