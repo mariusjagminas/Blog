@@ -105,7 +105,6 @@ const Index = ({ intl }) => {
 				<Form
 					name="contact"
 					method="POST"
-					action="success"
 					netlify-honeypot="bot-field"
 					data-netlify="true"
 				>
