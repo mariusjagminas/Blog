@@ -5,7 +5,13 @@ import { useStaticQuery, graphql } from 'gatsby';
 import truncate from 'lodash/truncate';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
-const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson, isLangLinkAdded } }) => {
+const Seo = ({ intl, intl: { locale }, seo }) => {
+	// Default props and data validation
+	const isLangLinkAdded = seo.hasOwnProperty('isLangLinkAdded') ? seo.isLangLinkAdded : true;
+	const title = seo.title || null;
+	const imgFixed = seo.imgFixed || null;
+	const slug = seo.slug || null;
+	const contentJson = seo.contentJson || null;
 	const {
 		site: {
 			siteMetadata: { siteUrl, author, defaultImage }
@@ -58,7 +64,7 @@ const Seo = ({ intl, intl: { locale }, seo: { title, imgFixed, slug, contentJson
 export default injectIntl(Seo);
 
 Seo.defaultProps = {
-	seo: { title: null, imgFixed: null, slug: null, contentJson: null, isLangLinkAdded: true }
+	seo: {}
 };
 
 const query = graphql`
@@ -73,7 +79,8 @@ const query = graphql`
 	}
 `;
 
-//  <link hreflang=""/> meta tags are not embeded in these pages:
+//  <link hreflang=""/> meta tags are hidden in these pages:
 // 1. history-of-theater
 // 2. post-history-of-theater
 // 3. archive
+// In post page for paths "/1","/2",... <linl hreflang=""/> points to "/"
