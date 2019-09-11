@@ -22,7 +22,17 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const imgFixed = data.node.articleImage ? data.node.articleImage.fixed.src : null;
 
 	return (
-		<MainTemplate seo={{ title: title, contentJson: contentJson, imgFixed: imgFixed, slug: slug }}>
+		<MainTemplate
+			seo={{
+				title: title,
+				contentJson: contentJson,
+				imgFixed: imgFixed,
+				slug: slug,
+				hasPlContent: data.pl.title ? true : false,
+				hasFrContent: data.fr.title ? true : false,
+				hasEnContent: data.en.title ? true : false
+			}}
+		>
 			<MainContainer>
 				<MainWrapper>
 					{data[locale].title && data[locale].content ? (

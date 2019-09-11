@@ -22,7 +22,15 @@ const Wrapper = styled.div`
 
 const Index = ({ data, intl, intl: { locale } }) => {
 	return (
-		<MainTemplate seo={{ title: intl.formatMessage({ id: 'menu.about_me' }), slug: 'about-me' }}>
+		<MainTemplate
+			seo={{
+				title: intl.formatMessage({ id: 'menu.about_me' }),
+				slug: 'about-me',
+				hasPlContent: true,
+				hasFrContent: true,
+				hasEnContent: true
+			}}
+		>
 			<Wrapper>
 				<HeaderAboutMe />
 				<RichTextContenful richText={data.page[locale].json} />

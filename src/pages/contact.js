@@ -99,15 +99,18 @@ const H2 = styled.h2`
 
 const Index = ({ intl }) => {
 	return (
-		<MainTemplate seo={{ title: intl.formatMessage({ id: 'contact.title' }), slug: 'contact' }}>
+		<MainTemplate
+			seo={{
+				title: intl.formatMessage({ id: 'contact.title' }),
+				slug: 'contact',
+				hasPlContent: true,
+				hasFrContent: true,
+				hasEnContent: true
+			}}
+		>
 			<Wrapper>
 				<H2>{intl.formatMessage({ id: 'contact.title' })}</H2>
-				<Form
-					name="contact"
-					method="POST"
-					netlify-honeypot="bot-field"
-					data-netlify="true"
-				>
+				<Form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
 					<input type="hidden" name="bot-field" />
 					{/* Must inlude form-name input to let Netlify handle a form sumbision properly  */}
 					<input type="hidden" name="form-name" value="contact" />

@@ -19,10 +19,7 @@ const Index = ({ data, pageContext: { slugsArray }, intl, intl: { locale } }) =>
 	const locArticlesNodes = data[locale].nodes.filter(item => checkForMatch(item, slugsArray));
 
 	return (
-		<MainTemplate
-			isRedirectToHomePage={true}
-			seo={{ isLangLinkAdded: false, title: intl.formatMessage({ id: 'archive.title' }) }}
-		>
+		<MainTemplate isRedirectToHomePage={true} seo={{ title: intl.formatMessage({ id: 'archive.title' }) }}>
 			<MainContainer>
 				<StyledMainWrapper>
 					{locArticlesNodes.map((node, i) => (

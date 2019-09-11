@@ -24,7 +24,7 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const nextPagePath = node && node.next ? `/${node.next.slug}` : null;
 
 	return (
-		<MainTemplate seo={{ title: locTitle, isLangLinkAdded: false }}>
+		<MainTemplate seo={{ title: locTitle, contentJson: locTitle? data[locale].content.json: null }}>
 			<MainContainer>
 				<MainWrapper>
 					{locTitle ? (
