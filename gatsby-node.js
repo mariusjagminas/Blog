@@ -34,7 +34,10 @@ exports.onPreBootstrap = () => {
 };
 
 exports.createPages = ({ graphql, actions }) => {
-	const { createPage } = actions;
+	const { createPage, createRedirect } = actions;
+	// Create redirects to custmom 404 page
+	createRedirect({ fromPath: '/en/*', toPath: '/en/404.html', statusCode: 404 });
+	createRedirect({ fromPath: '/fr/*', toPath: '/fr/404.html', statusCode: 404 });
 	return graphql(`
 		query nodeQuery {
 			allContentfulArticles(sort: { order: DESC, fields: date }) {

@@ -59,6 +59,7 @@ module.exports = {
 		`gatsby-plugin-lodash`,
 		`gatsby-plugin-react-helmet`,
 		`gatsby-transformer-yaml`,
+		`gatsby-plugin-netlify`,
 		{
 			resolve: `gatsby-source-contentful`,
 			options: {
