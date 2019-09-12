@@ -20,9 +20,10 @@ const Seo = ({ intl, intl: { locale }, seo }) => {
 	const description = seo.hasOwnProperty('contentJson')
 		? truncate(documentToPlainTextString(seo.contentJson), { length: 200 })
 		: intl.formatMessage({ id: 'seo.description' });
-	let isPl = seo.hasPlContent ? true : false;
-	let isFr = seo.hasFrContent ? true : false;
-	let isEn = seo.hasEnContent ? true : false;
+	const isPl = seo.hasPlContent ? true : false;
+	const isFr = seo.hasFrContent ? true : false;
+	const isEn = seo.hasEnContent ? true : false;
+	const isNoindex = seo.hasOwnProperty('isNoindex') ? seo.isNoindex : false;
 	// To add links metatags content must be available in more then one language.
 	const isMoreThanOne = ((isFr || isEn) && isPl) || ((isPl || isEn) && isFr) || ((isPl || isFr) && isEn);
 
@@ -35,8 +36,8 @@ const Seo = ({ intl, intl: { locale }, seo }) => {
 	return (
 		<Helmet>
 			<html lang={`${locale}`} />
-			{/* FIXME:Remove noindex nofollow metatags for and robots.txt disallow */}
-			<meta name="robots" content="noindex,nofollow" />
+			{/* FIXME: Remove robots.txt disallow */}
+			{isNoindex && <meta name="robots" content="noindex,nofollow" />}
 			{/* Languages tags */}
 			{isMoreThanOne && isPl ? (
 				<link rel="alternate" href={`${siteUrl}${slug ? '/' + slug : '/'}`} hreflang="pl" />
@@ -86,8 +87,8 @@ const query = graphql`
 	}
 `;
 
-// <link hreflang=""/> meta tags are shown only if content exist at least in two languages.
-// To display those links props hasPlContent , hasFrContent, hasEnContent must be set to 'true'
+// <link hreflang="" rel="alternate"/> metatags are shown only if a content exist at least in  two languages.
+// To display those links var: hasPlContent, hasFrContent, hasEnContent must be set to 'true'
 // acording to existing content.
 // x-default language tag is not static. Its value depends on which languages are available.
 //
@@ -102,12 +103,27 @@ const query = graphql`
 // 	hasPlContent:              //  false
 // 	hasFrContent:              //  false
 // 	hasEnContent:              //  false
+//  isNoindex:                 //  false
 // }}
 //
-//  <link/> meta tags are added to these pages:
+//  link metatags are added to these pages:
 //
-//  about-us:
-//  articles: only first pages '/', '/en/', '/fr/'
-//  For every single post according to existing content. pl-fr, en-fr
-//  about-me:
-//  contact:
+//  1.about-us:
+//  2.articles: only first pages '/', '/en/', '/fr/'
+//  3.For every single post according to existing content. pl-fr, en-fr
+//  4.about-me:
+//  5.contact:
+//
+//-------- Noindex Nofollow ---------//
+//
+// Metatag nofollow, noindex will be added to pages with isNoindex: true, default: false
+// Metatags are added to pages, where content is unavailable:
+//
+// 1. Articles pages
+// 2. Single article page
+// 3. Archive
+// 4. history-of-theater
+// 5. history-of-theater single article
+// 6. 404 page
+
+// TODO: Maybe it will be a good aproach to add noindex, nofollow tags to all archive pages??

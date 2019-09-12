@@ -9,7 +9,7 @@ import NextPrevLinks from '../../components/NextPrevLinks/NextPrevLinks';
 
 const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	const locArticlesNodes = data[locale].nodes;
-
+	const isNoArticlesToShow = locArticlesNodes.length === 0;
 	const isFirstPage = pageContext.currentPage === 0;
 	// Graphql query returns the count of articles, which could be published in the next page
 	// if there is no article for a next page, then current page is the last one.
@@ -21,7 +21,12 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	return (
 		<MainTemplate
 			isRedirectToHomePage={true}
-			seo={{ hasPlContent: isFirstPage, hasFrContent: isFirstPage, hasEnContent: isFirstPage }}
+			seo={{
+				hasPlContent: isFirstPage,
+				hasFrContent: isFirstPage,
+				hasEnContent: isFirstPage,
+				isNoindex: isNoArticlesToShow
+			}}
 		>
 			<MainContainer>
 				<MainWrapper>

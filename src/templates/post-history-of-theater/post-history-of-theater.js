@@ -18,13 +18,20 @@ const StyledH2 = styled.h2`
 
 const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const locTitle = data[locale] ? data[locale].title : null;
+	const isNoArticlesToShow = locTitle ? false : true;
 	const node = data[locale] ? data[`${locale}_slugs`].edges.find(item => item.node.slug === slug) : null;
 	// Do some data validation and get next and prev articles paths
 	const prevPagePath = node && node.previous ? `/${node.previous.slug}` : null;
 	const nextPagePath = node && node.next ? `/${node.next.slug}` : null;
 
 	return (
-		<MainTemplate seo={{ title: locTitle, contentJson: locTitle? data[locale].content.json: null }}>
+		<MainTemplate
+			seo={{
+				title: locTitle,
+				contentJson: locTitle ? data[locale].content.json : null,
+				isNoindex: isNoArticlesToShow
+			}}
+		>
 			<MainContainer>
 				<MainWrapper>
 					{locTitle ? (

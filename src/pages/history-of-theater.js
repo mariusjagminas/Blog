@@ -31,9 +31,9 @@ export const Info = styled.p`
 
 const Index = ({ data, intl, intl: { locale } }) => {
 	const locArticles = data[locale] ? data[locale].nodes : null;
-
+	const isNoArticlesToShow = locArticles ? false : true;
 	return (
-		<MainTemplate seo={{ title: 'Histoire du théâtre' }}>
+		<MainTemplate seo={{ title: 'Histoire du théâtre', isNoindex: isNoArticlesToShow }}>
 			<MainContainer>
 				<StyledMainWrapper>
 					<Info>Histoire du théâtre</Info>

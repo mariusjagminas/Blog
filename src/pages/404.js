@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Index = ({ intl }) => (
-	<MainTemplate>
+	<MainTemplate seo={{ isNoindex: true }}>
 		<Wrapper>
 			<ReturnToLink text={intl.formatMessage({ id: 'not_found' })} />
 		</Wrapper>
@@ -23,4 +23,3 @@ const Index = ({ intl }) => (
 );
 
 export default injectIntl(Index);
-

@@ -20,6 +20,7 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 	const contentJson = data[locale].content ? data[locale].content.json : null;
 	// const imgFluid = data.node.articleImage ? data.node.articleImage.fluid : null;
 	const imgFixed = data.node.articleImage ? data.node.articleImage.fixed.src : null;
+	const hasContent = data[locale].title && data[locale].content;
 
 	return (
 		<MainTemplate
@@ -30,12 +31,13 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
 				slug: slug,
 				hasPlContent: data.pl.title ? true : false,
 				hasFrContent: data.fr.title ? true : false,
-				hasEnContent: data.en.title ? true : false
+				hasEnContent: data.en.title ? true : false,
+				isNoindex: !hasContent
 			}}
 		>
 			<MainContainer>
 				<MainWrapper>
-					{data[locale].title && data[locale].content ? (
+					{hasContent ? (
 						<>
 							<Article
 								title={data[locale].title}
