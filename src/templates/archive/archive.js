@@ -17,12 +17,11 @@ const Index = ({ data, pageContext: { slugsArray }, intl, intl: { locale } }) =>
 	}
 
 	const locArticlesNodes = data[locale].nodes.filter(item => checkForMatch(item, slugsArray));
-	const isNoArticlesToShow = locArticlesNodes.length === 0;
-	
+
 	return (
 		<MainTemplate
 			isRedirectToHomePage={true}
-			seo={{ title: intl.formatMessage({ id: 'archive.title' }), isNoindex: isNoArticlesToShow }}
+			seo={{ title: intl.formatMessage({ id: 'archive.title' }), isNoindex: true }}
 		>
 			<MainContainer>
 				<StyledMainWrapper>

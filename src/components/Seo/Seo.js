@@ -36,8 +36,9 @@ const Seo = ({ intl, intl: { locale }, seo }) => {
 	return (
 		<Helmet>
 			<html lang={`${locale}`} />
-			{/* FIXME: Remove robots.txt disallow */}
-			{isNoindex && <meta name="robots" content="noindex,nofollow" />}
+			{/* FIXME: Remove robots.txt disallow , remove noindex,nofolow for production*/}
+			<meta name="robots" content="noindex, nofollow" />
+			{/* {isNoindex && <meta name="robots" content="noindex, follow" />} */}
 			{/* Languages tags */}
 			{isMoreThanOne && isPl ? (
 				<link rel="alternate" href={`${siteUrl}${slug ? '/' + slug : '/'}`} hreflang="pl" />
@@ -114,16 +115,14 @@ const query = graphql`
 //  4.about-me:
 //  5.contact:
 //
-//-------- Noindex Nofollow ---------//
+//-------- noindex FOLLOW ---------//
 //
-// Metatag nofollow, noindex will be added to pages with isNoindex: true, default: false
-// Metatags are added to pages, where content is unavailable:
+// Metatag noindex, follow will be added to pages with isNoindex: true, default: false
+// Metatags are added to these pages:
 //
-// 1. Articles pages
-// 2. Single article page
-// 3. Archive
-// 4. history-of-theater
-// 5. history-of-theater single article
-// 6. 404 page
-
-// TODO: Maybe it will be a good aproach to add noindex, nofollow tags to all archive pages??
+// 1. Articles pages - for all empty pages in another language
+// 2. Single article page - for all pages without content in another language
+// 3. Archive - for all archive pages.
+// 4. history-of-theater - for empty pages in another language
+// 5. history-of-theater single article - for all pages without content in another language
+// 6. 404 page - for all pages
