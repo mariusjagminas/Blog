@@ -107,10 +107,7 @@ const query = graphql`
 //  <link/> meta tags are added to these pages:
 //
 //  about-us:
-//  articles, articles/1, articles/2: (default path '/')
-//  for a single post
-//  about-me
-//  contact
-
-// TODO: In pages /1, /2, ... there is no self-referencing link-tag, so probalby they will be ignored
-// by google. links pointing to main page '/','/en/'
+//  articles: only first pages '/', '/en/', '/fr/'
+//  For every single post according to existing content. pl-fr, en-fr
+//  about-me:
+//  contact:

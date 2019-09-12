@@ -19,7 +19,10 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
 	const nextPagePath = `/${pageContext.currentPage + 1}`;
 
 	return (
-		<MainTemplate isRedirectToHomePage={true} seo={{ hasPlContent: true, hasFrContent: true, hasEnContent: true }}>
+		<MainTemplate
+			isRedirectToHomePage={true}
+			seo={{ hasPlContent: isFirstPage, hasFrContent: isFirstPage, hasEnContent: isFirstPage }}
+		>
 			<MainContainer>
 				<MainWrapper>
 					{locArticlesNodes.map((node, i) => (
