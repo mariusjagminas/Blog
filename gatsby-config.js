@@ -11,6 +11,36 @@ module.exports = {
 	},
 	plugins: [
 		{
+			resolve: `gatsby-plugin-manifest`,
+			options: {
+				name: `Literatura najnowsza`,
+				short_name: `Literatura najnowsza`,
+				description: `Znajdziecie tu artykuły promujące książki wydane we Francji i w Polsce w ciągu ostatnich dwudziestu lat`,
+				lang: `pl`,
+				display: `standalone`,
+				icon: `src/assets/images/favicon.png`,
+				start_url: `/`,
+				background_color: `#F0F8FA`,
+				theme_color: `#f5f5f5`,
+				localize: [
+					{
+						start_url: `/fr/`,
+						lang: `fr`,
+						name: `Littérature extrême-contemporaine`,
+						short_name: `Littérature extrême-contemporaine`,
+						description: `Vous trouverez les articles promouvant la récente production littéraire en France et en Pologne sous le courant.`
+					},
+					{
+						start_url: `/en/`,
+						lang: `en`,
+						name: `Contemporary literature`,
+						short_name: `Contemporary literature`,
+						description: `You will find here articles promoting books published in France and Poland in the last twenty years`
+					}
+				]
+			}
+		},
+		{
 			resolve: `gatsby-plugin-intl`,
 			options: {
 				// language JSON resource path
