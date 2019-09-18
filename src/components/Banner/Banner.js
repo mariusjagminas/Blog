@@ -29,14 +29,14 @@ const Title = styled.h1`
   font-size: ${({ theme }) => theme.font.size.l};
   text-align: center;
   padding: 0 10px;
-  font-weight: 500;
-  font-family: ${({ theme }) => theme.font.family.second};
+  font-weight: 100;
+  font-family: ${({ theme }) => theme.font.family.main};
 
   ${({ theme }) => theme.mq.tablet} {
     font-size: ${({ theme }) => theme.font.size.xl};
   }
   ${({ theme }) => theme.mq.laptop} {
-    font-size: ${({ theme }) => theme.font.size.xxl};
+    font-size: ${({ theme }) => theme.font.size.xxxl};
   }
 `
 
