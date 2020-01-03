@@ -36,9 +36,7 @@ const Seo = ({ intl, intl: { locale }, seo }) => {
 	return (
 		<Helmet>
 			<html lang={`${locale}`} />
-			{/* FIXME: Remove robots.txt disallow , remove noindex,nofolow for production*/}
-			<meta name="robots" content="noindex, nofollow" />
-			{/* {isNoindex && <meta name="robots" content="noindex, follow" />} */}
+			{isNoindex && <meta name="robots" content="noindex, follow" />}
 			{/* Languages tags */}
 			{isMoreThanOne && isPl ? (
 				<link rel="alternate" href={`${siteUrl}${slug ? '/' + slug : '/'}`} hreflang="pl" />
