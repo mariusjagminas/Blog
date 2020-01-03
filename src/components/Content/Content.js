@@ -8,5 +8,3 @@ const StyledParagraph = styled.p`
 const Content = ({ content }) => <StyledParagraph>{content}</StyledParagraph>
 
 export default Content
-
-
