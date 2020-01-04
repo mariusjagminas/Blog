@@ -34,17 +34,15 @@ const Bar = styled.div`
   }
 
   ::before {
-    top -6px;
-    transform: translateY(${({ isMenuOpen }) =>
-      isMenuOpen ? "6px" : "0"}) rotate(${({ isMenuOpen }) =>
-  isMenuOpen ? "45deg" : "0"}) 
+    top: -6px;
+    transform: translateY(${({ isMenuOpen }) => (isMenuOpen ? "6px" : "0")})
+      rotate(${({ isMenuOpen }) => (isMenuOpen ? "45deg" : "0")});
   }
 
   ::after {
     top: 6px;
-    transform: translateY(${({ isMenuOpen }) =>
-      isMenuOpen ? "-6px" : "0"}) rotate(${({ isMenuOpen }) =>
-  isMenuOpen ? "-45deg" : "0"}) 
+    transform: translateY(${({ isMenuOpen }) => (isMenuOpen ? "-6px" : "0")})
+      rotate(${({ isMenuOpen }) => (isMenuOpen ? "-45deg" : "0")});
   }
 `
 
