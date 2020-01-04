@@ -95,7 +95,7 @@ const LanguageSwitcher = ({
   return (
     <Nav isMobileMenu={isMobileMenu} onClick={toggleMenu}>
       <ImageWrapper>
-        <StyledImage src={image[locale]} />
+        <StyledImage src={image[locale]} alt={"flag image"} />
       </ImageWrapper>
       <StyledParagraph>
         {intl.formatMessage({ id: "language_switcher" })}

@@ -75,7 +75,7 @@ const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {
         <StyledLi key={i}>
           <StyledButton onClick={() => changeLocale(locale, path)}>
             <ImgWrapper>
-              <StyledImg src={img} />
+              <StyledImg src={img} alt={"flag picture"} />
             </ImgWrapper>
             <StyledText>{text}</StyledText>
           </StyledButton>
