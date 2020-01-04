@@ -1,10 +1,10 @@
 import React from "react"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import ContentfulImage from "../../assets/helpers/ContentfulImage"
+import ContenfulRichTextImage from "../ContenfulRichTextImage/ContenfulRichTextImage"
 import styled from "styled-components"
 
-const Image = styled(ContentfulImage)`
+const Image = styled(ContenfulRichTextImage)`
   width: 100%;
 
   ${({ theme }) => theme.mq.tablet} {

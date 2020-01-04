@@ -9,7 +9,7 @@ function fixId(id) {
   }
 }
 
-const ContentfulImage = ({ contentfulId, ...props }) => {
+const ContenfulRichTextImage = ({ contentfulId, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
       allContentfulAsset {
@@ -34,4 +34,4 @@ const ContentfulImage = ({ contentfulId, ...props }) => {
     <Image {...props} fluid={image.node.fluid} alt={image.node.title} />
   ) : null
 }
-export default ContentfulImage
+export default ContenfulRichTextImage
