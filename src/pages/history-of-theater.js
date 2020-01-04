@@ -1,5 +1,5 @@
 import React from "react"
-import MainTemplate from "../templates/MainTemplate/MainTemplate"
+import MainTemplate from "../components/MainTemplate/MainTemplate"
 import { MainContainer, MainWrapper } from "../assets/styles/layout"
 import Sidebar from "../components/Sidebar/Sidebar"
 import { graphql } from "gatsby"

@@ -1,5 +1,5 @@
 import React from "react"
-import MainTemplate from "../templates/MainTemplate/MainTemplate"
+import MainTemplate from "../components/MainTemplate/MainTemplate"
 import styled from "styled-components"
 import ReturnToLink from "../components/ReturnToLink/ReturnToLink"
 import { injectIntl } from "gatsby-plugin-intl"
