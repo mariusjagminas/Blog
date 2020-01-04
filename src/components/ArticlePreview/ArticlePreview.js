@@ -32,13 +32,25 @@ const Wrapper = styled.div`
   width: 100%;
 `
 
-const ArticlePreview = ({ date, title, image, content, slug, intl }) => {
+const ArticlePreview = ({
+  date,
+  title,
+  image,
+  content,
+  slug,
+  intl,
+  imgName,
+}) => {
   return (
     <ArticleWrapper>
       <Date date={date} />
       <Title title={title} />
       <Wrapper>
-        <StyledImg imgStyle={{ objectFit: "contain" }} fluid={image} />
+        <StyledImg
+          imgStyle={{ objectFit: "contain" }}
+          fluid={image}
+          alt={imgName}
+        />
         <StyledExerpt content={content} length={500} />
         <SharedLinks slug={slug} title={title} />
       </Wrapper>

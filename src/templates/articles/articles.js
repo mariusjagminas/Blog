@@ -39,6 +39,11 @@ const Index = ({ data, pageContext, intl: { locale }, intl }) => {
               image={node.articleImage ? node.articleImage.fluid : null}
               content={node.content ? node.content.json : null}
               slug={node.slug}
+              imgName={
+                node.articleImage
+                  ? node.articleImage.title
+                  : "open book picture"
+              }
             />
           ))}
           <NextPrevLinks
@@ -72,6 +77,7 @@ export const query = graphql`
           json
         }
         articleImage {
+          title
           fluid(maxWidth: 800) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
@@ -94,6 +100,7 @@ export const query = graphql`
           json
         }
         articleImage {
+          title
           fluid(maxWidth: 800) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
@@ -116,6 +123,7 @@ export const query = graphql`
           json
         }
         articleImage {
+          title
           fluid(maxWidth: 800) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }

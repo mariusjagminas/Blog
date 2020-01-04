@@ -16,6 +16,7 @@ const ContentfulImage = ({ contentfulId, ...props }) => {
         edges {
           node {
             contentful_id
+            title
             fluid(maxWidth: 800) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
@@ -29,6 +30,8 @@ const ContentfulImage = ({ contentfulId, ...props }) => {
     edge => edge.node.contentful_id === fixId(contentfulId)
   )
 
-  return image ? <Image {...props} fluid={image.node.fluid} /> : null
+  return image ? (
+    <Image {...props} fluid={image.node.fluid} alt={image.node.title} />
+  ) : null
 }
 export default ContentfulImage

@@ -48,6 +48,7 @@ const Index = ({ data, intl, intl: { locale } }) => {
                   image={node.articleImage.fluid}
                   content={node.content.json}
                   slug={node.slug}
+                  imgName={node.articleImage.title}
                 />
               )
             })
@@ -72,6 +73,7 @@ export const query = graphql`
         title: titleFr
         slug
         articleImage {
+          title
           fluid(maxWidth: 600) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }

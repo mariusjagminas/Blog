@@ -18,7 +18,10 @@ const StyledImg = styled(Img)`
 
 const Hero = ({ data }) => (
   <ImageWrapper>
-    <StyledImg fluid={data.file.childImageSharp.fluid} />
+    <StyledImg
+      fluid={data.file.childImageSharp.fluid}
+      alt={"main hero image"}
+    />
   </ImageWrapper>
 )
 

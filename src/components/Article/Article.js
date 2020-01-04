@@ -12,13 +12,17 @@ const StyledImg = styled(Img)`
   width: 100%;
 `
 
-const Article = ({ title, content, image, date, slug }) => {
+const Article = ({ title, content, image, date, slug, imgName }) => {
   return (
     <ContentWrapper>
       <Date date={date} />
       <Title title={title} />
       <RichTextWrapper>
-        <StyledImg imgStyle={{ objectFit: "contain" }} fluid={image} />
+        <StyledImg
+          imgStyle={{ objectFit: "contain" }}
+          fluid={image}
+          alt={imgName}
+        />
         <RichTextContenful richText={content} />
         <ShareLinks slug={slug} title={title} />
       </RichTextWrapper>

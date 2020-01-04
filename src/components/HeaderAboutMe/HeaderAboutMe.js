@@ -40,7 +40,7 @@ const HeaderAboutMe = ({ intl, intl: { locale } }) => {
         <Subtitle locale={locale}>docteur en littérature comparée</Subtitle>
       </TitleWrapper>
       <ImgWrapper>
-        <Img fluid={data.file.childImageSharp.fluid} />
+        <Img fluid={data.file.childImageSharp.fluid} alt={"Pawel Hladki"} />
       </ImgWrapper>
     </Wrapper>
   )

@@ -51,6 +51,11 @@ const Index = ({ data, intl, intl: { locale }, pageContext: { slug } }) => {
                 }
                 date={data.node.date}
                 slug={slug}
+                imgName={
+                  data.node.articleImage
+                    ? data.node.articleImage.title
+                    : "open book picture"
+                }
               />
               <NextPrevLinks
                 pathPrev={prevPagePath}
@@ -96,6 +101,7 @@ export const query = graphql`
     #######
     node: contentfulArticles(slug: { eq: $slug }) {
       articleImage {
+        title
         fluid(maxWidth: 800) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
