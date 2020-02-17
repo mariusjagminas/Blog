@@ -11,10 +11,6 @@ const StyledUl = styled.ul`
   list-style: none;
   display: flex;
   justify-content: space-around;
-  ${({ theme }) => theme.mq.laptop} {
-    display: ${({ inMobileMenu }) => (inMobileMenu ? "none" : "flex")};
-    flex-direction: column;
-  }
 `
 
 const StyledLi = styled.li`
@@ -33,12 +29,12 @@ const StyledButton = styled.button`
   }
 
   ${({ theme }) => theme.mq.laptop} {
-    margin: 0;
+    margin: 0 5px;
+    padding: 0;
     height: auto;
-    padding: 5px 20px 5px 0;
 
     &:hover {
-      background: ${({ theme }) => theme.secondaryLight};
+      border-bottom: 1px solid ${({ theme }) => theme.secondary};
     }
   }
 `
@@ -48,7 +44,7 @@ const ImgWrapper = styled.div`
 
   ${({ theme }) => theme.mq.laptop} {
     width: 30px;
-    margin: 0 10px;
+    margin: 0 5px;
   }
 `
 const StyledImg = styled.img`
@@ -57,12 +53,17 @@ const StyledImg = styled.img`
 `
 
 const StyledText = styled.p`
-  margin: 8px 0 0 10px;
+  margin: 7px 0 0 12px;
   font-family: ${({ theme }) => theme.font.family.main};
   font-size: 14px;
+
+  ${({ theme }) => theme.mq.laptop} {
+    margin: 7px 0 0 5px;
+  }
+
 `
 
-const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {
+const Languages = ({ isRedirectToHomePage }) => {
   const path = isRedirectToHomePage ? "/" : null
   const data = [
     { locale: "/", img: flagPoland, text: "Polski" },
@@ -70,7 +71,7 @@ const Languages = ({ inMobileMenu, isRedirectToHomePage }) => {
     { locale: "en", img: flagBritish, text: "English" },
   ]
   return (
-    <StyledUl inMobileMenu={inMobileMenu}>
+    <StyledUl >
       {data.map(({ locale, img, text }, i) => (
         <StyledLi key={i}>
           <StyledButton onClick={() => changeLocale(locale, path)}>
