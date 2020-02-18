@@ -6,12 +6,14 @@ import Languages from "../Languages/Languages"
 const Nav = styled.nav`
   display: ${({ isMobileMenu }) => (isMobileMenu ? "flex" : "none")};
   position: relative;
+  width: 250px;
   height: 35px;
   padding: 0 20px;
   
   ${({ theme }) => theme.mq.laptop} {
     display: ${({ isMobileMenu }) => (isMobileMenu ? "none" : "flex")};
     margin-left: auto;
+    width: auto;
   }
 `
 

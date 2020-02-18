@@ -4,8 +4,10 @@ import styled from "styled-components"
 import flagPoland from "../../assets/images/flag-poland.png"
 import flagFrance from "../../assets/images/flag-france.png"
 import flagBritish from "../../assets/images/flag-uk.png"
+import { injectIntl } from "gatsby-plugin-intl"
 
 const StyledUl = styled.ul`
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -32,9 +34,12 @@ const StyledButton = styled.button`
     margin: 0 5px;
     padding: 0;
     height: auto;
+    ${({ activeButton, theme }) => activeButton ? `border-bottom: 1px solid ${theme.secondary}` : null};
+    opacity: 1;
+    transition: opacity 0.2s ease;
 
     &:hover {
-      border-bottom: 1px solid ${({ theme }) => theme.secondary};
+      opacity: 0.7;
     }
   }
 `
@@ -52,41 +57,35 @@ const StyledImg = styled.img`
   height: auto;
 `
 
-const StyledText = styled.p`
-  margin: 7px 0 0 12px;
-  font-family: ${({ theme }) => theme.font.family.main};
-  font-size: 14px;
+const Languages = ({
+  isRedirectToHomePage,
+  intl: { locale: currentLocale }
+}) => {
 
-  ${({ theme }) => theme.mq.laptop} {
-    margin: 7px 0 0 5px;
-  }
-
-`
-
-const Languages = ({ isRedirectToHomePage }) => {
   const path = isRedirectToHomePage ? "/" : null
   const data = [
-    { locale: "/", img: flagPoland, text: "Polski" },
-    { locale: "fr", img: flagFrance, text: "Français" },
-    { locale: "en", img: flagBritish, text: "English" },
+    { locale: "pl", img: flagPoland },
+    { locale: "fr", img: flagFrance },
+    { locale: "en", img: flagBritish },
   ]
+
   return (
     <StyledUl >
-      {data.map(({ locale, img, text }, i) => (
+      {data.map(({ locale, img }, i) => (
         <StyledLi key={i}>
-          <StyledButton onClick={() => changeLocale(locale, path)}>
+          <StyledButton activeButton={locale === currentLocale} onClick={() => changeLocale(locale, path)}>
             <ImgWrapper>
               <StyledImg src={img} alt={"flag picture"} />
             </ImgWrapper>
-            <StyledText>{text}</StyledText>
           </StyledButton>
         </StyledLi>
-      ))}
-    </StyledUl>
+      ))
+      }
+    </StyledUl >
   )
 }
 
-export default Languages
+export default injectIntl(Languages)
 
 Languages.defaultProps = {
   isRedirectToHomePage: false,
