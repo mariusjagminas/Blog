@@ -64,7 +64,7 @@ const Languages = ({
 
   const path = isRedirectToHomePage ? "/" : null
   const data = [
-    { locale: "pl", img: flagPoland },
+    { locale: "/", img: flagPoland },
     { locale: "fr", img: flagFrance },
     { locale: "en", img: flagBritish },
   ]
@@ -73,7 +73,10 @@ const Languages = ({
     <StyledUl >
       {data.map(({ locale, img }, i) => (
         <StyledLi key={i}>
-          <StyledButton activeButton={locale === currentLocale} onClick={() => changeLocale(locale, path)}>
+          <StyledButton
+            activeButton={locale === currentLocale || currentLocale === "pl" && locale === '/'}
+            onClick={() => changeLocale(locale, path)}
+          >
             <ImgWrapper>
               <StyledImg src={img} alt={"flag picture"} />
             </ImgWrapper>
