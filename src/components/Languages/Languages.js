@@ -74,7 +74,7 @@ const Languages = ({
       {data.map(({ locale, img }, i) => (
         <StyledLi key={i}>
           <StyledButton
-            activeButton={locale === currentLocale || currentLocale === "pl" && locale === '/'}
+            activeButton={(locale === currentLocale) || (currentLocale === "pl" && locale === '/')}
             onClick={() => changeLocale(locale, path)}
           >
             <ImgWrapper>
