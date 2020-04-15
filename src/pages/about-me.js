@@ -10,13 +10,16 @@ const Wrapper = styled.div`
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px 25px 20px;
-  text-align: left;
+  text-align: center;
   background: ${({ theme }) => theme.bright};
-  ${({ theme }) => theme.mq.laptop} {
+  line-height: 1.8;
+
+  ${({ theme }) => theme.mq.tablet} {
     font-size: ${({ theme }) => theme.font.size.m};
-  }
-  p {
-    margin: 0;
+  
+    p {
+      margin: 50px 20px;
+      }
   }
 `
 
