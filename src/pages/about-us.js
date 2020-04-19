@@ -8,10 +8,10 @@ import RichTextContenful from "../components/RichTextContenful/RichTextContenful
 import ShareLinks from "../components/ShareLinks/ShareLinks"
 
 const Wrapper = styled.div`
-  max-width: 780px;
+  max-width: 840px;
   margin: 0 auto;
   padding: 0 10px;
-  text-align: center;
+  text-align: justify;
   ${({ theme }) => theme.mq.laptop} {
     font-size: ${({ theme }) => theme.font.size.m};
   }
