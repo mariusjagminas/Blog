@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px 25px 20px;
-  text-align: center;
+  text-align: justify;
   background: ${({ theme }) => theme.bright};
   line-height: 1.8;
 

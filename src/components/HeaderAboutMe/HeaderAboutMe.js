@@ -23,7 +23,7 @@ const Title = styled.h2`
   font-size: ${({ theme }) => theme.font.size.xl};
 `
 const Subtitle = styled.p`
-  display: ${({ locale }) => (locale === "fr" ? "inherit" : "none")};
+  display: ${({ locale }) => (locale ? "none" : "none")};  /* Subtitle is always hidden now */
 `
 
 const ImgWrapper = styled.div`
