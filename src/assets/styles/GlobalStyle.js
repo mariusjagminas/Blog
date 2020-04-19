@@ -21,6 +21,7 @@ html {
 p {
   font-size: 1.1rem;
   font-weight: 400;
+  text-align: justify;
 }
 
 `
