@@ -39,7 +39,7 @@ const Index = ({ data, intl, intl: { locale } }) => {
 
 export const query = graphql`
   query aboutUs {
-    file(relativePath: { eq: "banner.jpg" }) {
+    file(relativePath: { eq: "hero_img.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
