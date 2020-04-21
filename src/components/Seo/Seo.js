@@ -102,6 +102,8 @@ const Seo = ({ intl, intl: { locale }, seo }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`http:${imgPath}`} />
+      {/* Google verification link */}
+      <meta name="google-site-verification" content="Pq4pzo0x0rC2EP8AlM1dxy7VR4m5ucV3E__PcqG-N6Q" />
     </Helmet>
   )
 }
