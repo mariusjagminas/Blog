@@ -58,7 +58,7 @@ const Title = styled.h2`
 const StyledExcerpt = styled(ArticleExcerpt)`
   display: none;
   ${({ theme }) => theme.mq.tablet} {
-    display: initial;
+    display: block;
   }
 `
 
