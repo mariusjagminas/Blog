@@ -23,13 +23,17 @@ const Title = styled.h2`
   font-size: ${({ theme }) => theme.font.size.xl};
 `
 const Subtitle = styled.p`
-  display: ${({ locale }) => (locale ? "none" : "none")};  /* Subtitle is always hidden now */
+  display: ${({ locale }) =>
+    locale ? "none" : "none"}; /* Subtitle is always hidden now */
 `
 
 const ImgWrapper = styled.div`
   width: 100%;
   max-width: 300px;
   margin-top: 20px;
+  ${({ theme }) => theme.mq.tablet} {
+    margin-right: 20px;
+  }
 `
 const HeaderAboutMe = ({ intl, intl: { locale } }) => {
   const data = useStaticQuery(query)
