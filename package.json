@@ -11,7 +11,7 @@
     "babel-plugin-styled-components": "^1.10.0",
     "date-fns": "^2.8.1",
     "dotenv": "^8.0.0",
-    "flat": "4.1.0",
+    "flat": "5.0.1",
     "gatsby": "^2.8.5",
     "gatsby-image": "^2.1.4",
     "gatsby-plugin-intl": "^0.2.5",
